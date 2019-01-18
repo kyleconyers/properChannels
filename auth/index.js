@@ -58,6 +58,7 @@ router.post('/signup', (req, res) => {
 	// ADD VALIDATION
 	User.findOne({ 'local.username': username }, (err, userMatch) => {
 		if (userMatch) {
+			console.log(`Sorry, already a user with the username: ${username}`)
 			return res.json({
 				error: `Sorry, already a user with the username: ${username}`
 			})
@@ -68,7 +69,13 @@ router.post('/signup', (req, res) => {
 			'address': address
 		})
 		newUser.save((err, savedUser) => {
-			if (err) return res.json(err)
+			console.log("ADDING USER:")
+			console.log(savedUser)
+			if (err) {
+				console.log("Error saving new user:")
+				console.log(err)
+				return res.json({error: err})
+			}
 			return res.json(savedUser)
 		})
 	})

@@ -40,13 +40,14 @@ class SignupForm extends Component {
 				// Wait for response to see if signup successful
 				.then(response => {
 					console.log(response)
-					if (!response.data.errmsg) {
+					if (!response.data.error) {
 						console.log('SUCCESSFUL LOGIN')
 						this.setState({
 							redirectTo: '/login'
 						})
 					} else {
-						console.log('duplicate')
+						console.log('Error adding user to database:')
+						console.log(response.data.error)
 					}
 				})
 				.catch(err => {
