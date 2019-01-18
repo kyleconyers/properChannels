@@ -34,7 +34,8 @@ class SignupForm extends Component {
 			axios
 				.post('/auth/signup', {
 					username: this.state.username,
-					password: this.state.password
+					password: this.state.password,
+					address: this.state.address
 				})
 				// Wait for response to see if signup successful
 				.then(response => {
@@ -53,7 +54,7 @@ class SignupForm extends Component {
 				})
 		}
 	}
-	
+
 	render() {
 		if (this.state.redirectTo) {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
