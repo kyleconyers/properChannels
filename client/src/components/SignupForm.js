@@ -15,34 +15,45 @@ class SignupForm extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}
+	
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		})
 	}
+
+	// Handle submission of signup form
 	handleSubmit(event) {
 		event.preventDefault()
-		// TODO - validate!
-		axios
-			.post('/auth/signup', {
-				username: this.state.username,
-				password: this.state.password
-			})
-			.then(response => {
-				console.log(response)
-				if (!response.data.errmsg) {
-					console.log('SUCCESSFUL LOGIN')
-					this.setState({
-						redirectTo: '/login'
-					})
-				} else {
-					console.log('duplicate')
-				}
-			})
-			.catch(err => {
-				console.log("GOOGLE OAUTH ERROR: ", err)
-			})
+
+		// Check that password and confirmPassword are identical
+		if (this.state.password === this.state.confirmPassword) {
+			// TODO - add error notification for user if non-matching
+
+			// POST signup request
+			axios
+				.post('/auth/signup', {
+					username: this.state.username,
+					password: this.state.password
+				})
+				// Wait for response to see if signup successful
+				.then(response => {
+					console.log(response)
+					if (!response.data.errmsg) {
+						console.log('SUCCESSFUL LOGIN')
+						this.setState({
+							redirectTo: '/login'
+						})
+					} else {
+						console.log('duplicate')
+					}
+				})
+				.catch(err => {
+					console.log("GOOGLE OAUTH ERROR: ", err)
+				})
+		}
 	}
+	
 	render() {
 		if (this.state.redirectTo) {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
