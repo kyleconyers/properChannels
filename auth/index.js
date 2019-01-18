@@ -69,13 +69,14 @@ router.post('/signup', (req, res) => {
 			'address': address
 		})
 		newUser.save((err, savedUser) => {
-			console.log("ADDING USER:")
-			console.log(savedUser)
+			
 			if (err) {
 				console.log("Error saving new user:")
 				console.log(err)
 				return res.json({error: err})
 			}
+			console.log("ADDING USER:")
+			console.log(savedUser)
 			return res.json(savedUser)
 		})
 	})
