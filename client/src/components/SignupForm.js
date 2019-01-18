@@ -9,6 +9,7 @@ class SignupForm extends Component {
 			username: '',
 			password: '',
 			confirmPassword: '',
+			address: '',
 			redirectTo: null
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
@@ -68,6 +69,13 @@ class SignupForm extends Component {
 					type="password"
 					name="confirmPassword"
 					value={this.state.confirmPassword}
+					onChange={this.handleChange}
+				/>
+				<label htmlFor="address">Address: </label>
+				<input
+					type="text"
+					name="address"
+					value={this.state.address}
 					onChange={this.handleChange}
 				/>
 				<button onClick={this.handleSubmit}>Sign up</button>
