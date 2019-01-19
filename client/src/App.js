@@ -9,8 +9,10 @@ import centerBody from './components/centerBody'
 import centerLinks from './components/centerLinks'
 import leftSideBar from './components/leftSideBar'
 import navBar from './components/navBar'
+import wrapper from './components/wrapper'
+import rightSideBar from './components/rightSideBar'
 import Home from './components/Home'
-import Home from './components/Home'
+
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -136,9 +138,9 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}
-				
-				
-				<div className="content-layout">
+
+
+				{/* <div className="content-layout">
 					<div className ="left-sideBar">
 					left
 					
@@ -151,8 +153,41 @@ class App extends Component {
 					<div className="right-sideBar">
 					right
 					</div>	
-				</div>
-				
+				</div> */}
+				<wrapper className="wrapper">
+
+					<navBar className="navBar">
+						<p>
+							navBar
+						</p>
+					</navBar>
+
+					<leftSideBar className="leftSideBar">
+						<p>
+							leftSideBar
+						</p>
+					</leftSideBar>
+
+					<centerLinks className="centerLinks">
+						<p>
+							centerLinks
+						</p>
+					</centerLinks>
+
+					<centerBody className="centerBody">
+						<p>
+							centerBody
+						</p>
+					</centerBody>
+
+					<rightSideBar className="rightSideBar">
+						<p>
+							rightSideBar
+						</p>
+					</rightSideBar>
+
+				</wrapper>
+
 			</div>
 		)
 	}
