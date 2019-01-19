@@ -5,7 +5,17 @@ import './App.css'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
+import Center from './components/Center'
+import CenterBody from './components/CenterBody'
+import CenterLinks from './components/CenterLinks'
+import LeftSideBar from './components/LeftSideBar'
+import NavBar from './components/NavBar'
+import Wrapper from './components/Wrapper'
+import RightSideBar from './components/RightSideBar'
 import Home from './components/Home'
+import Profile from './components/Profile'
+import Districts from './components/Districts'
+
 
 // const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
 
@@ -151,7 +161,9 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}
-				<div className="content-layout">
+
+
+				{/* <div className="content-layout">
 					<div className ="left-sideBar">
 					left
 					
@@ -164,7 +176,56 @@ class App extends Component {
 					<div className="right-sideBar">
 					right
 					</div>	
-				</div>
+				</div> */}
+				<Wrapper className="wrapper">
+					
+						{/* <NavBar className="navBar">
+							<p>
+								navBar
+						</p>
+						</NavBar> */}
+					
+					
+						<LeftSideBar className="leftSideBar">
+							{/* <p>
+							leftSideBar
+						</p> */}
+							<Profile className="profile">
+								<p>
+									Profile
+							</p>
+							</Profile>
+							<Districts className="districts">
+								<p>
+									Districts
+							</p>
+							</Districts>
+
+
+						</LeftSideBar>
+
+						<Center className="center">
+							<CenterLinks className="centerLinks">
+								<p>
+									centerLinks
+						</p>
+							</CenterLinks>
+
+							<CenterBody className="centerBody">
+								<p>
+									centerBody
+						</p>
+							</CenterBody>
+						</Center>
+
+						<RightSideBar className="rightSideBar">
+							<p>
+								rightSideBar
+						</p>
+						</RightSideBar>
+				
+				</Wrapper>
+
 			</div>
 		)
 	}
