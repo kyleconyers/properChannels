@@ -13,6 +13,7 @@ import Wrapper from './components/Wrapper'
 import RightSideBar from './components/RightSideBar'
 import Home from './components/Home'
 
+
 const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
