@@ -1,6 +1,6 @@
 import React from "react";
-import "./centerBody.css"
+import "./center.css"
 
-const CenterBody = props => <div className="centerBody">{props.children}</div>
+const Center = props => <div className="center">{props.children}</div>
 
-export default CenterBody;
+export default Center;
