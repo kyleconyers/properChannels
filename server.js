@@ -86,7 +86,7 @@ app.use(function(err, req, res, next) {
 })
 app.use(routes);
 console.log(routes);
-console.log("testOne")
+console.log("testOne");
 // ==== Starting Server =====
 app.listen(PORT, () => {
 	console.log(`App listening on PORT: ${PORT}`)

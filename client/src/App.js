@@ -5,12 +5,12 @@ import './App.css'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
-import centerBody from './components/centerBody'
-import centerLinks from './components/centerLinks'
-import leftSideBar from './components/leftSideBar'
-import navBar from './components/navBar'
-import wrapper from './components/wrapper'
-import rightSideBar from './components/rightSideBar'
+import CenterBody from './components/CenterBody'
+import CenterLinks from './components/CenterLinks'
+import LeftSideBar from './components/LeftSideBar'
+import NavBar from './components/NavBar'
+import Wrapper from './components/Wrapper'
+import RightSideBar from './components/RightSideBar'
 import Home from './components/Home'
 
 const DisplayLinks = props => {
@@ -153,39 +153,39 @@ class App extends Component {
 					right
 					</div>	
 				</div> */}
-				<wrapper className="wrapper">
+				<Wrapper className="wrapper">
 
-					<navBar className="navBar">
+					<NavBar className="navBar">
 						<p>
 							navBar
 						</p>
-					</navBar>
+					</NavBar>
 
-					<leftSideBar className="leftSideBar">
+					<LeftSideBar className="leftSideBar">
 						<p>
 							leftSideBar
 						</p>
-					</leftSideBar>
+					</LeftSideBar>
 
-					<centerLinks className="centerLinks">
+					<CenterLinks className="centerLinks">
 						<p>
 							centerLinks
 						</p>
-					</centerLinks>
+					</CenterLinks>
 
-					<centerBody className="centerBody">
+					<CenterBody className="centerBody">
 						<p>
 							centerBody
 						</p>
-					</centerBody>
+					</CenterBody>
 
-					<rightSideBar className="rightSideBar">
+					<RightSideBar className="rightSideBar">
 						<p>
 							rightSideBar
 						</p>
-					</rightSideBar>
+					</RightSideBar>
 
-				</wrapper>
+				</Wrapper>
 
 			</div>
 			
