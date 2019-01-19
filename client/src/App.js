@@ -10,7 +10,7 @@ import centerLinks from './components/centerLinks'
 import leftSideBar from './components/leftSideBar'
 import navBar from './components/navBar'
 import Home from './components/Home'
-import Home from './components/Home'
+console.log("test")
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {

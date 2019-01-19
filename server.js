@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 require('dotenv').config()
 
+const routes = require('./routes/propublicaAPI.js')
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -83,8 +84,12 @@ app.use(function(err, req, res, next) {
 	console.error(err.stack)
 	res.status(500)
 })
-
+app.use(routes);
+console.log(routes);
+console.log("testOne")
 // ==== Starting Server =====
 app.listen(PORT, () => {
 	console.log(`App listening on PORT: ${PORT}`)
 })
+
+

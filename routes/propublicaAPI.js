@@ -5,7 +5,7 @@ const router = require("express").Router();
 
 const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
 const googleApiKey = "AIzaSyDAyIPLZ0mcQHFSMR_UghLG1poEhHyXFGg"
-
+console.log("test")
 // //Premade totals
 // const senate = "https://api.propublica.org/congress/v1/116/senate/members.json" + APIkey;
 const house = "https://api.propublica.org/congress/v1/116/house/members.json" + APIkey;
@@ -59,7 +59,7 @@ function apicall(){
 
 loadClient();
 execute();
-console.Clog(response);
+console.log(response);
 
 
 
