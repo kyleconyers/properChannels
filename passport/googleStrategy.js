@@ -34,7 +34,8 @@ const strategy = new GoogleStrategy(
 					'google.googleId': id,
 					firstName: name.givenName,
 					lastName: name.familyName,
-					photos: photos
+					photos: photos,
+					address: "DEFAULT ADDRESS"
 				})
 				// save this user
 				newGoogleUser.save((err, savedUser) => {
