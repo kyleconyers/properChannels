@@ -5,6 +5,11 @@ import './App.css'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
+import centerBody from './components/centerBody'
+import centerLinks from './components/centerLinks'
+import leftSideBar from './components/leftSideBar'
+import navBar from './components/navBar'
+import Home from './components/Home'
 import Home from './components/Home'
 
 const DisplayLinks = props => {
@@ -131,6 +136,8 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}
+				
+				
 				<div className="content-layout">
 					<div className ="left-sideBar">
 					left
@@ -145,6 +152,7 @@ class App extends Component {
 					right
 					</div>	
 				</div>
+				
 			</div>
 			
 			
