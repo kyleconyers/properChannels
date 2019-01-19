@@ -34,26 +34,26 @@ html{
   height: 100%;
 }
 
-.content-layout {  
+/* .content-layout {  
   display: flex; 
   align-items: stretch;
   height: 100%;
-}
+} */
 
-.left-sideBar{
+/* .left-sideBar{
   flex-grow: 1; 
   border: 1px solid black;
   height: 100%;
-}
+} */
 
-.center-content{
+/* .center-content{
   flex-grow: 2; 
   border: 1px solid black;
   height: 100%;
-}
+} */
 
-.right-sideBar{
+/* .right-sideBar{
   flex-grow: 1; 
   border: 1px solid black;
   height: 100%;
-}
+} */
