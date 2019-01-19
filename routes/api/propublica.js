@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const googleController = require("../../controllers/googleController");
+const propublicaController = require("../../controllers/propublicaController");
 
 // Matches with "/api/google"
 router
-  .route("/")
-  .get(googleController.findAll);
+  .route("/senators")
+  .get(propublicaController.findAll);
 
 module.exports = router;
