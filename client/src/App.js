@@ -7,6 +7,12 @@ import SignupForm from './components/SignupForm'
 import Header from './components/Header'
 import Home from './components/Home'
 
+const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
+
+
+console.log('testAPP.js');
+
+
 const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
@@ -76,7 +82,47 @@ class App extends Component {
 				})
 			}
 		})
+		this.generateResultsObject()
 	}
+
+	generateResultsObject(){
+		axios({
+			method: 'get',
+			baseURL: 'https://api.propublica.org/congress/v1/115/senate/members.json',
+			headers: {'X-Custom-Header': 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'}
+		  });
+		}
+
+		// isoArray.forEach(function(iso){
+		// 	allData[iso] = {};
+			
+			// pesty = Object.keys();
+			// types.forEach(function(type)
+		// 	{
+		// 		var url = "https://api.propublica.org/congress/v1/116/senate/members.json?api_key="+ APIkey;
+			
+		// 		//console.log(url);
+		// 		fetch(url).then(function(res){
+		// 			return res.json();
+					
+		// 		}).then(function(data){
+					
+		// 			// if('series' in data){
+		// 			// 	allData[type] = data['series'][0]['data'];
+		// 			// }
+		// 			// else allData[type] = [];
+					
+		// 			//make array with blank years 
+					
+		// 		});
+				
+		// 	console.log(data, )
+		//   });
+		//   firstFewTypes = false;
+		// });
+		// //   return url
+	  
+	  
 
 	_logout(event) {
 		event.preventDefault()
