@@ -5,6 +5,7 @@ import './App.css'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
+import Center from './components/Center'
 import CenterBody from './components/CenterBody'
 import CenterLinks from './components/CenterLinks'
 import LeftSideBar from './components/LeftSideBar'
@@ -156,11 +157,11 @@ class App extends Component {
 				</div> */}
 				<Wrapper className="wrapper">
 
-					<NavBar className="navBar">
+					{/* <NavBar className="navBar">
 						<p>
 							navBar
 						</p>
-					</NavBar>
+					</NavBar> */}
 
 					<LeftSideBar className="leftSideBar">
 						<p>
@@ -168,17 +169,19 @@ class App extends Component {
 						</p>
 					</LeftSideBar>
 
-					<CenterLinks className="centerLinks">
-						<p>
-							centerLinks
+					<Center className="center">
+						<CenterLinks className="centerLinks">
+							<p>
+								centerLinks
 						</p>
-					</CenterLinks>
+						</CenterLinks>
 
-					<CenterBody className="centerBody">
-						<p>
-							centerBody
+						<CenterBody className="centerBody">
+							<p>
+								centerBody
 						</p>
-					</CenterBody>
+						</CenterBody>
+					</Center>
 
 					<RightSideBar className="rightSideBar">
 						<p>

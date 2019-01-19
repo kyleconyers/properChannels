@@ -1,0 +1,5 @@
+.center{
+  flex-grow: 2; 
+  border: 1px solid black;
+  height: 100%;
+}
