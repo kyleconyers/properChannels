@@ -145,8 +145,6 @@ class App extends Component {
 					right
 					</div>	
 				</div>
-		
-
 			</div>
 			
 			
