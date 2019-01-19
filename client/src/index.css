@@ -3,3 +3,41 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+html{
+  height: 100%;
+}
+#root{
+  height: 100%;
+}
+.App{
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.content-layout {
+  
+  display: flex; /* or inline-flex */
+  /* border: 1px solid black; */
+  align-items: stretch;
+  height: 100%;
+}
+.left-sideBar{
+  flex-grow: 1; /* default 0 */
+  border: 1px solid black;
+  height: 100%;
+}
+.center-content{
+  flex-grow: 2; /* default 0 */
+  border: 1px solid black;
+  height: 100%;
+}
+.right-sideBar{
+  flex-grow: 1; /* default 0 */
+  border: 1px solid black;
+  height: 100%;
+}
