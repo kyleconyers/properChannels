@@ -131,7 +131,28 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}
+				<div className="content-layout">
+					<div className ="left-sideBar">
+					left
+					
+					</div>
+					
+					<div className="center-content">
+					center
+					</div>
+					
+					<div className="right-sideBar">
+					right
+					</div>	
+				</div>
+		
+
 			</div>
+			
+			
+			
+			
+			
 		)
 	}
 }
