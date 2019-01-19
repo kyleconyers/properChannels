@@ -17,6 +17,12 @@ import Profile from './components/Profile'
 import Districts from './components/Districts'
 
 
+// const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
+
+
+// console.log('testAPP.js');
+
+
 const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
@@ -86,7 +92,21 @@ class App extends Component {
 				})
 			}
 		})
+		// this.generateResultsObject()
 	}
+
+	// generateResultsObject(){
+	// 	axios({
+	// 		method: 'get',
+	// 		baseURL: 'https://api.propublica.org/congress/v1/116/senate/members.json',
+	// 		headers: {'X-API-Key': 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'}
+	// 	  }).then(res => {
+	// 		// do something with data
+	// 		console.log('api response: ', res.data)
+	// 	  }).catch(err => console.log(err))
+	// 	}
+
+
 
 	_logout(event) {
 		event.preventDefault()
