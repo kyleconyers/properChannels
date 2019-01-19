@@ -13,6 +13,8 @@ import NavBar from './components/NavBar'
 import Wrapper from './components/Wrapper'
 import RightSideBar from './components/RightSideBar'
 import Home from './components/Home'
+import Profile from './components/Profile'
+import Districts from './components/Districts'
 
 
 const DisplayLinks = props => {
@@ -156,39 +158,52 @@ class App extends Component {
 					</div>	
 				</div> */}
 				<Wrapper className="wrapper">
-
-					{/* <NavBar className="navBar">
-						<p>
-							navBar
+					
+						{/* <NavBar className="navBar">
+							<p>
+								navBar
 						</p>
-					</NavBar> */}
-
-					<LeftSideBar className="leftSideBar">
-						<p>
+						</NavBar> */}
+					
+					
+						<LeftSideBar className="leftSideBar">
+							{/* <p>
 							leftSideBar
-						</p>
-					</LeftSideBar>
+						</p> */}
+							<Profile className="profile">
+								<p>
+									Profile
+							</p>
+							</Profile>
+							<Districts className="districts">
+								<p>
+									Districts
+							</p>
+							</Districts>
 
-					<Center className="center">
-						<CenterLinks className="centerLinks">
+
+						</LeftSideBar>
+
+						<Center className="center">
+							<CenterLinks className="centerLinks">
+								<p>
+									centerLinks
+						</p>
+							</CenterLinks>
+
+							<CenterBody className="centerBody">
+								<p>
+									centerBody
+						</p>
+							</CenterBody>
+						</Center>
+
+						<RightSideBar className="rightSideBar">
 							<p>
-								centerLinks
+								rightSideBar
 						</p>
-						</CenterLinks>
-
-						<CenterBody className="centerBody">
-							<p>
-								centerBody
-						</p>
-						</CenterBody>
-					</Center>
-
-					<RightSideBar className="rightSideBar">
-						<p>
-							rightSideBar
-						</p>
-					</RightSideBar>
-
+						</RightSideBar>
+				
 				</Wrapper>
 
 			</div>

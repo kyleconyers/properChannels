@@ -1,6 +1,6 @@
-.rightSideBar{
-    flex-grow: 2; 
+.profile{
+    flex-grow: 1; 
     border: 1px solid black;
-    height: 100%;
+    height: 20%;
     align-items: stretch;
   }
