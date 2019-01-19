@@ -4,8 +4,8 @@ import React, {Component} from 'react'
 const router = require("express").Router();
 
 const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
-const googleApiKey= "AIzaSyDAyIPLZ0mcQHFSMR_UghLG1poEhHyXFGg"
-console.log("test")
+const googleApiKey = "AIzaSyDAyIPLZ0mcQHFSMR_UghLG1poEhHyXFGg"
+
 // //Premade totals
 // const senate = "https://api.propublica.org/congress/v1/116/senate/members.json" + APIkey;
 const house = "https://api.propublica.org/congress/v1/116/house/members.json" + APIkey;
@@ -31,11 +31,45 @@ function apicall(){
 
 
 
+
+
+
+  function loadClient() {
+    gapi.client.setApiKey(AIzaSyDAyIPLZ0mcQHFSMR_UghLG1poEhHyXFGg);
+    return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/civicinfo/v2/rest")
+        .then(function() { console.log("GAPI client loaded for API"); },
+              function(err) { console.error("Error loading GAPI client for API", err); });
+  }
+  {/* // Make sure the client is loaded before calling this method. */}
+  function execute() {
+    return gapi.client.civicinfo.representatives.representativeInfoByAddress({
+      "address": "98122",
+      "includeOffices": true
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Response", response);
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+  gapi.load("client");
+
+
+
+
+loadClient();
+execute();
+console.Clog(response);
+
+
+
+
+
 function generateResultsObject(){
   isoArray.forEach(function(iso){
       allData[iso] = {};
       
-      types = Object.keys(FUEL_TYPE_IDS);
+      types = Object.keys();
       types.forEach(function(type){
           var url = "https://api.propublica.org/congress/v1/116/senate/members.json?api_key="+ APIkey;
       
@@ -65,8 +99,7 @@ function generateResultsObject(){
 class Container extends Component {
     constructor() {
         super()
-        this.state = {
-           }
+        this.state = {}
     }
 
     
@@ -77,7 +110,7 @@ class Container extends Component {
     //     .catch(err => res.status(422).json(err));
     // });
 
-    doFourSquare() {
+    doPropublicaCall() {
         const url = 'https://api.propublica.org/congress/v1/116/senate/members.json' +
                     APIkey
 
