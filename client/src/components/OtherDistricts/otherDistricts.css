@@ -1,7 +1,6 @@
-.districts{
+.otherDistricts{
     flex-grow: 1; 
     border: 1px solid black;
-    height: 30%;
+    height: 50%;
     align-items: stretch;
-    background-color: firebrick;
   }
