@@ -3,13 +3,27 @@ const router = express.Router()
 const User = require('../db/models/user')
 const passport = require('../passport')
 
+// API endpoint to authenticate with Google 
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 
+// Called when Google completes authentication
 router.get('/google/callback',
-	passport.authenticate('google', {
-		successRedirect: '/',
-		failureRedirect: '/login'
-	})
+	(req, res, next) => {
+		// console.log(`req.user: ${req.user}`)
+		console.log('======= /auth/google/callback was called! =====')
+		next()
+	},
+	// Authenticate with passport
+	passport.authenticate('google', { failureRedirect: '/login' }),
+	(req, res) => {
+		// Get passed user object
+		const {user} = req
+		console.log();
+		console.log("GOOGLE AUTH:")
+		console.log(JSON.stringify( user,null,4))
+		console.log()
+		res.redirect('/')
+	}
 )
 
 // this route is just used to get the user basic info
