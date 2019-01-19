@@ -1,7 +1,7 @@
 .App {
   text-align: center;
 }
-
+/* 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -21,4 +21,37 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+} */
+
+
+html{
+  height: 100%;
+}
+#root{
+  height: 100%;
+}
+.App{
+  height: 100%;
+}
+
+.content-layout {
+  
+  display: flex; 
+  align-items: stretch;
+  height: 100%;
+}
+.left-sideBar{
+  flex-grow: 1; 
+  border: 1px solid black;
+  height: 100%;
+}
+.center-content{
+  flex-grow: 2; 
+  border: 1px solid black;
+  height: 100%;
+}
+.right-sideBar{
+  flex-grow: 1; 
+  border: 1px solid black;
+  height: 100%;
 }
