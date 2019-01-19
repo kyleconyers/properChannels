@@ -1,0 +1,6 @@
+.otherDistricts{
+    flex-grow: 1; 
+    border: 1px solid black;
+    height: 50%;
+    align-items: stretch;
+  }

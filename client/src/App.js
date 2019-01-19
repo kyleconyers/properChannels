@@ -15,6 +15,7 @@ import RightSideBar from './components/RightSideBar'
 import Home from './components/Home'
 import Profile from './components/Profile'
 import Districts from './components/Districts'
+import OtherDistricts from './components/OtherDistricts'
 
 
 const DisplayLinks = props => {
@@ -157,53 +158,62 @@ class App extends Component {
 					right
 					</div>	
 				</div> */}
+
+				<NavBar className="navBar">
+					<p>
+						navBar
+						</p>
+				</NavBar>
+
+
+
 				<Wrapper className="wrapper">
-					
-						{/* <NavBar className="navBar">
+
+					{/* <NavBar className="navBar">
 							<p>
 								navBar
 						</p>
 						</NavBar> */}
-					
-					
-						<LeftSideBar className="leftSideBar">
-							{/* <p>
-							leftSideBar
-						</p> */}
-							<Profile className="profile">
-								<p>
-									Profile
-							</p>
-							</Profile>
-							<Districts className="districts">
-								<p>
-									Districts
-							</p>
-							</Districts>
 
 
-						</LeftSideBar>
-
-						<Center className="center">
-							<CenterLinks className="centerLinks">
-								<p>
-									centerLinks
-						</p>
-							</CenterLinks>
-
-							<CenterBody className="centerBody">
-								<p>
-									centerBody
-						</p>
-							</CenterBody>
-						</Center>
-
-						<RightSideBar className="rightSideBar">
+					<LeftSideBar className="leftSideBar">
+						<Profile className="profile">
 							<p>
-								rightSideBar
+								Profile
+							</p>
+						</Profile>
+						<Districts className="districts">
+							<p>
+								Districts
+							</p>
+						</Districts>
+						<OtherDistricts className="otherDistricts">
+							<p>
+								The Other Districts
+							</p>
+						</OtherDistricts>
+					</LeftSideBar>
+
+					<Center className="center">
+						<CenterLinks className="centerLinks">
+							<p>
+								centerLinks
 						</p>
-						</RightSideBar>
-				
+						</CenterLinks>
+
+						<CenterBody className="centerBody">
+							<p>
+								centerBody
+						</p>
+						</CenterBody>
+					</Center>
+
+					<RightSideBar className="rightSideBar">
+						<p>
+							rightSideBar
+						</p>
+					</RightSideBar>
+
 				</Wrapper>
 
 			</div>
