@@ -16,6 +16,7 @@ import Home from './components/Home'
 import Profile from './components/Profile'
 import Districts from './components/Districts'
 import OtherDistricts from './components/OtherDistricts'
+import UserProfile from './components/UserProfile'
 
 
 // const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
@@ -189,6 +190,7 @@ class App extends Component {
 						/>}
 				/>
 				<Route exact path="/signup" component={SignupForm} />
+				<Route exact path="/profile" component={UserProfile} />
 
 				<NavBar className="navBar">
 
