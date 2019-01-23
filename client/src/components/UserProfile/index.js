@@ -24,18 +24,27 @@ class UserProfile extends Component {
 	handleSubmit(event) {
 		event.preventDefault()
 
-	}
+    }
+    
+    // Handle connecting account to Google
+    handleConnectGoogle = event => {
+        // TODO: Handle connecting account to Google
+    }
 
 	render() {
 		return (
 			<div className="UserProfile">
+
+                {/* Form for updating user info */}
 				<form onSubmit={this.handleSubmit}>
                     <label htmlFor="address">Address:</label>
                     <input type="text" name="address" id="address" value={this.state.address} onChange={this.handleChange} />
                     <input type="submit" value="Save" />
                 </form>
 
-                <button >Connect to Google</button>
+                {/* TODO: Replace with Google-provided image */}
+                {/* TODO: Create button to de-link account from Google */}
+                <button onClick={this.handleConnectGoogle}>Connect to Google</button>
 			</div>
 		)
 	}
