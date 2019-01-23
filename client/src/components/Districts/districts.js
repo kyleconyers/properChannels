@@ -35,7 +35,7 @@ class Districts extends Component {
   //   this.getSenators();
   // }
 
-  componentDidMount() {
+  componentWillMount() {
     axios({
       method: 'get',
       baseURL: 'https://api.propublica.org/congress/v1/116/senate/members.json',
@@ -54,6 +54,14 @@ class Districts extends Component {
   render() {
     console.log("senators:");
     console.log(this.state.senators);
+    const waSenators = [];
+    this.state.senators.length?(this.state.senators[0].members.map(senator => {
+    if (senator.state === "WA") {
+      waSenators.push(senator);
+      }
+    })):(console.log(""));
+    
+
     return (
       <Container>
         <Row>
@@ -61,23 +69,9 @@ class Districts extends Component {
               {this.state.senators.length ? (
                 <List>
                   {
-                  this.state.senators[0].members.map(senator => (
+                  waSenators.map(senator => (
                     <Senator
-                      first_name={senator.first_name}
-                      // title={book.volumeInfo.title}
-                      // subtitle={book.volumeInfo.subtitle}
-                      // link={book.volumeInfo.infoLink}
-                      // authors={book.volumeInfo.authors.join(", ")}
-                      // description={book.volumeInfo.description}
-                      // image={book.volumeInfo.imageLinks.thumbnail}
-                      // Button={() => (
-                      //   <button
-                      //     onClick={() => this.handleBookSave(book.id)}
-                      //     className="btn btn-primary ml-2"
-                      //   >
-                      //     Save
-                      //   </button>
-                      // )}
+                    first_name={senator.first_name}
                     />
                   ))}
                 </List>
