@@ -6,19 +6,21 @@ class UserProfile extends Component {
 	constructor() {
 		super()
 		this.state = {
+            // TODO: Get address to populate from user info in database
 			address: "DEFAULT ADDRESS"
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}
-	
+    
+    // Handles updating of input entries
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		})
 	}
 
-	// Handle submission of signup form
+	// Handle submission of form for updating user data
 	handleSubmit(event) {
 		event.preventDefault()
 
