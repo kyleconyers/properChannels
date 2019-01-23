@@ -36,6 +36,11 @@ const DisplayLinks = props => {
 						</Link>
 					</li>
 					<li>
+						<Link to="/profile" className="nav-link">
+							Profile
+						</Link>
+					</li>
+					<li>
 						<Link to="#" className="nav-link" onClick={props._logout}>
 							Logout
 						</Link>
