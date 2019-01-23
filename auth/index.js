@@ -96,4 +96,25 @@ router.post('/signup', (req, res) => {
 	})
 })
 
+// PUT route for updating user info
+router.put('/updateprofile', (req, res) => {
+	const {user} = req;
+	const {address} = req.body;
+
+	if (user) {
+		console.log("SEARCHING USER")
+		User.findOneAndUpdate({"_id": user._id},{address: address}, (err, userMatch) => {
+			if (err) {
+				console.log("Error saving new user:")
+				console.log(err)
+				return res.json({error: err})
+			}
+			if (userMatch) {
+				console.log("USER MATCHED")
+				res.json(userMatch)
+			}
+		})
+	} else res.send("NO USER DATA")
+})
+
 module.exports = router
