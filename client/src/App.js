@@ -53,12 +53,12 @@ const DisplayLinks = props => {
 					</li>
 					<li className="nav-item">
 						<Link to="/login" className="nav-link">
-							login
+							Log In
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link to="/signup" className="nav-link">
-							sign up
+							Sign Up
 						</Link>
 					</li>
 				</ul>
@@ -144,14 +144,14 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				
-				<Header user={this.state.user} />
+				{/* <h1>This is the main App component</h1> */}
+				{/* <Header user={this.state.user} /> */}
 				{/* LINKS to our different 'pages' */}
-				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
+				{/* <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} /> */}
 				{/*  ROUTES */}
 				{/* <Route exact path="/" component={Home} /> */}
-				<Route exact path="/" render={() => <Home user={this.state.user} />} />
-				<Route
+				{/* <Route exact path="/" render={() => <Home user={this.state.user} />} /> */}
+				{/* <Route
 					exact
 					path="/login"
 					render={() =>
@@ -160,7 +160,7 @@ class App extends Component {
 							_googleSignin={this._googleSignin}
 						/>}
 				/>
-				<Route exact path="/signup" component={SignupForm} />
+				<Route exact path="/signup" component={SignupForm} /> */}
 				{/* <LoginForm _login={this._login} /> */}
 
 
@@ -179,10 +179,32 @@ class App extends Component {
 					</div>	
 				</div> */}
 
+				<Route
+					exact
+					path="/login"
+					render={() =>
+						<LoginForm
+							_login={this._login}
+							_googleSignin={this._googleSignin}
+						/>}
+				/>
+				<Route exact path="/signup" component={SignupForm} />
+
 				<NavBar className="navBar">
-					<p>
-						navBar
-						</p>
+
+					<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
+
+					{/* <Route
+						exact
+						path="/login"
+						render={() =>
+							<LoginForm
+								_login={this._login}
+								_googleSignin={this._googleSignin}
+							/>}
+					/>
+					<Route exact path="/signup" component={SignupForm} /> */}
+
 				</NavBar>
 
 
@@ -198,9 +220,8 @@ class App extends Component {
 
 					<LeftSideBar className="leftSideBar">
 						<Profile className="profile">
-							<p>
-								Profile
-							</p>
+							<Route exact path="/" render={() => <Home user={this.state.user} />} />
+							<Header user={this.state.user} />
 						</Profile>
 						<Districts className="districts">
 							<p>
