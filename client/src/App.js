@@ -15,6 +15,8 @@ import RightSideBar from './components/RightSideBar'
 import Home from './components/Home'
 import Profile from './components/Profile'
 import Districts from './components/Districts'
+import OtherDistricts from './components/OtherDistricts'
+import committees from "./committees.json";
 
 
 // const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
@@ -52,12 +54,12 @@ const DisplayLinks = props => {
 					</li>
 					<li className="nav-item">
 						<Link to="/login" className="nav-link">
-							login
+							Log In
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link to="/signup" className="nav-link">
-							sign up
+							Sign Up
 						</Link>
 					</li>
 				</ul>
@@ -143,14 +145,14 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<h1>This is the main App component</h1>
-				<Header user={this.state.user} />
+				{/* <h1>This is the main App component</h1> */}
+				{/* <Header user={this.state.user} /> */}
 				{/* LINKS to our different 'pages' */}
-				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
+				{/* <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} /> */}
 				{/*  ROUTES */}
 				{/* <Route exact path="/" component={Home} /> */}
-				<Route exact path="/" render={() => <Home user={this.state.user} />} />
-				<Route
+				{/* <Route exact path="/" render={() => <Home user={this.state.user} />} /> */}
+				{/* <Route
 					exact
 					path="/login"
 					render={() =>
@@ -159,7 +161,7 @@ class App extends Component {
 							_googleSignin={this._googleSignin}
 						/>}
 				/>
-				<Route exact path="/signup" component={SignupForm} />
+				<Route exact path="/signup" component={SignupForm} /> */}
 				{/* <LoginForm _login={this._login} /> */}
 
 
@@ -177,53 +179,83 @@ class App extends Component {
 					right
 					</div>	
 				</div> */}
+
+				<Route
+					exact
+					path="/login"
+					render={() =>
+						<LoginForm
+							_login={this._login}
+							_googleSignin={this._googleSignin}
+						/>}
+				/>
+				<Route exact path="/signup" component={SignupForm} />
+
+				<NavBar className="navBar">
+
+					<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
+
+					{/* <Route
+						exact
+						path="/login"
+						render={() =>
+							<LoginForm
+								_login={this._login}
+								_googleSignin={this._googleSignin}
+							/>}
+					/>
+					<Route exact path="/signup" component={SignupForm} /> */}
+
+				</NavBar>
+
+
+
 				<Wrapper className="wrapper">
-					
-						{/* <NavBar className="navBar">
+
+					{/* <NavBar className="navBar">
 							<p>
 								navBar
 						</p>
 						</NavBar> */}
-					
-					
-						<LeftSideBar className="leftSideBar">
-							{/* <p>
-							leftSideBar
-						</p> */}
-							<Profile className="profile">
-								<p>
-									Profile
-							</p>
-							</Profile>
-							<Districts className="districts">
-								<p>
-									Districts
-							</p>
-							</Districts>
 
 
-						</LeftSideBar>
-
-						<Center className="center">
-							<CenterLinks className="centerLinks">
-								<p>
-									centerLinks
-						</p>
-							</CenterLinks>
-
-							<CenterBody className="centerBody">
-								<p>
-									centerBody
-						</p>
-							</CenterBody>
-						</Center>
-
-						<RightSideBar className="rightSideBar">
+					<LeftSideBar className="leftSideBar">
+						<Profile className="profile">
+							<Route exact path="/" render={() => <Home user={this.state.user} />} />
+							<Header user={this.state.user} />
+						</Profile>
+						<Districts className="districts">
 							<p>
-								rightSideBar
+								Districts
+							</p>
+						</Districts>
+						<OtherDistricts className="otherDistricts">
+							<p>
+								The Other Districts
+							</p>
+						</OtherDistricts>
+					</LeftSideBar>
+
+					<Center className="center">
+						<CenterLinks className="centerLinks">
+							<p>
+								centerLinks
 						</p>
-						</RightSideBar>
-				
+						</CenterLinks>
+
+						<CenterBody className="centerBody">
+							<p>
+								centerBody
+						</p>
+						</CenterBody>
+					</Center>
+
+					<RightSideBar className="rightSideBar">
+						<p>
+							rightSideBar
+						</p>
+					</RightSideBar>
+
 				</Wrapper>
 
 			</div>
