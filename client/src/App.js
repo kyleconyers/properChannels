@@ -16,6 +16,7 @@ import Home from './components/Home'
 import Profile from './components/Profile'
 import Districts from './components/Districts'
 import OtherDistricts from './components/OtherDistricts'
+import committees from "./committees.json";
 
 
 // const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
