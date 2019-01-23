@@ -30,7 +30,13 @@ class UserProfile extends Component {
 
 	// Handle submission of form for updating user data
 	handleSubmit(event) {
-		event.preventDefault()
+        event.preventDefault()
+        
+        axios.put('/auth/updateprofile',  {
+            address: this.state.address
+        }).then(response => {
+            console.log(response);
+        })
 
     }
     
