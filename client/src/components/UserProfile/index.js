@@ -6,7 +6,7 @@ class UserProfile extends Component {
 	constructor() {
 		super()
 		this.state = {
-			address: ""
+			address: "DEFAULT ADDRESS"
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
@@ -28,8 +28,9 @@ class UserProfile extends Component {
 		return (
 			<div className="UserProfile">
 				<form>
-                    <label forName="address">Address:</label>
-                    <input name="address" />
+                    <label htmlFor="address">Address:</label>
+                    <input type="text" name="address" id="address" value={this.state.address} onChange={this.handleChange} />
+                    <input type="submit" value="Save" onSubmit={this.handleSubmit} />
                 </form>
 
                 <button >Connect to Google</button>
