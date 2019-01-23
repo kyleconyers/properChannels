@@ -3,12 +3,20 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
 class UserProfile extends Component {
-	constructor() {
-		super()
+	constructor(props) {
+        super(props)
+
+        // Set initial state with defaults
 		this.state = {
-            // TODO: Get address to populate from user info in database
-			address: "DEFAULT ADDRESS"
-		}
+			address: "NULL"
+        }
+
+        // Populate state with user data
+        if (props.user) {
+            const {address} = props.user
+            if (address) this.state.address = address
+        }
+
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}

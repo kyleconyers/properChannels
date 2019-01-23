@@ -195,7 +195,8 @@ class App extends Component {
 						/>}
 				/>
 				<Route exact path="/signup" component={SignupForm} />
-				<Route exact path="/profile" component={UserProfile} />
+
+				<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} />
 
 				<NavBar className="navBar">
 
