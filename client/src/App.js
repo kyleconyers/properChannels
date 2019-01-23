@@ -9,13 +9,14 @@ import Center from './components/Center'
 import CenterBody from './components/CenterBody'
 import CenterLinks from './components/CenterLinks'
 import LeftSideBar from './components/LeftSideBar'
-import NavBar from './components/NavBar'
+// import NavBar from './components/NavBar'
 import Wrapper from './components/Wrapper'
 import RightSideBar from './components/RightSideBar'
 import Home from './components/Home'
 import Profile from './components/Profile'
 import Districts from './components/Districts'
 import OtherDistricts from './components/OtherDistricts'
+import committees from "./committees.json";
 
 
 // const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
