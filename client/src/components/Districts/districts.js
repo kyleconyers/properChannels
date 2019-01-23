@@ -60,9 +60,10 @@ class Districts extends Component {
             {/* </Row><Card title="Results"> */}
               {this.state.senators.length ? (
                 <List>
-                  {this.state.senators.map(senators => (
+                  {
+                  this.state.senators[0].members.map(senator => (
                     <Senator
-                      // key={book.id}
+                      first_name={senator.first_name}
                       // title={book.volumeInfo.title}
                       // subtitle={book.volumeInfo.subtitle}
                       // link={book.volumeInfo.infoLink}
