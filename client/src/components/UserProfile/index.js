@@ -27,10 +27,10 @@ class UserProfile extends Component {
 	render() {
 		return (
 			<div className="UserProfile">
-				<form>
+				<form onSubmit={this.handleSubmit}>
                     <label htmlFor="address">Address:</label>
                     <input type="text" name="address" id="address" value={this.state.address} onChange={this.handleChange} />
-                    <input type="submit" value="Save" onSubmit={this.handleSubmit} />
+                    <input type="submit" value="Save" />
                 </form>
 
                 <button >Connect to Google</button>
