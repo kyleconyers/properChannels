@@ -80,7 +80,8 @@ class App extends Component {
 		super()
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
+			loaded: false
 		}
 		this._logout = this._logout.bind(this)
 		this._login = this._login.bind(this)
@@ -92,12 +93,14 @@ class App extends Component {
 				console.log('THERE IS A USER')
 				this.setState({
 					loggedIn: true,
-					user: response.data.user
+					user: response.data.user,
+					loaded: true
 				})
 			} else {
 				this.setState({
 					loggedIn: false,
-					user: null
+					user: null,
+					loaded: true
 				})
 			}
 		})
@@ -204,6 +207,7 @@ class App extends Component {
 					exact path="/test" 
 					component={UserProfile} 
 					auth={this.state.loggedIn}
+					loaded={this.state.loaded}
 					user={this.state.user} 
 				/>
 
