@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 import './App.css'
+import ProtectedRoute from './components/ProtectedRoute'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
@@ -198,6 +199,13 @@ class App extends Component {
 				<Route exact path="/signup" component={SignupForm} />
 
 				<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} />
+
+				<ProtectedRoute 
+					exact path="/test" 
+					component={UserProfile} 
+					auth={this.state.loggedIn}
+					user={this.state.user} 
+				/>
 
 				<NavBar className="navBar">
 
