@@ -16,6 +16,7 @@ import Home from './components/Home'
 import Profile from './components/Profile'
 import Districts from './components/Districts'
 import OtherDistricts from './components/OtherDistricts'
+import UserProfile from './components/UserProfile'
 import committees from "./committees.json";
 
 
@@ -33,6 +34,11 @@ const DisplayLinks = props => {
 					<li className="nav-item">
 						<Link to="/" className="nav-link">
 							Home
+						</Link>
+					</li>
+					<li>
+						<Link to="/profile" className="nav-link">
+							Profile
 						</Link>
 					</li>
 					<li>
@@ -67,6 +73,10 @@ const DisplayLinks = props => {
 		)
 	}
 }
+//make api calls here
+//can't hear you again
+//send carrier pigeon
+//pass messages as props
 
 class App extends Component {
 	constructor() {
@@ -190,6 +200,8 @@ class App extends Component {
 						/>}
 				/>
 				<Route exact path="/signup" component={SignupForm} />
+
+				<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} />
 
 				<NavBar className="navBar">
 
