@@ -9,14 +9,15 @@ import Center from './components/Center'
 import CenterBody from './components/CenterBody'
 import CenterLinks from './components/CenterLinks'
 import LeftSideBar from './components/LeftSideBar'
- import NavBar from './components/NavBar'
+import NavBar from './components/NavBar'
 import Wrapper from './components/Wrapper'
 import RightSideBar from './components/RightSideBar'
 import Home from './components/Home'
 import Profile from './components/Profile'
 import Districts from './components/Districts'
 import OtherDistricts from './components/OtherDistricts'
-//import committees from "./committees.json";
+import UserProfile from './components/UserProfile'
+import committees from "./committees.json";
 
 
 // const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
@@ -33,6 +34,11 @@ const DisplayLinks = props => {
 					<li className="nav-item">
 						<Link to="/" className="nav-link">
 							Home
+						</Link>
+					</li>
+					<li>
+						<Link to="/profile" className="nav-link">
+							Profile
 						</Link>
 					</li>
 					<li>
@@ -67,6 +73,10 @@ const DisplayLinks = props => {
 		)
 	}
 }
+//make api calls here
+//can't hear you again
+//send carrier pigeon
+//pass messages as props
 
 class App extends Component {
 	constructor() {
@@ -190,6 +200,8 @@ class App extends Component {
 						/>}
 				/>
 				<Route exact path="/signup" component={SignupForm} />
+
+				<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} />
 
 				<NavBar className="navBar">
 
