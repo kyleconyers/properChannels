@@ -201,10 +201,8 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 
-				<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} />
-
 				<ProtectedRoute 
-					exact path="/test" 
+					exact path="/profile" 
 					component={UserProfile} 
 					auth={this.state.loggedIn}
 					loaded={this.state.loaded}
