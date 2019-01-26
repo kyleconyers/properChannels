@@ -1,5 +1,5 @@
 .districts{
-    flex-grow: 1; 
+    flex-grow: 3; 
     border: 1px solid black;
     height: 30%;
     align-items: stretch;
