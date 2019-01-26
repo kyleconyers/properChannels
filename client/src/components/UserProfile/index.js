@@ -70,7 +70,12 @@ class UserProfile extends Component {
 
                 {/* TODO: Replace with Google-provided image */}
                 {/* TODO: Create button to de-link account from Google */}
-                <a href="auth/connect/google"><button onClick={this.handleConnectGoogle}>Connect to Google</button></a>
+                {
+                    (!this.props.user.google) ?
+                    <a href="auth/connect/google"><button onClick={this.handleConnectGoogle}>Connect to Google</button></a>
+                    :
+                    <a href="#"><button >Unlink from Google</button></a>
+                }
 			</div>
 		)
 	}
