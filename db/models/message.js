@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const messageSchema = new Schema({
-  forum_id: mongoose.Schema.ObjectId,
-  user_id: mongoose.Schema.ObjectId,
+  forum_id: {type: Schema.ObjectId, ref: "Forum"},
+  user_id: {type: Schema.ObjectId, ref: "User"},
   date: Date,
   content: String
 });
