@@ -74,6 +74,10 @@ const DisplayLinks = props => {
 		)
 	}
 }
+//make api calls here
+//can't hear you again
+//send carrier pigeon
+//pass messages as props
 
 class App extends Component {
 	constructor() {
