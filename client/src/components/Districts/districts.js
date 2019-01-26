@@ -95,15 +95,19 @@ class Districts extends Component {
     const waSenators = [];
     console.log("THIS.PROPS in render:")
     console.log(this.props);
-    console.log("THIS.STATE")
-    console.log(this.state);
+    if (this.props.user != null) {
+      console.log("THIS.PROPS.USER.ADDRESS")
+      console.log(this.props.user.address);
+    }
     this.state.senators.length?(this.state.senators[0].members.map(senator => {
-    if (senator.state === "WA") {
-      waSenators.push(senator);
+    if (this.props.user != null) {
+      if (senator.state === this.props.user.address) {
+        waSenators.push(senator);
+        }
       }
     })):(console.log(""));
     
-    if (this.state.user == null) {
+    if (this.props.user == null) {
       return (
         <Container>
           <Row>
