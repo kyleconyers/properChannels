@@ -13,10 +13,29 @@ import axios from "axios";
 //const User = require('../../../db/models/user');
 
 class Districts extends Component {
+
   state = {
-    senators: [],
-    address: null
-  };
+     senators: [],
+     congressmen: [],
+     user: this.props.user
+  }
+
+  componentDidMount() {
+    console.log("THIS.PROPS:");
+    console.log(this.props);
+  }
+  
+    // Populate state with user data
+      // if (props.address) {
+      //   this.setState(
+      //     {
+      //       address: props.address
+      //     }
+      //   )        
+      // }
+
+//}
+
 
   // getSenators = () => {
   //   API.getSenators()
@@ -48,26 +67,25 @@ class Districts extends Component {
       // do something with data
       console.log('api response in componentDidMount: ', res.data)
       this.setState({
-        senators: res.data.results
+        senators: res.data.results,
+        user: this.props.user
       })
     })    
     .catch(err => console.log(err));
 
-    axios.get('/auth/user').then(response => {
-      console.log("RESPONSE.DATA");
-			console.log(response.data)
-			if (!!response.data.user) {
-				console.log('THERE IS A USER')
-				this.setState({
-					address: response.data.user.address
-				})
-			} else {
-				this.setState({
-					address: null
-				})
-			}
-		})
-
+    axios({
+      method: 'get',
+      baseURL: 'https://api.propublica.org/congress/v1/116/house/members.json',
+      headers: {'X-API-Key': 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'}
+    }).then(res => {
+      // do something with data
+      console.log('api response in componentDidMount for congress: ', res.data)
+      this.setState({
+        congressmen: res.data.results,
+        user: this.props.user
+      })
+    })    
+    .catch(err => console.log(err));
     }
   
 
@@ -75,42 +93,77 @@ class Districts extends Component {
     console.log("senators:");
     console.log(this.state.senators);
     const waSenators = [];
-    console.log("THIS.STATE.ADDRESS:")
-    console.log(this.state.address);
+    const waCongressmen = [];
+    console.log("THIS.PROPS in render:")
+    console.log(this.props);
+    if (this.props.user != null) {
+      console.log("THIS.PROPS.USER.ADDRESS")
+      console.log(this.props.user.address);
+    }
     this.state.senators.length?(this.state.senators[0].members.map(senator => {
-    if (senator.state === "WA") {
-      waSenators.push(senator);
+    if (this.props.user != null) {
+      if (senator.state === this.props.user.address) {
+        waSenators.push(senator);
+        }
       }
     })):(console.log(""));
-    
-    console.log("ADDRESS:");
-    console.log(this.props.address);
 
-    
-
+    this.state.congressmen.length?(this.state.congressmen[0].members.map(congressman => {
+      if (this.props.user != null) {
+        if (congressman.state === this.props.user.address) {
+          waCongressmen.push(congressman);
+          }
+        }
+      })):(console.log(""));
+  
+    if (this.props.user == null) {
+      return (
+        <Container>
+          <Row>
+            <h1>LOADING....</h1>
+          </Row>
+        </Container>
+      )
+    } else {
     return (
       <Container>
         <Row>
-            {/* </Row><Card title="Results"> */}
               {this.state.senators.length ? (
                 <List>
                   {
                   waSenators.map(senator => (
                     <Senator
                     first_name={senator.first_name}
+                    last_name={senator.last_name}
+                    title={"Senator"}
                     />
                   ))}
                 </List>
               ) : (
                 <h2 className="text-center">{this.state.message}</h2>
               )}
-            {/* </Row></Card> */}
-          {/* </Col> */}
+        </Row>
+        <Row>
+              {this.state.congressmen.length ? (
+                <List>
+                  {
+                  waCongressmen.map(senator => (
+                    <Senator
+                    first_name={senator.first_name}
+                    last_name={senator.last_name}
+                    title={"Congressman"}
+                    />
+                  ))}
+                </List>
+              ) : (
+                <h2 className="text-center">{this.state.message}</h2>
+              )}
         </Row>
         {/* <Footer /> */}
       </Container>
     );
   }
+}
 }
 
 
