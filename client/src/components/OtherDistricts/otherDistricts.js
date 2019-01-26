@@ -1,5 +1,5 @@
 import React from "react";
-import "./otherDistricts.css"
+// import "./otherDistricts.css"
 
 const OtherDistricts = props => <div className="otherDistricts">{props.children}</div>
 
