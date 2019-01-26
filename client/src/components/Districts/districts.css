@@ -1,7 +1,16 @@
 .districts{
+<<<<<<< HEAD
     flex-grow: 3; 
+=======
+    width: 100px; 
+    flex-grow: 1; 
+>>>>>>> cb1e25a53db505d31b9f87db3e4ed32c39c2123e
     border: 1px solid black;
     height: 30%;
     align-items: stretch;
-    background-color: firebrick;
   }
+
+.container {
+  width: 100px;
+  height: 30%;
+} 

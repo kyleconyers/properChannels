@@ -26,6 +26,29 @@ router.get('/google/callback',
 	}
 )
 
+// API endpoint to authorize with Google and connect Google profile to account
+router.get('/connect/google', passport.authorize('googleConnect', { scope: ['profile'] }))
+
+// Called when Google completes authentication
+router.get('/connect/google/callback',
+	(req, res, next) => {
+		// console.log(`req.user: ${req.user}`)
+		console.log('======= /auth/connect/google/callback was called! =====')
+		next()
+	},
+	// authorize with passport
+	passport.authorize('googleConnect', { failureRedirect: '/profile' }),
+	(req, res) => {
+		// Get passed user object
+		const {user} = req
+		console.log();
+		console.log("GOOGLE AUTH:")
+		console.log(JSON.stringify( user,null,4))
+		console.log()
+		res.redirect('/profile')
+	}
+)
+
 // this route is just used to get the user basic info
 router.get('/user', (req, res, next) => {
 	console.log('===== user!!======')
