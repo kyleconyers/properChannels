@@ -2,6 +2,10 @@
   float: right;
 }
 
+.font-italic {
+  font-size: 16px;
+}
+
 @media (max-width: 767px) {
   .btn-container {
     margin-bottom: 15px;

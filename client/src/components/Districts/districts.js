@@ -134,6 +134,7 @@ class Districts extends Component {
                     <Senator
                     first_name={senator.first_name}
                     last_name={senator.last_name}
+                    title={"Senator"}
                     />
                   ))}
                 </List>
@@ -149,6 +150,7 @@ class Districts extends Component {
                     <Senator
                     first_name={senator.first_name}
                     last_name={senator.last_name}
+                    title={"Congressman"}
                     />
                   ))}
                 </List>
