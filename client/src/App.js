@@ -194,7 +194,7 @@ class App extends Component {
 					</div>	
 				</div> */}
 
-				<Route
+				{/* <Route
 					exact
 					path="/login"
 					render={() =>
@@ -205,6 +205,7 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 
+				<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} /> */}
 				<ProtectedRoute 
 					exact path="/profile" 
 					component={UserProfile} 
@@ -266,9 +267,20 @@ class App extends Component {
 						</CenterLinks>
 
 						<CenterBody className="centerBody">
-							<p>
-								centerBody
-						</p>
+
+							<Route
+								exact
+								path="/login"
+								render={() =>
+									<LoginForm
+										_login={this._login}
+										_googleSignin={this._googleSignin}
+									/>}
+							/>
+							<Route exact path="/signup" component={SignupForm} />
+
+							<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} />
+
 						</CenterBody>
 					</Center>
 
@@ -281,11 +293,11 @@ class App extends Component {
 				</Wrapper>
 
 			</div>
-			
-			
-			
-			
-			
+
+
+
+
+
 		)
 	}
 }

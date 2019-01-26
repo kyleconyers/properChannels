@@ -1,5 +1,5 @@
 import React from "react";
-import "./centerBody.css"
+// import "./centerBody.css"
 import Board from "../Board";
 
 const CenterBody = props => 
