@@ -205,9 +205,7 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 
-<<<<<<< HEAD
 				<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} /> */}
-=======
 				<ProtectedRoute 
 					exact path="/profile" 
 					component={UserProfile} 
@@ -215,7 +213,6 @@ class App extends Component {
 					loaded={this.state.loaded}
 					user={this.state.user} 
 				/>
->>>>>>> cb1e25a53db505d31b9f87db3e4ed32c39c2123e
 
 				<NavBar className="navBar">
 

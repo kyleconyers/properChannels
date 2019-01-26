@@ -1,7 +1,7 @@
 import React from "react";
 import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
-import "./style.css";
+// import "./style.css";
 
 function Senator({first_name}) {
   return (

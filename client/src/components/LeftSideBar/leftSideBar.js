@@ -1,5 +1,5 @@
 import React from "react";
-import "./leftSideBar.css"
+// import "./leftSideBar.css"
 
 const LeftSideBar = props => <div className="leftSideBar">{props.children}</div>
 
