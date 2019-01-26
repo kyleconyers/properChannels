@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 import './App.css'
+import ProtectedRoute from './components/ProtectedRoute'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
@@ -16,6 +17,8 @@ import Home from './components/Home'
 import Profile from './components/Profile'
 import Districts from './components/Districts'
 import OtherDistricts from './components/OtherDistricts'
+import UserProfile from './components/UserProfile'
+import committees from "./committees.json";
 
 
 // const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
@@ -32,6 +35,11 @@ const DisplayLinks = props => {
 					<li className="nav-item">
 						<Link to="/" className="nav-link">
 							Home
+						</Link>
+					</li>
+					<li>
+						<Link to="/profile" className="nav-link">
+							Profile
 						</Link>
 					</li>
 					<li>
@@ -66,13 +74,18 @@ const DisplayLinks = props => {
 		)
 	}
 }
+//make api calls here
+//can't hear you again
+//send carrier pigeon
+//pass messages as props
 
 class App extends Component {
 	constructor() {
 		super()
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
+			loaded: false
 		}
 		this._logout = this._logout.bind(this)
 		this._login = this._login.bind(this)
@@ -84,12 +97,14 @@ class App extends Component {
 				console.log('THERE IS A USER')
 				this.setState({
 					loggedIn: true,
-					user: response.data.user
+					user: response.data.user,
+					loaded: true
 				})
 			} else {
 				this.setState({
 					loggedIn: false,
-					user: null
+					user: null,
+					loaded: true
 				})
 			}
 		})
@@ -190,6 +205,14 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 
+				<ProtectedRoute 
+					exact path="/profile" 
+					component={UserProfile} 
+					auth={this.state.loggedIn}
+					loaded={this.state.loaded}
+					user={this.state.user} 
+				/>
+
 				<NavBar className="navBar">
 
 					<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
@@ -258,6 +281,11 @@ class App extends Component {
 				</Wrapper>
 
 			</div>
+			
+			
+			
+			
+			
 		)
 	}
 }

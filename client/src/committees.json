@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "name": "Appropriations",
+        "link": ""
+    },
+    {
+        "id": 2,
+        "name": "Capital Budget",
+        "link": ""
+    },
+    {
+        "id": 3,
+        "name": "Civil Rights & Judiciary",
+        "link": ""
+    },
+    {
+        "id": 4,
+        "name": "College & Workforce Development",
+        "link": ""
+    },
+    {
+        "id": 5,
+        "name": "Commerce & Gaming",
+        "link": ""
+    },
+    {
+        "id": 6,
+        "name": "Consumer Protection & Business",
+        "link": ""
+    },
+    {
+        "id": 7,
+        "name": "Education",
+        "link": ""
+    },
+    {
+        "id": 8,
+        "name": "Environment & Energy",
+        "link": ""
+    },
+    {
+        "id": 9,
+        "name": "Finance",
+        "link": ""
+    },
+    {
+        "id": 10,
+        "name": "Health Care & Wellness",
+        "link": ""
+    },
+    {
+        "id": 11,
+        "name": "Housing, Community Development & Veterans",
+        "link": ""
+    },
+    {
+        "id": 12,
+        "name": "Human Services & Early Learning",
+        "link": ""
+    },
+    {
+        "id": 13,
+        "name": "Innovation, Technology & Economic Development",
+        "link": ""
+    },
+    {
+        "id": 14,
+        "name": "Labor & Workplace Standards",
+        "link": ""
+    },
+    {
+        "id": 15,
+        "name": "Local Government",
+        "link": ""
+    },
+    {
+        "id": 16,
+        "name": "Public Safety",
+        "link": ""
+    },
+    {
+        "id": 17,
+        "name": "Rules",
+        "link": ""
+    },
+    {
+        "id": 19,
+        "name": "Rural Development, Agriculture, & Natural Resources",
+        "link": ""
+    },
+    {
+        "id": 20,
+        "name": "State Government & Tribal Relations",
+        "link": ""
+    },
+    {
+        "id": 21,
+        "name": "Transportation",
+        "link": ""
+    }
+]
