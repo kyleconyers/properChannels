@@ -8,12 +8,17 @@ class UserProfile extends Component {
 
         // Set initial state with defaults
 		this.state = {
+            firstName: "NULL",
+            lastName: "NULL",
 			address: "NULL"
         }
 
         // Populate state with user data
         if (props.user) {
-            const {address} = props.user
+            const {firstName, lastName, address} = props.user
+            
+            if (firstName) this.state.firstName = firstName
+            if (lastName) this.state.lastName = lastName
             if (address) this.state.address = address
         }
 
@@ -51,14 +56,21 @@ class UserProfile extends Component {
 
                 {/* Form for updating user info */}
 				<form onSubmit={this.handleSubmit}>
+                    <label htmlFor="firstName">First Name:</label>
+                    <input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleChange} />
+                    
+                    <label htmlFor="lastName">Last Name:</label>
+                    <input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleChange} />
+
                     <label htmlFor="address">Address:</label>
                     <input type="text" name="address" id="address" value={this.state.address} onChange={this.handleChange} />
+
                     <input type="submit" value="Save" />
                 </form>
 
                 {/* TODO: Replace with Google-provided image */}
                 {/* TODO: Create button to de-link account from Google */}
-                <button onClick={this.handleConnectGoogle}>Connect to Google</button>
+                <a href="auth/connect/google"><button onClick={this.handleConnectGoogle}>Connect to Google</button></a>
 			</div>
 		)
 	}
