@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Link } from 'react-router-dom'
-import "./navBar.css"
+// import "./navBar.css"
 
 const NavBar = props => <div className="navBar">{props.children}</div>
 
