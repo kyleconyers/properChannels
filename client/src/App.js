@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 import './App.css'
+import ProtectedRoute from './components/ProtectedRoute'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
@@ -83,7 +84,8 @@ class App extends Component {
 		super()
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
+			loaded: false
 		}
 		this._logout = this._logout.bind(this)
 		this._login = this._login.bind(this)
@@ -95,12 +97,14 @@ class App extends Component {
 				console.log('THERE IS A USER')
 				this.setState({
 					loggedIn: true,
-					user: response.data.user
+					user: response.data.user,
+					loaded: true
 				})
 			} else {
 				this.setState({
 					loggedIn: false,
-					user: null
+					user: null,
+					loaded: true
 				})
 			}
 		})
@@ -201,7 +205,13 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 
-				<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} />
+				<ProtectedRoute 
+					exact path="/profile" 
+					component={UserProfile} 
+					auth={this.state.loggedIn}
+					loaded={this.state.loaded}
+					user={this.state.user} 
+				/>
 
 				<NavBar className="navBar">
 
