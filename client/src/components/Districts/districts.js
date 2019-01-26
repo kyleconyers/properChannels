@@ -6,12 +6,15 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../Grid";
 import {List} from "../List";
 import Senator from "../Senator";
+import SignupForm from "../SignupForm";
 import API from "../../utils/API";
 import axios from "axios";
+//const User = require('../../../db/models/user');
 
 class Districts extends Component {
   state = {
-    senators: []
+    senators: [],
+    address: null
   };
 
   // getSenators = () => {
@@ -48,6 +51,22 @@ class Districts extends Component {
       })
     })    
     .catch(err => console.log(err));
+
+    axios.get('/auth/user').then(response => {
+      console.log("RESPONSE.DATA");
+			console.log(response.data)
+			if (!!response.data.user) {
+				console.log('THERE IS A USER')
+				this.setState({
+					address: response.data.user.address
+				})
+			} else {
+				this.setState({
+					address: null
+				})
+			}
+		})
+
     }
   
 
@@ -55,11 +74,17 @@ class Districts extends Component {
     console.log("senators:");
     console.log(this.state.senators);
     const waSenators = [];
+    console.log("THIS.STATE.ADDRESS:")
+    console.log(this.state.address);
     this.state.senators.length?(this.state.senators[0].members.map(senator => {
     if (senator.state === "WA") {
       waSenators.push(senator);
       }
     })):(console.log(""));
+    
+    console.log("ADDRESS:");
+    console.log(this.props.address);
+
     
 
     return (

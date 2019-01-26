@@ -223,7 +223,7 @@ class App extends Component {
 							<Route exact path="/" render={() => <Home user={this.state.user} />} />
 							<Header user={this.state.user} />
 						</Profile>
-						<Districts className="districts">
+						<Districts className="districts" address={this.state.address}>
 							<p>
 								Districts
 							</p>
