@@ -10,7 +10,9 @@ const Message = props => (
       <h3>{props.title}</h3> 
       <h4>{props.author}</h4> 
       <h4>{props.body}</h4>
-      <h4>{props.category}</h4>  
+      <h4>{props.category}</h4> 
+      <h4>{props.district}</h4>
+      <h4>{props.state}</h4> 
     </div>
 )
 //(header) district ID/name
