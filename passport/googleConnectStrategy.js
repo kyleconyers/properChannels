@@ -15,16 +15,11 @@ const strategy = new GoogleStrategy(
 		
 		// Logging for testing
 		console.log()
-		console.log("=====ACCOUNT=====")
-		console.log(account)
-		console.log("=====USER=====")
-		console.log(user)
-		console.log()
 		console.log('===== GOOGLE PROFILE =======')
 		console.log(profile)
 		console.log('======== END ===========')
 
-        return done(null, false)
+        // return done(null, {type:"SUCCESS"})
 		// Check if a user is already logged in
 		if (user) {
 			// If logged in user, attempt to link Google profile to existing account
