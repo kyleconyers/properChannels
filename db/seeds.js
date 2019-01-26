@@ -7,7 +7,8 @@ let MONGO_URL
 const MONGO_LOCAL_URL = 'mongodb://localhost/properchannels'
 
 const User = require('./models/user')
-const Message = require('./models/messages')
+const Forum = require('./models/forum')
+const Message = require('./models/message')
 
 if (process.env.MONGODB_URI) {
 	mongoose.connect(process.env.MONGODB_URI)
@@ -56,26 +57,40 @@ function seedUsers( i=0) {
     }
 }
 
-// Seeds for messages
-
-messageSeeds = [
-    {
-        // forum: "DISTRICT  41",
-        content: "Fix our governement",
-        date: new Date()
-    }
-]
-
-function seedMessages( i=0) {
-    if (i < messageSeeds.length) {
-        const newMessage = new Message(messageSeeds[i])
-        newMessage.save().then( () => seedMessages( i+1) )
-    } else {
-        mongoose.disconnect()
-    }
+function seedForums() {
+    const newForum = new Forum({
+        name: "District 12"
+    })
+    newForum.save()
 }
 
+User.findOne().then( (resUser) => {
+    // Seeds for messages
 
-// Start seeding here
-// seedUsers();
-seedMessages();
+    Forum.findOne().then( (resForum) => {
+ 
+        messageSeeds = [
+            {
+                forum_id: resForum,
+                user_id: resUser._id,
+                content: "Fix our governement",
+                date: new Date()
+            }
+        ]
+
+        function seedMessages( i=0) {
+            if (i < messageSeeds.length) {
+                const newMessage = new Message(messageSeeds[i])
+                newMessage.save().then( () => seedMessages( i+1) )
+            } else {
+                mongoose.disconnect()
+            }
+        }
+
+
+        // Start seeding here
+        // seedUsers();
+        // seedForums();
+        seedMessages();
+    })
+})
