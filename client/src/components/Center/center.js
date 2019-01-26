@@ -1,5 +1,5 @@
 import React from "react";
-import "./center.css"
+// import "./center.css"
 
 const Center = props => <div className="center">{props.children}</div>
 

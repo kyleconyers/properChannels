@@ -1,14 +1,15 @@
 import React from "react";
 import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
-import "./style.css";
+// import "./style.css";
+import '../../App.css';
 
-function Senator({first_name}) {
+function Senator({first_name, last_name, title}) {
   return (
     <ListItem>
       <Row className="flex-wrap-reverse">
         <Col size="md-12">
-          <h3 className="font-italic">First name:{first_name}</h3>
+          <p id="senator">{title} {first_name} {last_name}</p>
           {/* {subtitle && <h5 className="font-italic">{subtitle}</h5>} */}
         </Col>
         {/* <Col size="md-4">

@@ -1,5 +1,5 @@
 import React from "react";
-import "./profile.css"
+// import "./profile.css"
 
 const Profile = props => <div className="profile">{props.children}</div>
 

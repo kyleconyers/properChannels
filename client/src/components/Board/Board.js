@@ -1,5 +1,5 @@
 import React from "react";
-import "./Board.css";
+// import "./Board.css";
 import MessageList from "../MessageList";
 
 //props.messages
