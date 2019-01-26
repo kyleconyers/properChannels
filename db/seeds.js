@@ -11,10 +11,10 @@ const Forum = require('./models/forum')
 const Message = require('./models/message')
 
 if (process.env.MONGODB_URI) {
-	mongoose.connect(process.env.MONGODB_URI)
+	mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
 	MONGO_URL = process.env.MONGODB_URI
 } else {
-	mongoose.connect(MONGO_LOCAL_URL) // local mongo url
+	mongoose.connect(MONGO_LOCAL_URL, {useNewUrlParser: true}) // local mongo url
 	MONGO_URL = MONGO_LOCAL_URL
 }
 
@@ -71,7 +71,7 @@ User.findOne().then( (resUser) => {
  
         messageSeeds = [
             {
-                forum_id: resForum,
+                forum_id: resForum._id,
                 user_id: resUser._id,
                 content: "Fix our governement",
                 date: new Date()
