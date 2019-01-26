@@ -47,14 +47,18 @@ html {
 .container {
 width: 100px;
 height: 30%;
+margin-left: 22px;
+padding-left: 15px;
 }
 
 .districts {
-  width: 100px; 
+  width: 200px; 
   flex-grow: 1; 
   border: 1px solid black;
   height: 30%;
   align-items: stretch;
+  padding: 0px;
+  margin: 0px;
 }
 
 .leftSideBar {
@@ -63,10 +67,29 @@ height: 30%;
   border: 1px solid black;
   height: 100%;
   align-items: stretch;
+  margin: 0px;
+  padding: 0px
 }
 
 .list-group-item p {
   font-size: 16px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.font-italic p {
+  font-size: 10px;
+}
+
+.flex-wrap-reverse {
+  font-size: 10px;
+}
+
+#senator {
+  font-size: 10px;
+  width: 150px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .navBar {

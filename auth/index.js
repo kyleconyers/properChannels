@@ -40,7 +40,9 @@ router.get('/connect/google/callback',
 	passport.authorize('googleConnect', { failureRedirect: '/profile' }),
 	(req, res) => {
 		// Get passed user object
-		const {user} = req
+		const {user, account} = req
+		console.log("CALLBACK ACCOUNT")
+		console.log(account)
 		console.log();
 		console.log("GOOGLE AUTH:")
 		console.log(JSON.stringify( user,null,4))
@@ -51,8 +53,8 @@ router.get('/connect/google/callback',
 
 // this route is just used to get the user basic info
 router.get('/user', (req, res, next) => {
-	console.log('===== user!!======')
-	console.log(req.user)
+	console.log('===== USER DATA REQUESTED ======')
+	// console.log(req.user)
 	if (req.user) {
 		return res.json({ user: req.user })
 	} else {

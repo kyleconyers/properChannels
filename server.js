@@ -45,9 +45,9 @@ app.use(passport.session()) // will call the deserializeUser
 
 // ===== testing middleware =====
 app.use(function(req, res, next) {
-	console.log('===== passport user =======')
+	console.log('===== Session =======')
 	console.log(req.session)
-	console.log(req.user)
+	// console.log(req.user)
 	console.log('===== END =======')
 	next()
 })
@@ -75,9 +75,9 @@ app.use(function(err, req, res, next) {
 })
 
 app.use(routes);
-console.log("routes:");
-console.log(routes);
-console.log("testOne");
+// console.log("routes:");
+// console.log(routes);
+// console.log("testOne");
 // ==== Starting Server =====
 app.listen(PORT, () => {
 	console.log(`App listening on PORT: ${PORT}`)
