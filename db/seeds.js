@@ -29,39 +29,42 @@ db.once('open', () => {
 	)
 })
 
-// Seeds for users
-userSeeds = [
-    {
-        local: {
-            username: "SEEDED4"
-        }
-    },
-    {
-        local: {
-            username: "SEEDED5"
-        }
-    },
-    {
-        local: {
-            username: "SEEDED6"
-        }
-    }
-]
+// ASSUMES EXISTING USER LIST
+// WILL NOT SEED USERS
 
-function seedUsers( i=0) {
-    if (i < userSeeds.length) {
-        const newUser = new User(userSeeds[i])
-        newUser.save().then( () => seedUsers( i+1) )
-    } else {
-        seedMessages()
-    }
-}
+// // Seeds for users
+// userSeeds = [
+//     {
+//         local: {
+//             username: "SEEDED4"
+//         }
+//     },
+//     {
+//         local: {
+//             username: "SEEDED5"
+//         }
+//     },
+//     {
+//         local: {
+//             username: "SEEDED6"
+//         }
+//     }
+// ]
+// 
+// function seedUsers( i=0) {
+//     if (i < userSeeds.length) {
+//         const newUser = new User(userSeeds[i])
+//         newUser.save().then( () => seedUsers( i+1) )
+//     } else {
+//         seedMessages()
+//     }
+// }
 
 function seedForums() {
     const newForum = new Forum({
         name: "District 12"
     })
-    newForum.save()
+    return newForum.save()
 }
 
 User.findOne().then( (resUser) => {
@@ -75,22 +78,34 @@ User.findOne().then( (resUser) => {
                 user_id: resUser._id,
                 content: "Fix our governement",
                 date: new Date()
+            }, 
+            {
+                forum_id: resForum._id,
+                user_id: resUser._id,
+                content: "Make America great again!!!!!",
+                date: new Date()
             }
         ]
 
         function seedMessages( i=0) {
+            console.log(`MESSAGE i: ${i}`)
             if (i < messageSeeds.length) {
                 const newMessage = new Message(messageSeeds[i])
-                newMessage.save().then( () => seedMessages( i+1) )
+                return newMessage.save().then( () => seedMessages( i+1) )
             } else {
-                mongoose.disconnect()
+                return new Promise((result) => {
+                    // console.log( "TEST");
+                })
             }
         }
 
 
         // Start seeding here
         // seedUsers();
-        // seedForums();
-        seedMessages();
+        Message.collection.drop()
+            .then(() => Forum.collection.drop())
+            .then(() => seedForums())
+            .then(() => seedMessages())
+            // .then(() => mongoose.disconnect())
     })
 })
