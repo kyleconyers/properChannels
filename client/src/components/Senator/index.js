@@ -1,41 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
 // import "./style.css";
 import '../../App.css';
 
-function Senator({first_name, last_name, title}) {
-  return (
-    <ListItem>
-      <Row className="flex-wrap-reverse">
-        <Col size="md-12">
-          <p id="senator">{title} {first_name} {last_name}</p>
-          {/* {subtitle && <h5 className="font-italic">{subtitle}</h5>} */}
-        </Col>
-        {/* <Col size="md-4">
-          <div className="btn-container">
-            <a className="btn btn-light" target="_blank" rel="noopener noreferrer" href={link}>
-              View
-            </a>
-            <Button />
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col size="md-6">
-          <p className="font-italic small">Written by {authors}</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col size="12 sm-4 md-2">
-          <img className="img-thumbnail img-fluid w-100" src={image} alt={title} />
-        </Col>
-        <Col size="12 sm-8 md-10">
-          <p>{description}</p>
-        </Col> */}
-      </Row>
-    </ListItem>
-  );
+// function Senator({first_name, last_name, title}) {
+  
+//   return (
+//     <ListItem>
+//       <Row className="flex-wrap-reverse">
+//         <Col size="md-12">
+//           <p id="senator">{title} {first_name} {last_name}</p>
+//         </Col>
+//       </Row>
+//     </ListItem>
+//   );
+// }
+
+class Senator extends Component {
+  
+   state = {
+     first_name: this.props.first_name
+ }
+
+ render() {
+      return (
+        <ListItem>
+          <Row className="flex-wrap-reverse">
+            <Col size="md-12">
+              <p id="senator">{this.props.title} {this.props.first_name} {this.props.last_name}</p>
+            </Col>
+          </Row>
+        </ListItem>
+      );
+ }
+
 }
 
 export default Senator;
