@@ -50,6 +50,20 @@ class UserProfile extends Component {
         // TODO: Handle connecting account to Google
     }
 
+    googleConnectSwitch = () => {
+        const {user} = this.props
+        if (user) {
+            return (!user.google)
+            ?
+            <a href="auth/connect/google"><button onClick={this.handleConnectGoogle}>Connect to Google</button></a>
+            :
+            <div>
+                <p>ID: {user.google.id}</p>
+                <a href="#"><button >Unlink from Google</button></a>
+                </div>
+        }
+    }
+
 	render() {
 		return (
 			<div className="UserProfile">
@@ -71,10 +85,7 @@ class UserProfile extends Component {
                 {/* TODO: Replace with Google-provided image */}
                 {/* TODO: Create button to de-link account from Google */}
                 {
-                    (!this.props.user.google) ?
-                    <a href="auth/connect/google"><button onClick={this.handleConnectGoogle}>Connect to Google</button></a>
-                    :
-                    <a href="#"><button >Unlink from Google</button></a>
+                    this.googleConnectSwitch()
                 }
 			</div>
 		)

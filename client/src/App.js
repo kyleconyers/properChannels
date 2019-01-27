@@ -203,16 +203,7 @@ class App extends Component {
 							_googleSignin={this._googleSignin}
 						/>}
 				/>
-				<Route exact path="/signup" component={SignupForm} />
-
-				<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} /> */}
-				<ProtectedRoute 
-					exact path="/profile" 
-					component={UserProfile} 
-					auth={this.state.loggedIn}
-					loaded={this.state.loaded}
-					user={this.state.user} 
-				/>
+				<Route exact path="/signup" component={SignupForm} /> */}
 
 				<NavBar className="navBar">
 
@@ -279,7 +270,13 @@ class App extends Component {
 							/>
 							<Route exact path="/signup" component={SignupForm} />
 
-							<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} />
+							<ProtectedRoute 
+								exact path="/profile" 
+								component={UserProfile} 
+								auth={this.state.loggedIn}
+								loaded={this.state.loaded}
+								user={this.state.user} 
+							/>
 
 						</CenterBody>
 					</Center>
