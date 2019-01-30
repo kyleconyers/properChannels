@@ -74,10 +74,6 @@ const DisplayLinks = props => {
 		)
 	}
 }
-//make api calls here
-//can't hear you again
-//send carrier pigeon
-//pass messages as props
 
 class App extends Component {
 	constructor() {
@@ -281,12 +277,14 @@ class App extends Component {
 
 							<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} />
 
+
+
 						</CenterBody>
 					</Center>
 
 					<RightSideBar className="rightSideBar">
 
-					<Route exact path="/" render={  () => <a class="twitter-timeline" data-width="500" href="https://twitter.com/realDonaldTrump?ref_src=twsrc%5Etfw">Tweets by realDonaldTrump</a>   } />
+					<Route exact path="/" render={  () => <a class="twitter-timeline" data-width="500" href="https://twitter.com/UW?ref_src=twsrc%5Etfw">Tweets by realDonaldTrump</a>   } />
 
 					</RightSideBar>
 
