@@ -42,10 +42,11 @@ import Message from "../Message";
     
     getSavedMessage = () => {
         API.getSavedMessage()
-          .then(res =>
+          .then(res =>{
+            console.log(res.data)
             this.setState({
               messages: res.data
-            })
+            })}
           )
           .catch(err => console.log(err));
       };
@@ -61,12 +62,12 @@ import Message from "../Message";
                       {this.state.message.map(message => (
                         <Message
                           key={message.id}
-                          title={message.volumeInfo.title}
+                          title={message.title}
                           
                          
-                          author={message.volumeInfo.author}
-                          body={message.volumeInfo.body}
-                          category={message.volumeInfo.category}
+                          author={message.author}
+                          body={message.body}
+                          category={message.category}
                           
                         />
                       ))}
