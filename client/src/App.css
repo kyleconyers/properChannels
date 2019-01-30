@@ -108,7 +108,7 @@ padding-left: 15px;
 
 .profile {
   flex-grow: 1; 
-  border: 1px solid black;
+  border: 2px solid black;
   height: 20%;
   align-items: stretch;
 }
@@ -116,10 +116,11 @@ padding-left: 15px;
 .rightSideBar {
   /* flex-grow: 3;  */
   width: 30%;
-  border: 1px solid black;
+  border: 2px solid black;
   height: 100%;
   align-items: stretch;
   background-color: darkcyan;
+  overflow: auto;
 }
 
 .wrapper {
