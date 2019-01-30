@@ -53,12 +53,12 @@ class UserProfile extends Component {
     googleConnectSwitch = () => {
         const {user} = this.props
         if (user) {
-            return (!user.google)
+            return (!(user.google && user.google.googleId))
             ?
             <a href="auth/connect/google"><button onClick={this.handleConnectGoogle}>Connect to Google</button></a>
             :
             <div>
-                <p>ID: {user.google.id}</p>
+                <p>ID: {user.google.googleId}</p>
                 <a href="#"><button >Unlink from Google</button></a>
                 </div>
         }
