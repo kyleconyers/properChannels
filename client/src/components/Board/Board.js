@@ -72,23 +72,23 @@ class Board extends Component {
 
 
 
-//props.messages
-const fakeMessages = [
-    {
+// //props.messages
+// const fakeMessages = [
+//     {
 
-        district: "1",
-        title: "title",
-        author: "author",
-        body: "body",
-        category: [0],
+//         district: "1",
+//         title: "title",
+//         author: "author",
+//         body: "body",
+//         category: [0],
 
 
-        // title: "title",
-        // name: "name",
-        // category: "category",
-        // message: "message"
-    }
-];
+//         // title: "title",
+//         // name: "name",
+//         // category: "category",
+//         // message: "message"
+//     }
+// ];
 
 
 {/* <h3>{props.title}</h3>
@@ -105,7 +105,7 @@ const fakeMessages = [
 //         <MessageList district = "2" />
 //     </div>
 // )
-//(header) district ID/name
-//body(-messages(message-list))
+// (header) district ID/name
+// body(-messages(message-list))
 
 export default Board;
