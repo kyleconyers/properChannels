@@ -4,3 +4,4 @@ import React from "react";
 const rightSideBar = props => <div className="rightSideBar">{props.children}</div>
 
 export default rightSideBar;
+
