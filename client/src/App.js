@@ -74,10 +74,6 @@ const DisplayLinks = props => {
 		)
 	}
 }
-//make api calls here
-//can't hear you again
-//send carrier pigeon
-//pass messages as props
 
 class App extends Component {
 	constructor() {
@@ -280,6 +276,8 @@ class App extends Component {
 							<Route exact path="/signup" component={SignupForm} />
 
 							<Route exact path="/profile" render={() => <UserProfile user={this.state.user} />} />
+
+
 
 						</CenterBody>
 					</Center>

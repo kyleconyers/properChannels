@@ -2,6 +2,7 @@ import React from "react";
 // import "./MessageList.css";
 import Message from "../Message";
 
+
 const fakeData = [
    {
        district: "1",
@@ -14,9 +15,9 @@ const fakeData = [
    },
    {
         district: "2",
-        title: "title2",
-        author: "author2",
-        body: "body2",
+        title: "Hey its me Bobby",
+        author: "Bobby Mcgee",
+        body: "A new message",
         category: [0, 1],
     
     }
@@ -33,6 +34,8 @@ const fetchData = (district, categories) => {
     })
     return fakeData
 };
+
+
 
 class MessageList extends React.Component{
     constructor(props){
