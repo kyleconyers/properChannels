@@ -56,7 +56,18 @@ import Message from "../Message";
             
             <Row>
               <Col size="md-12">
-                <MessageList title="Results">
+
+
+              <MessageList 
+                messages = {this.state.messages}
+              />
+
+              
+              
+              {/* <Message message={this.state.messages[0]}>
+                
+              </Message> */}
+                {/* <MessageList title="Results">
                   {this.state.message ? (
                     <List>
                       {this.state.message.map(message => (
@@ -75,7 +86,7 @@ import Message from "../Message";
                   ) : (
                     <h2 className="text-center">{this.state.message}</h2>
                   )}
-                </MessageList>
+                </MessageList> */}
               </Col>
             </Row>
             

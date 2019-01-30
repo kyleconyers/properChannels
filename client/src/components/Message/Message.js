@@ -18,14 +18,20 @@ import {Row, Col} from "../Grid";
 // )
 //(header) district ID/name
 //body(-messages(message-list))
-function Message({title, author, body, category}) {
+function Message(props) {
   return (
     <ListItem>
       <Row className="flex-wrap-reverse">
         <Col size="md-12">
-          <h3 className="font-italic">{title}</h3>
-          {<h5 className="font-italic">{author}</h5>} 
-          <p className="font-italic small"> {body}</p> <p>{category}</p>
+          <h3 className="font-italic">{
+            (props.message)
+            ?
+            props.message.content
+            :
+            "LOADINGs"
+          }</h3>
+          {/* {<h5 className="font-italic">{author}</h5>} 
+          <p className="font-italic small"> {body}</p> <p>{category}</p> */}
         </Col>
         
       </Row>
