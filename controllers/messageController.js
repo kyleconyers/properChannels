@@ -1,6 +1,6 @@
 const db = require("../db/models");
 
-// Defining methods for the bookController
+// Defining methods for the messageController
 module.exports = {
   findAll: function(req, res) {
     db.Message.find(req.query)
