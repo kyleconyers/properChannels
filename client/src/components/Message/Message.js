@@ -26,6 +26,33 @@ function Message(props) {
           <h3 className="font-italic">{
             (props.message)
             ?
+            props.message.forum_id
+            // props.message.date
+            // props.message.user
+            :
+            "LOADINGs"
+          }</h3>
+          <h3 className="font-italic">{
+            (props.message)
+            ?
+            // props.message.content
+            props.message.user_id
+            // props.message.user
+            :
+            "LOADINGs"
+          }</h3>
+          <h3 className="font-italic">{
+            (props.message)
+            ?
+            // props.message.content
+            // props.message.date
+            props.message.date
+            :
+            "LOADINGs"
+          }</h3>
+          <h3 className="font-italic">{
+            (props.message)
+            ?
             props.message.content
             :
             "LOADINGs"
