@@ -253,7 +253,7 @@ class App extends Component {
 						</p>
 						</CenterLinks>
 
-						<CenterBody className="centerBody">
+						<CenterBody user= {this.state.user} className="centerBody">
 
 							<Route
 								exact

@@ -5,7 +5,7 @@ import Board from "../Board";
 const CenterBody = props => 
 <div className="centerBody">{props.children}
     <div className="BoardContainer">
-        <Board />
+        <Board user={props.user}/>
     </div>
 </div>
 

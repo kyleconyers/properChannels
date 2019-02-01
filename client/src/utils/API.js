@@ -25,9 +25,7 @@ export default {
     return axios.post("/api/message", messageData);
   },
 
-  getForum: function(q) {
-    return axios.get("/api/google", { params: { q: "title:" + q } });
-  },
+
 
   // Gets all saved forums
   getSavedForum: function() {

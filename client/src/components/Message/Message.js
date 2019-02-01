@@ -1,36 +1,59 @@
-import React from "react";
-import { ListItem } from "../List";
+ import React from "react";
+import { List } from "../List";
 import {Row, Col} from "../Grid";
 
-// import "./Message.css";
-// import MessageList from "../MessageList";
 
-// const Message = props => (
-//     <div>
-
-       
-//       {/* <h3>{props.district}</h3> */}
-//       <h3>{props.title}</h3> 
-//       <h4>{props.author}</h4> 
-//       <h4>{props.body}</h4>
-//       <h4>{props.category}</h4>  
-//     </div>
-// )
-//(header) district ID/name
-//body(-messages(message-list))
-function Message({title, author, body, category}) {
+function Message(props) {
   return (
-    <ListItem>
+    <List>
       <Row className="flex-wrap-reverse">
         <Col size="md-12">
-          <h3 className="font-italic">{title}</h3>
-          {<h5 className="font-italic">{author}</h5>} 
-          <p className="font-italic small"> {body}</p> <p>{category}</p>
+          <div className="message-group-item">
+            <p className="">{
+            (props.message)
+            ?
+            props.message.forum_id
+            :
+            "LOADINGs"
+          }</p>
+
+
+          <br></br>
+
+          <p className="">{
+            (props.message)
+            ?
+            props.message.user_id
+            :
+            "LOADINGs"
+          }</p>
+
+          <br></br>
+
+          <p className="">{
+            (props.message)
+            ?
+            props.message.date
+            :
+            "LOADINGs"
+          }</p>
+          
+          <br></br>
+          
+          <p className="">{
+            (props.message)
+            ?
+            props.message.content
+            :
+            "LOADINGs"
+          }</p>
+          </div>
+          
         </Col>
         
       </Row>
       
-    </ListItem>
+    </List>
   );
 }
 
