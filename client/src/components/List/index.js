@@ -13,3 +13,6 @@ export function ListItem({ children }) {
   return <li className="list-group-item">{children}</li>;
 }
 
+export function MessageItem({ children }) {
+  return <li className="message-group-item">{children}</li>;
+}

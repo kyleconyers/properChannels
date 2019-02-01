@@ -2,41 +2,6 @@ import React from "react";
 // import "./MessageList.css";
 import Message from "../Message";
 
-
-// const fakeData = [
-//    {
-//        district: "1",
-//        title: "title",
-//        author: "author",
-//        body: "body",
-//        category: [0],
-       
-
-//    },
-//    {
-//         district: "2",
-//         title: "Hey its me Bobby",
-//         author: "Bobby Mcgee",
-//         body: "A new message",
-//         category: [0, 1],
-    
-//     }
-// ]
-// const fetchData = (district, categories) => {
-
-//     /* TODO: fetch({
-//         uri: "myawesomeuri.com/getMessages?district={district}&categories={categories}"
-//         // finish the fetch call
-//     })*/
-//     console.log(fakeData)
-//     return fakeData.filter((d) => {
-//         return d.district === district
-//     })
-//     return fakeData
-// };
-
-
-
 class MessageList extends React.Component{
     constructor(props){
         super(props);
@@ -49,31 +14,14 @@ class MessageList extends React.Component{
 
     render(){
         const { messages } = this.state;
-        return (<div>
+        return (<div className="message-group-item">
                 {this.props.messages.map(
                     (message, i) => <Message key={i} message={message} /> 
                 )}
                 </div>)
     }
-    // componentDidMount(){
-    //     const messages = fetchData(this.props.district, this.props.categories);
-    //     // todo make this work with messages as a promise
-    //     this.setState({
-    //         messages: messages
-    //     });
 
-    // }
 }
 
-// const MessageList = props => (
-    
-//     <div>
-//         {props.messages.map(
-//             (message, i) => <Message key={i} {...message} /> 
-//         )}
-//     </div>
-// )
-//(header) district ID/name
-//body(-messages(message-list))
 
 export default MessageList;
