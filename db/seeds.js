@@ -64,6 +64,7 @@ function seedForums() {
     const newForum = new Forum({
         name: "District 12"
     })
+    console.log(name);
     return newForum.save()
 }
 
