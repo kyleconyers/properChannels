@@ -143,6 +143,7 @@ class Districts extends Component {
                 <h2 className="text-center">{this.state.message}</h2>
               )}
         </Row>
+        <Row><p></p></Row>
         <Row>
               {this.state.congressmen.length ? (
                 <List>
