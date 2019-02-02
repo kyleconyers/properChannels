@@ -36,28 +36,32 @@ const strategy = new GoogleStrategy(
 				if (userMatch) {
 					return done(null, userMatch)
 				} else {
-					// if no user in our db, create a new user with that googleId
-					console.log('====== PRE SAVE =======')
-					console.log(id)
-					console.log(profile)
-					console.log('====== post save ....')
-					const newGoogleUser = new User({
-						'google.googleId': id,
-						firstName: name.givenName,
-						lastName: name.familyName,
-						photos: photos,
-						address: "DEFAULT ADDRESS"
-					})
-					// save this user
-					newGoogleUser.save((err, savedUser) => {
-						if (err) {
-							console.log('Error!! saving the new google user')
-							console.log(err)
-							return done(null, false)
-						} else {
-							return done(null, savedUser)
-						}
-					}) // closes newGoogleUser.save
+					// If no user in DB, reject authentication
+					// User must first connect Google profile to their account
+					return done(null, false)
+
+					// // if no user in our db, create a new user with that googleId
+					// console.log('====== PRE SAVE =======')
+					// console.log(id)
+					// console.log(profile)
+					// console.log('====== post save ....')
+					// const newGoogleUser = new User({
+					// 	'google.googleId': id,
+					// 	firstName: name.givenName,
+					// 	lastName: name.familyName,
+					// 	photos: photos,
+					// 	address: "DEFAULT ADDRESS"
+					// })
+					// // save this user
+					// newGoogleUser.save((err, savedUser) => {
+					// 	if (err) {
+					// 		console.log('Error!! saving the new google user')
+					// 		console.log(err)
+					// 		return done(null, false)
+					// 	} else {
+					// 		return done(null, savedUser)
+					// 	}
+					// }) // closes newGoogleUser.save
 				}
 			}) // closes User.findONe
 		} else {

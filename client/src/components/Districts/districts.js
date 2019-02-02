@@ -118,7 +118,7 @@ class Districts extends Component {
   
     if (this.props.user == null) {
       return (
-        <Container>
+        <Container className="districtContainer">
           <Row>
             <h1>LOADING....</h1>
           </Row>
@@ -126,7 +126,7 @@ class Districts extends Component {
       )
     } else {
     return (
-      <Container>
+      <Container className="districtContainer">
         <Row>
               {this.state.senators.length ? (
                 <List>
