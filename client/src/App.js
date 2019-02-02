@@ -36,17 +36,17 @@ const DisplayLinks = props => {
 				<ul className="nav">
 					<li className="nav-item">
 						<Link to="/" className="nav-link">
-							Home
+							<h5>Home</h5>
 						</Link>
 					</li>
 					<li>
 						<Link to="/profile" className="nav-link">
-							Profile
+							<h5>Profile</h5>
 						</Link>
 					</li>
 					<li>
 						<Link to="#" className="nav-link" onClick={props._logout}>
-							Logout
+							<h5>Log Out</h5>
 						</Link>
 					</li>
 				</ul>
@@ -58,17 +58,17 @@ const DisplayLinks = props => {
 				<ul className="nav">
 					<li className="nav-item">
 						<Link to="/" className="nav-link">
-							Home
+							<h5>Home</h5>
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link to="/login" className="nav-link">
-							Log In
+							<h5>Log In</h5>
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link to="/signup" className="nav-link">
-							Sign Up
+							<h5>Sign Up</h5>
 						</Link>
 					</li>
 				</ul>
@@ -309,7 +309,7 @@ class App extends Component {
 
 					<RightSideBar className="rightSideBar">
 
-						<Route exact path="/" render={() => <a className="twitter-timeline" data-width="500" href={"https://twitter.com/" + "UW" + "?ref_src=twsrc%5Etfw"}>Tweets by realDonaldTrump</a>} />
+						<Route path="/" render={() => <a className="twitter-timeline" data-width="500" href={"https://twitter.com/" + "UW" + "?ref_src=twsrc%5Etfw"}>Tweets!</a>} />
 
 					</RightSideBar>
 
