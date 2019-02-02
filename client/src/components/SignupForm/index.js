@@ -83,6 +83,7 @@ class SignupForm extends Component {
 				<Form className="SignupForm" onSubmit={this.handleSubmit}>
 					<h2>Register with Proper Channels</h2>
 					
+					{/* Username entry */}
 					<Row>
 						<Col>
 							<FormGroup>
@@ -99,6 +100,7 @@ class SignupForm extends Component {
 						<Col/>
 					</Row>
 					
+					{/* Password/confirm entry */}
 					<Row>
 						<Col>
 							<FormGroup>
@@ -128,6 +130,7 @@ class SignupForm extends Component {
 						</Col>
 					</Row>
 
+					{/* DEFUNCT: Old-style address entry */}
 					{/* <Row>
 						<Col>
 							<FormGroup>
@@ -143,6 +146,7 @@ class SignupForm extends Component {
 						</Col>
 					</Row> */}
 					
+					{/* Address first row: street address */}
 					<Row>
 						<Col />
 						<Col xs="9">
@@ -160,6 +164,7 @@ class SignupForm extends Component {
 						<Col />
 					</Row>
 					
+					{/* Address second row: city/state/zip */}
 					<Row>
 						<Col />
 
