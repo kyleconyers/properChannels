@@ -17,7 +17,7 @@ class Districts extends Component {
   constructor(props) {
     super(props);
  
-    this.setNewValue = this.setNewValue.bind(this);
+    // this.setNewValue = this.setNewValue.bind(this);
   }
  
 
@@ -25,15 +25,15 @@ class Districts extends Component {
      senators: [],
      congressmen: [],
      user: this.props.user,
-     state: null
+     //state: null
   }
 
-  setNewValue(newValue) {
-    console.log('this is the State code:' + newValue);
-    this.setState ({
-      state: newValue
-    })
-  }
+  // setNewValue(newValue) {
+  //   console.log('this is the State code:' + newValue);
+  //   this.setState ({
+  //     state: newValue
+  //   })
+  // }
 
   componentDidMount() {
     console.log("THIS.PROPS:");
@@ -84,45 +84,35 @@ class Districts extends Component {
       console.log(this.props.user.address);
     }
 
-    if (this.props.user != null) {
-    this.state.senators.length?(this.state.senators[0].members.map(senator => {
-    
-      if (senator.state === this.props.user.address) {
-        waSenators.push(senator);
-        }
-      
-    })):(console.log(""));
+    console.log("this.props.usState:");
+    console.log(this.props.usState);
+
+  var usStateToUse = null;
+  
+  if (this.props.usState != null) {
+    usStateToUse = this.props.usState;
+  } else if (this.props.user != null) {
+    usStateToUse = this.props.user.address;
   }
 
-    if (this.props.user != null) {
+  console.log("WE ARE USING THIS STATE:");
+  console.log(usStateToUse);
 
     this.state.congressmen.length?(this.state.congressmen[0].members.map(congressman => {
-        if (congressman.state === this.props.user.address) {
+        if (congressman.state === usStateToUse) {
           waCongressmen.push(congressman);
           }        
-      })):(console.log(""));
-    }
+      })):(console.log(""));    
 
-    if (this.state.state != null) {
       waSenators = [];
       this.state.senators.length?(this.state.senators[0].members.map(senator => {
-          if (senator.state === this.state.state) {
+          if (senator.state === usStateToUse) {
             waSenators.push(senator);
             }          
-        })):(console.log(""));
-      }
-
-      if (this.state.state != null) {
-        waCongressmen = [];
-        this.state.congressmen.length?(this.state.congressmen[0].members.map(congressman => {
-            if (congressman.state === this.state.state) {
-              waCongressmen.push(congressman);
-              }            
-          })):(console.log(""));
-        }
+        })):(console.log("")); 
     
       
-    if ((this.props.user == null)&&(this.state.state == null)) {
+    if ((this.props.user == null)&&(this.props.usState == null)) {
       return (
         <Container className="districtContainer">
           <Row>
@@ -135,8 +125,11 @@ class Districts extends Component {
       <Container className="districtContainer">
         <Row>
           <p id="state_selector_text">
-             Select a state: <SelectUSState selectedValue="Washington" id="state_selector" className="myClassName" onChange={this.setNewValue}/>
+             Select a state: <SelectUSState value="Washington" id="state_selector" className="myClassName" onChange={this.props.changeUSState} />
           </p>
+        </Row>
+        <Row>
+          <p>Current State: {this.props.usState}</p>
         </Row>
         <Row>
               {this.state.senators.length ? (
