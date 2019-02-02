@@ -135,25 +135,25 @@ dbConnection.once('open', () => {
                     messageSeeds = [
                         {
                             forum_id: '5c53970597a7e8148381a6b9',
-                            user_id: resUser._id,
+                            user: resUser._id,
                             content: "Fix our governement",
                             date: new Date()
                         }, 
                         {
                             forum_id: resForum._id,
-                            user_id: resUser._id,
+                            user: resUser._id,
                             content: "Make America great again!!!!!",
                             date: new Date()
                         },
                         {
                             forum_id: resForum._id,
-                            user_id: resUser._id,
+                            user: resUser._id,
                             content: "Border Security!",
                             date: new Date()
                         }, 
                         {
                             forum_id: resForum._id,
-                            user_id: resUser._id,
+                            user: resUser._id,
                             content: "I want free public healthcare!",
                             date: new Date()
                         }, 

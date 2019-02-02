@@ -9,13 +9,13 @@ function Message(props) {
       <Row className="flex-wrap-reverse">
         <Col size="md-12">
           <div className="message-group-item">
-            <p className="">{
+            {/* <p className="">{
             (props.message)
             ?
             props.message.forum_id
             :
             "LOADINGs"
-          }</p>
+          }</p> */}
 
 
           <br></br>
@@ -23,7 +23,7 @@ function Message(props) {
           <p className="">{
             (props.message)
             ?
-            props.message.user_id
+            props.message.user.local.username
             :
             "LOADINGs"
           }</p>
@@ -33,7 +33,8 @@ function Message(props) {
           <p className="">{
             (props.message)
             ?
-            props.message.date
+            // props.message.date
+            new Date(props.message.date).toLocaleString("en-US")
             :
             "LOADINGs"
           }</p>
