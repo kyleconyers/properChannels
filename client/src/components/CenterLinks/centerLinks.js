@@ -1,5 +1,5 @@
 import React from "react";
-// import "./centerLinks.css"
+import "../../App.css";
 import { Badge } from 'reactstrap';
 
 // const CenterLinks = props => <div className="centerLinks">{props.children}</div>
@@ -9,7 +9,7 @@ import { Badge } from 'reactstrap';
 export default class CenterLinks extends React.Component {
   render() {
     return (
-      <div>
+      <div className="centerLinks">
         <Badge href="#" color="primary">Appropriations</Badge>
         <Badge href="#" color="secondary">Capital Budget</Badge>
         <Badge href="#" color="success">Civil Rights & Judicary</Badge>
