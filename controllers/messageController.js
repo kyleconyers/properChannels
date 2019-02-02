@@ -18,7 +18,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Message.findOneAndUpdate({ id: req.params.id }, req.body)
+    db.Message.findAllAndUpdate({ id: req.params.id }, req.body)
       .then(dbMessage => res.json(dbMessage))
       .catch(err => res.status(422).json(err));
   },
@@ -27,5 +27,11 @@ module.exports = {
       .then(dbMessage => dbMessage.remove())
       .then(dbMessage => res.json(dbMessage))
       .catch(err => res.status(422).json(err));
+  },
+  findByForum: function(req,res){
+    console.log(req.query);
+    db.Message.find({forum_id: req.query.forum_id})
+    .then(dbMessage => res.json(dbMessage))
+    .catch(err => res.status(422).json(err));
   }
 };

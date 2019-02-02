@@ -12,6 +12,11 @@ module.exports = {
       .then(dbForum => res.json(dbForum))
       .catch(err => res.status(422).json(err));
   },
+  findByForumName: function(req, res) {
+    db.Forum.findOne({name: req.query.name})
+      .then(dbForum => res.json(dbForum))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     db.Forum.create(req.body)
       .then(dbForum => res.json(dbForum))

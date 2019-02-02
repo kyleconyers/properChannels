@@ -11,8 +11,13 @@ export default {
 
   
   // Gets all saved messages
-  getSavedMessage: function() {
-    return axios.get("/api/message");
+  // getSavedMessage: function() {
+  //   return axios.get("/api/message");
+  // },
+
+  getSavedMessageByForum: function(forum_id){
+    return axios.get(`/api/message?forum_id=${forum_id}`);
+    
   },
 
   // Deletes the saved message with the given id
@@ -28,8 +33,8 @@ export default {
 
 
   // Gets all saved forums
-  getSavedForum: function() {
-    return axios.get("/api/forum");
+  getSavedForum: function(name) {
+    return axios.get(`/api/forum?name=${name}`);
   },
 
   // Deletes the saved forum with the given id

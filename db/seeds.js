@@ -143,7 +143,7 @@ User.findOne().then( (resUser) => {
  
         messageSeeds = [
             {
-                forum_id: resForum._id,
+                forum_id: '5c53970597a7e8148381a6b9',
                 user_id: resUser._id,
                 content: "Fix our governement",
                 date: new Date()
