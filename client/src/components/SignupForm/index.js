@@ -63,7 +63,7 @@ class SignupForm extends Component {
 		}
 		return (
 			<Container>
-				<Form className="SignupForm">
+				<Form className="SignupForm" onSubmit={this.handleSubmit}>
 					<h2>Register with Proper Channels</h2>
 					
 					<Row>
@@ -122,7 +122,7 @@ class SignupForm extends Component {
 						</Col>
 					</Row>
 
-					<Button color="primary" onClick={this.handleSubmit}>Sign up</Button>
+					<Button type="submit" color="primary" >Sign up</Button>
 				</Form>
 			</Container>
 		)

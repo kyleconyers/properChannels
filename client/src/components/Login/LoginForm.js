@@ -66,7 +66,7 @@ class LoginForm extends Component {
 							</Col>
 						</Row>
 
-						<Button color="primary" type="submit" /*onClick={this.handleSubmit}*/>Login</Button>
+						<Button type="submit" color="primary">Login</Button>
 					</Form>
 					<a href="/auth/google">
 						{/* <GoogleButton /> */}
