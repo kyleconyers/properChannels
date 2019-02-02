@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Container, Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
@@ -61,38 +62,69 @@ class SignupForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		}
 		return (
-			<div className="SignupForm">
-				<h1>Signup form</h1>
-				<label htmlFor="username">Username: </label>
-				<input
-					type="text"
-					name="username"
-					value={this.state.username}
-					onChange={this.handleChange}
-				/>
-				<label htmlFor="password">Password: </label>
-				<input
-					type="password"
-					name="password"
-					value={this.state.password}
-					onChange={this.handleChange}
-				/>
-				<label htmlFor="confirmPassword">Confirm Password: </label>
-				<input
-					type="password"
-					name="confirmPassword"
-					value={this.state.confirmPassword}
-					onChange={this.handleChange}
-				/>
-				<label htmlFor="address">Address: </label>
-				<input
-					type="text"
-					name="address"
-					value={this.state.address}
-					onChange={this.handleChange}
-				/>
-				<button onClick={this.handleSubmit}>Sign up</button>
-			</div>
+			<Container>
+				<Form className="SignupForm">
+					<h2>Register with Proper Channels</h2>
+					
+					<Row>
+						<Col>
+							<FormGroup>
+								<Label htmlFor="username">Username: </Label>
+								<Input
+									type="text"
+									name="username"
+									value={this.state.username}
+									onChange={this.handleChange}
+								/>
+							</FormGroup>
+						</Col>
+						<Col/>
+					</Row>
+					
+					<Row>
+						<Col>
+							<FormGroup>
+								<Label htmlFor="password">Password: </Label>
+								<Input
+									type="password"
+									name="password"
+									value={this.state.password}
+									onChange={this.handleChange}
+								/>
+							</FormGroup>
+						</Col>
+						
+						<Col>
+							<FormGroup>
+								
+								<Label htmlFor="confirmPassword">Confirm Password: </Label>
+								<Input
+									type="password"
+									name="confirmPassword"
+									value={this.state.confirmPassword}
+									onChange={this.handleChange}
+								/>
+							</FormGroup>
+						</Col>
+					</Row>
+
+					<Row>
+						<Col>
+							<FormGroup>
+								<Label htmlFor="address">Address: </Label>
+								<Input
+									type="text"
+									name="address"
+									value={this.state.address}
+									onChange={this.handleChange}
+								/>
+							</FormGroup>
+						</Col>
+					</Row>
+
+					<Button color="primary" onClick={this.handleSubmit}>Sign up</Button>
+				</Form>
+			</Container>
 		)
 	}
 }
