@@ -19,6 +19,8 @@ import Districts from './components/Districts'
 import OtherDistricts from './components/OtherDistricts'
 import UserProfile from './components/UserProfile'
 import committees from "./committees.json";
+import { SSL_OP_EPHEMERAL_RSA } from 'constants';
+
 
 
 // const APIkey = 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'
@@ -75,18 +77,38 @@ const DisplayLinks = props => {
 	}
 }
 
-class App extends React.Component {
-	constructor(props) {
-		super(props)
+class App extends Component {
+	constructor() {
+		super()
+		var usState = null;
+		if (window.location.href.indexOf("forum")) {
+			usState = window.location.href.substring(window.location.href.indexOf("forum")+6);
+		}
 		this.state = {
 			loggedIn: false,
 			user: null,
 			loaded: false,
-			// isClicked: true
+			state: usState
 		}
-		this._logout = this._logout.bind(this)
-		this._login = this._login.bind(this)
+		this._logout = this._logout.bind(this);
+		this._login = this._login.bind(this);
+		this.setNewValue = this.setNewValue.bind(this);
 	}
+
+	setNewValue(newValue) {
+		console.log('this is the State code:' + newValue);
+		this.setState ({
+		  state: newValue
+		},
+		() => {
+			console.log("this.state.state:");
+			console.log(this.state.state);
+			window.location.href = "/forum/"+this.state.state;
+		});
+		
+		
+	  }
+
 	componentDidMount() {
 		axios.get('/auth/user').then(response => {
 			console.log(response.data)
@@ -137,7 +159,8 @@ class App extends React.Component {
 			if (response.status === 200) {
 				this.setState({
 					loggedIn: false,
-					user: null
+					user: null,
+					state: null
 				})
 			}
 		})
@@ -239,7 +262,7 @@ class App extends React.Component {
 							<Route exact path="/" render={() => <Home user={this.state.user} />} />
 							<Header user={this.state.user} />
 						</Profile>
-						<Districts className="districts" user={this.state.user}>
+						<Districts className="districts" user={this.state.user} changeUSState={this.setNewValue} usState={this.state.state}>
 							<p>
 								Districts
 							</p>
