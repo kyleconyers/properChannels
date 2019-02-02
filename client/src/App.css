@@ -26,23 +26,18 @@ body {
 }
 
 .center {
-  /* flex-grow: 3;  */
   width: 60%;
-  /* border: 1px solid black; */
   height: 100%;
   background-color: indianred;
 }
 
 .centerBody {
-  /* flex-grow: 3;  */
-  /* border: 1px solid black; */
   height: 78%;
   align-items: stretch;
   overflow: auto;
 }
 
 .centerLinks {
-  /* flex-grow: 3;  */
   border-bottom: 1px solid black;
   height: auto;
   align-items: stretch;
@@ -51,7 +46,7 @@ body {
 
 .districtContainer {
 border: 1px solid black;
-width: 50%;
+width: 60%;
 height: 30%;
 margin-left: 21px;
 padding-left: 15px;
@@ -59,18 +54,24 @@ padding: 5px;
 }
 
 .districts {
-  width: 50%; 
+  width: 60%; 
   flex-grow: 1; 
   border: 1px solid black;
   height: 30%;
   align-items: stretch;
   padding: 0px;
   margin: 0px;
-  /* overflow: auto; */
+}
+
+.font-italic p {
+  font-size: 10px;
+}
+
+.flex-wrap-reverse {
+  font-size: 10px;
 }
 
 .leftSideBar {
-  /* flex-grow: 3;  */
   width: 18%;
   border-right: 1px solid black;
   height: 100%;
@@ -81,12 +82,10 @@ padding: 5px;
 }
 
 .list-group-item  {
-  /* border: 1px solid black; */
   font-size: 16px;
-  margin: 0px;
-  margin-left: 15px; 
+  margin-left: 20px; 
   padding: 10px;
-  width: 90%;
+  width: 100%;
 }
 
 .message-group-item {
@@ -101,22 +100,6 @@ padding: 5px;
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid rgba(0,0,0,.125);
-
-}
-
-.font-italic p {
-  font-size: 10px;
-}
-
-.flex-wrap-reverse {
-  font-size: 10px;
-}
-
-#senator {
-  font-size: 10px;
-  width: 150px;
-  margin: 0px;
-  padding: 0px;
 }
 
 .navBar {
@@ -151,22 +134,27 @@ padding: 5px;
   border-radius: 0px;
 }
 
+#senator {
+  font-size: 10px;
+  width: 150px;
+  margin: 0px;
+  padding: 0px;
+}
+
+#state_selector_text {
+  /* width: 190px; */
+}
+
+#state_selector {
+  width: 80%;
+}
+
 .wrapper {
   background: pink;
   height: 90%;
   display: flex;
-  /* flex-flow: row wrap; */
-  /* justify-content: space-around; */
   align-items: stretch;
-  /* overflow: auto; */
-}
-
-#state_selector_text {
-  width: 190px;
 }
 
 
-#state_selector {
-  width: 90%;
-}
 
