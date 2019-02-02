@@ -147,3 +147,12 @@ padding-left: 15px;
   align-items: stretch;
   /* overflow: auto; */
 }
+
+#state_selector_text {
+  width: 190px;
+}
+
+
+#state_selector {
+  width: 190px;
+}
