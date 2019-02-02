@@ -13,30 +13,46 @@ import Card from "../Card";
      
     
     state = {
+
         messages: [],
-        currentUsState: ""
+        currentUsState: "",
+        currentForumId: ""
       };
       //passvvvvv form_id or whatever message board we are on 
     componentDidMount() {
-        this.getSavedMessage();
-        API.getSavedForum()
-        // .then(data => data.json())
-        .then(data => console.log(data.data));
+        const path = window.location.pathname.split("/");
+        if(path[1] !== 'forum'){
+          // throw exception because we dont understand how this url is formatted
+          return;
+        }
+        const forumName = path[2];
+        if (forumName) {
+          console.log(forumName);
+          API.getSavedForum(forumName)
+          // .then(data => data.json())
+          .then(data => {
+            if (data.data) {
+              const forumId = data.data._id;
+              this.getSavedMessage(forumId);
+            }
+          });
+        }
 
       }
     //load data.data toooooo load this into state
     //store array of possibble US states into STATEdom
-    getSavedMessage = () => {
-        API.getSavedMessage()
+    getSavedMessage = (forum_id) => {
+        API.getSavedMessageByForum(forum_id)
           .then(res =>{
             console.log(res.data)
             this.setState({
+              currentForumId: forum_id,
               messages: res.data
             })}
           )
           .catch(err => console.log(err));
       };
-
+      //get path 
      //This Green Part needs to be turned into message section
      ////////////////////////////////
       handleInputChange = event => {
@@ -53,19 +69,24 @@ import Card from "../Card";
         console.log(this.props)
         API.saveMessage({
           //this.state.currentusstate
-          forum_id: "5c50c8d52bc45519e9f1b9b9",
+          forum_id: this.state.currentForumId,
           user_id: this.props.user._id,
           content: this.state.q,
           date: new Date()
-        }).then(() => this.getSavedMessage());
+        }).then(()=>this.setState({q:""}))
+        .then(() => this.getSavedMessage(this.state.currentForumId));
       };
       // resUser._id
      
       handleFormSubmit = event => {
         event.preventDefault();
-        this.handleMessageSave();
-        // this.db.insert();
-        console.log("inside sumbit")
+        if (this.state.q) {
+          this.handleMessageSave();
+          // this.db.insert();
+          console.log("inside sumbit")
+        } else {
+          console.log("EMPTY MESSAGE, DID NOT SUBMIT")
+        }
       };
     
       

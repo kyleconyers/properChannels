@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const forumController = require("../../controllers/forumController");
 
-// Matches with "/api/books"
+// Matches with "/api/forum"
 router.route("/")
-  .get(forumController.findAll)
+  .get(forumController.findByForumName)
   .post(forumController.create);
 
-// Matches with "/api/forums/:id"
+// Matches with "/api/forum/:id"
 router
   .route("/:id")
   .get(forumController.findById)
