@@ -70,7 +70,7 @@ import Card from "../Card";
         API.saveMessage({
           //this.state.currentusstate
           forum_id: this.state.currentForumId,
-          user_id: this.props.user._id,
+          user: this.props.user._id,
           content: this.state.q,
           date: new Date()
         }).then(()=>this.setState({q:""}))
