@@ -89,7 +89,7 @@ class Districts extends Component {
 
   var usStateToUse = null;
   
-  if (this.props.usState != null) {
+  if ((this.props.usState != null)&&(this.props.usState.indexOf("//")==-1)) {
     usStateToUse = this.props.usState;
   } else if (this.props.user != null) {
     usStateToUse = this.props.user.address;
@@ -127,9 +127,13 @@ class Districts extends Component {
           <p id="state_selector_text">
              Select a state: <SelectUSState value="Washington" id="state_selector" className="myClassName" onChange={this.props.changeUSState} />
           </p>
-        </Row>
+        </Row>        
         <Row>
-          <p>Current State: {this.props.usState}</p>
+          {((this.props.usState.indexOf("//") == -1)||(this.props.user == null))?(
+          <p>Current State: {this.props.usState}</p>)
+          :
+          (<p>Current State: {this.props.user.address}</p>)
+          }
         </Row>
         <Row>
               {this.state.senators.length ? (
