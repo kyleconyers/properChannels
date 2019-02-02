@@ -5,7 +5,7 @@
 
 import React, { Component } from "react";
 import { Col, Row, Container } from "../Grid";
-import {List} from "../List";
+import { List } from "../List";
 import Senator from "../Senator";
 import SignupForm from "../SignupForm";
 import API from "../../utils/API";
@@ -16,21 +16,33 @@ class Districts extends Component {
 
   constructor(props) {
     super(props);
- 
+
     this.setNewValue = this.setNewValue.bind(this);
+
+    // this.state = {
+    //   isClicked: false
+    // }
+
   }
- 
+
+  // handleClick = () => {
+  //   this.setState({
+  //     isClicked: true
+  //   });
+  //   this.props.handleClickInParent(true);
+  // }
+
 
   state = {
-     senators: [],
-     congressmen: [],
-     user: this.props.user,
-     state: null
+    senators: [],
+    congressmen: [],
+    user: this.props.user,
+    state: null
   }
 
   setNewValue(newValue) {
     console.log('this is the State code:' + newValue);
-    this.setState ({
+    this.setState({
       state: newValue
     })
   }
@@ -39,13 +51,13 @@ class Districts extends Component {
     console.log("THIS.PROPS:");
     console.log(this.props);
   }
-  
+
 
   componentWillMount() {
     axios({
       method: 'get',
       baseURL: 'https://api.propublica.org/congress/v1/116/senate/members.json',
-      headers: {'X-API-Key': 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'}
+      headers: { 'X-API-Key': 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6' }
     }).then(res => {
       // do something with data
       console.log('api response in componentDidMount: ', res.data)
@@ -53,13 +65,13 @@ class Districts extends Component {
         senators: res.data.results,
         user: this.props.user
       })
-    })    
-    .catch(err => console.log(err));
+    })
+      .catch(err => console.log(err));
 
     axios({
       method: 'get',
       baseURL: 'https://api.propublica.org/congress/v1/116/house/members.json',
-      headers: {'X-API-Key': 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'}
+      headers: { 'X-API-Key': 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6' }
     }).then(res => {
       // do something with data
       console.log('api response in componentDidMount for congress: ', res.data)
@@ -67,10 +79,10 @@ class Districts extends Component {
         congressmen: res.data.results,
         user: this.props.user
       })
-    })    
-    .catch(err => console.log(err));
-    }
-  
+    })
+      .catch(err => console.log(err));
+  }
+
 
   render() {
     console.log("senators:");
@@ -85,97 +97,100 @@ class Districts extends Component {
     }
 
     if (this.props.user != null) {
-    this.state.senators.length?(this.state.senators[0].members.map(senator => {
-    
-      if (senator.state === this.props.user.address) {
-        waSenators.push(senator);
+      this.state.senators.length ? (this.state.senators[0].members.map(senator => {
+
+        if (senator.state === this.props.user.address) {
+          waSenators.push(senator);
         }
-      
-    })):(console.log(""));
-  }
+
+      })) : (console.log(""));
+    }
 
     if (this.props.user != null) {
 
-    this.state.congressmen.length?(this.state.congressmen[0].members.map(congressman => {
+      this.state.congressmen.length ? (this.state.congressmen[0].members.map(congressman => {
         if (congressman.state === this.props.user.address) {
           waCongressmen.push(congressman);
-          }        
-      })):(console.log(""));
+        }
+      })) : (console.log(""));
     }
 
     if (this.state.state != null) {
       waSenators = [];
-      this.state.senators.length?(this.state.senators[0].members.map(senator => {
-          if (senator.state === this.state.state) {
-            waSenators.push(senator);
-            }          
-        })):(console.log(""));
-      }
-
-      if (this.state.state != null) {
-        waCongressmen = [];
-        this.state.congressmen.length?(this.state.congressmen[0].members.map(congressman => {
-            if (congressman.state === this.state.state) {
-              waCongressmen.push(congressman);
-              }            
-          })):(console.log(""));
+      this.state.senators.length ? (this.state.senators[0].members.map(senator => {
+        if (senator.state === this.state.state) {
+          waSenators.push(senator);
         }
-    
-      
-    if ((this.props.user == null)&&(this.state.state == null)) {
+      })) : (console.log(""));
+    }
+
+    if (this.state.state != null) {
+      waCongressmen = [];
+      this.state.congressmen.length ? (this.state.congressmen[0].members.map(congressman => {
+        if (congressman.state === this.state.state) {
+          waCongressmen.push(congressman);
+        }
+      })) : (console.log(""));
+    }
+
+
+    if ((this.props.user == null) && (this.state.state == null)) {
       return (
         <Container className="districtContainer">
           <Row>
-            <h1>LOADING....</h1>
+            <h3>LOADING....</h3>
           </Row>
         </Container>
       )
     } else {
-    return (
-      <Container className="districtContainer">
-        <Row>
-          <p id="state_selector_text">
-             Select a state: <SelectUSState selectedValue="Washington" id="state_selector" className="myClassName" onChange={this.setNewValue}/>
-          </p>
-        </Row>
-        <Row>
-              {this.state.senators.length ? (
-                <List>
-                  {
+      return (
+
+        <Container className="districtContainer">
+          <Row>
+            <p id="state_selector_text">
+              Select a state: <SelectUSState selectedValue="Washington" id="state_selector" className="myClassName" onChange={this.setNewValue} />
+            </p>
+          </Row>
+          <Row>
+            {this.state.senators.length ? (
+              <List>
+                {
                   waSenators.map(senator => (
                     <Senator
-                    first_name={senator.first_name}
-                    last_name={senator.last_name}
-                    title={"Senator"}
+                      first_name={senator.first_name}
+                      last_name={senator.last_name}
+                      title={"Senator"}
+
                     />
+
                   ))}
-                </List>
-              ) : (
+              </List>
+            ) : (
                 <h2 className="text-center">{this.state.message}</h2>
               )}
-        </Row>
-        <Row><p></p></Row>
-        <Row>
-              {this.state.congressmen.length ? (
-                <List>
-                  {
+          </Row>
+          <Row><p></p></Row>
+          <Row>
+            {this.state.congressmen.length ? (
+              <List>
+                {
                   waCongressmen.map(senator => (
                     <Senator
-                    first_name={senator.first_name}
-                    last_name={senator.last_name}
-                    title={"Congressman"}
+                      first_name={senator.first_name}
+                      last_name={senator.last_name}
+                      title={"Congressman"}
                     />
                   ))}
-                </List>
-              ) : (
+              </List>
+            ) : (
                 <h2 className="text-center">{this.state.message}</h2>
               )}
-        </Row>
-        {/* <Footer /> */}
-      </Container>
-    );
+          </Row>
+          {/* <Footer /> */}
+        </Container>
+      );
+    }
   }
-}
 }
 
 

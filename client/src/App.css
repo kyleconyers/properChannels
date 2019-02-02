@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  /* height: 100%; */
+  height: 100%;
 }
 
 html {
@@ -8,6 +8,10 @@ html {
 }
 
 #root {
+  height: 100%;
+}
+
+body {
   height: 100%;
 }
 
@@ -23,63 +27,71 @@ html {
 
 .center {
   /* flex-grow: 3;  */
-  width: 70%;
-  border: 1px solid black;
+  width: 60%;
+  /* border: 1px solid black; */
   height: 100%;
   background-color: indianred;
 }
 
 .centerBody {
   /* flex-grow: 3;  */
-  border: 1px solid black;
-  height: auto;
+  /* border: 1px solid black; */
+  height: 78%;
   align-items: stretch;
+  overflow: auto;
 }
 
 .centerLinks {
   /* flex-grow: 3;  */
-  border: 1px solid black;
-  height: 20%;
+  border-bottom: 1px solid black;
+  height: auto;
   align-items: stretch;
   background-color: aquamarine;
 }
 
 .districtContainer {
-width: 100px;
+border: 1px solid black;
+width: 50%;
 height: 30%;
-margin-left: 22px;
+margin-left: 21px;
 padding-left: 15px;
+padding: 5px;
 }
 
 .districts {
-  width: 200px; 
+  width: 50%; 
   flex-grow: 1; 
   border: 1px solid black;
   height: 30%;
   align-items: stretch;
   padding: 0px;
   margin: 0px;
+  /* overflow: auto; */
 }
 
 .leftSideBar {
   /* flex-grow: 3;  */
-  width: 20%;
-  border: 1px solid black;
+  width: 18%;
+  border-right: 1px solid black;
   height: 100%;
   align-items: stretch;
   margin: 0px;
-  padding: 0px
+  padding: 0px;
+  overflow: auto;
 }
 
-.list-group-item p {
+.list-group-item  {
+  /* border: 1px solid black; */
   font-size: 16px;
   margin: 0px;
-  padding: 0px;
+  margin-left: 15px; 
+  padding: 10px;
+  width: 90%;
 }
 
 .message-group-item {
   font-size: 16px;
-  width:675px;
+  width: auto;
   position: relative;
   display: flex;
   flex-flow: row wrap;
@@ -109,7 +121,7 @@ padding-left: 15px;
 
 .navBar {
   width: 100%;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   height: 10%;
   background-color: coral;
 }
@@ -123,19 +135,20 @@ padding-left: 15px;
 
 .profile {
   flex-grow: 1; 
-  border: 2px solid black;
+  border-bottom: 1px solid black;
   height: 20%;
   align-items: stretch;
 }
 
 .rightSideBar {
   /* flex-grow: 3;  */
-  width: 30%;
-  border: 2px solid black;
+  width: 22%;
+  border-left: 1px solid black;
   height: 100%;
   align-items: stretch;
   background-color: darkcyan;
   overflow: auto;
+  border-radius: 0px;
 }
 
 .wrapper {
@@ -154,5 +167,6 @@ padding-left: 15px;
 
 
 #state_selector {
-  width: 190px;
+  width: 90%;
 }
+
