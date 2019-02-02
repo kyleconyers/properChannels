@@ -25,7 +25,7 @@ import Card from "../Card";
           // throw exception because we dont understand how this url is formatted
           return;
         }
-        const forumName = path[2];
+        const forumName = path[2].toUpperCase();
         if (forumName) {
           console.log(forumName);
           API.getSavedForum(forumName)

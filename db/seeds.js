@@ -82,18 +82,94 @@ if (process.env.MONGODB_URI) {
 }
 
 // should mongoose.connection be put in the call back of mongoose.connect???
-const db = mongoose.connection
-db.on('error', err => {
+const dbConnection = mongoose.connection
+dbConnection.on('error', err => {
 	console.log(`There was an error connecting to the database: ${err}`)
 })
-db.once('open', () => {
+
+dbConnection.once('open', () => {
 	console.log(
 		`You have successfully connected to your mongo database: ${MONGO_URL}`
-	)
+    )
+    // Get list of collections and convert to array of collection names
+    dbConnection.db.listCollections()
+    .toArray()
+    .then( collections => {
+        const collectionNames = collections.map( collection => collection.name )
+        console.log(`COLLECTIONS: ${collectionNames}`)
+        return collectionNames
+    })
+    .then( names => {
+        // Create promises for dropping existing tables if they exist
+        const dropPromises = []
+        if (names.includes("messages")) {
+            dropPromises.push( Message.collection.drop() )
+        }
+        if (names.includes("forums")) {
+            dropPromises.push( Forum.collection.drop() )
+        }
+
+        console.log()
+        console.log("DROPPING EXISTING TABLES")
+
+        // Wait for all drop promises to resolve
+        Promise.all(dropPromises)
+        .then( () => {
+            console.log("TABLES DROPPED")
+            console.log()
+            console.log("SEEDING FORUMS")
+        })
+        .then(seedForums)
+        .then( ()=> {
+            console.log("FORUMS SEEDED")
+            // ASSUMES EXISTING USER LIST
+            // WILL NOT SEED USERS
+
+            // Finds first user
+            User.findOne().then( (resUser) => {
+                // Seeds for messages
+                
+                // Finds forum WA
+                Forum.findOne({name: "WA"}).then( (resForum) => {
+             
+                    messageSeeds = [
+                        {
+                            forum_id: '5c53970597a7e8148381a6b9',
+                            user: resUser._id,
+                            content: "Fix our governement",
+                            date: new Date()
+                        }, 
+                        {
+                            forum_id: resForum._id,
+                            user: resUser._id,
+                            content: "Make America great again!!!!!",
+                            date: new Date()
+                        },
+                        {
+                            forum_id: resForum._id,
+                            user: resUser._id,
+                            content: "Border Security!",
+                            date: new Date()
+                        }, 
+                        {
+                            forum_id: resForum._id,
+                            user: resUser._id,
+                            content: "I want free public healthcare!",
+                            date: new Date()
+                        }, 
+                    ]
+
+                    console.log()
+                    console.log("SEEDING MESSAGES")
+                    seedMessages(messageSeeds)
+                        .then(() => mongoose.disconnect())
+                        .then(() => console.log("MESSAGES SEEDED"))
+                })
+            })
+        })
+    })
 })
 
-// ASSUMES EXISTING USER LIST
-// WILL NOT SEED USERS
 
 // // Seeds for users
 // userSeeds = [
@@ -136,57 +212,21 @@ function seedForums() {
     })
 }
 
-User.findOne().then( (resUser) => {
-    // Seeds for messages
 
-    Forum.findOne().then( (resForum) => {
- 
-        messageSeeds = [
-            {
-                forum_id: '5c53970597a7e8148381a6b9',
-                user_id: resUser._id,
-                content: "Fix our governement",
-                date: new Date()
-            }, 
-            {
-                forum_id: resForum._id,
-                user_id: resUser._id,
-                content: "Make America great again!!!!!",
-                date: new Date()
-            },
-            {
-                forum_id: resForum._id,
-                user_id: resUser._id,
-                content: "Border Security!",
-                date: new Date()
-            }, 
-            {
-                forum_id: resForum._id,
-                user_id: resUser._id,
-                content: "I want free public healthcare!",
-                date: new Date()
-            }, 
-        ]
-
-        function seedMessages( i=0) {
-            console.log(`MESSAGE i: ${i}`)
-            if (i < messageSeeds.length) {
-                const newMessage = new Message(messageSeeds[i])
-                return newMessage.save().then( () => seedMessages( i+1) )
-            } else {
-                return new Promise((result) => {
-                    // console.log( "TEST");
-                })
-            }
+function seedMessages(messageSeeds, i=0) {
+    console.log(`MESSAGE i: ${i}`)
+    
+    const newMessage = new Message(messageSeeds[i])
+    return newMessage.save().then( () => {
+        if (i < messageSeeds.length-1) {
+            return seedMessages(messageSeeds, i+1)
         }
 
-
-        // Start seeding here
-        // seedUsers();
-        Message.collection.drop()
-            .then(() => Forum.collection.drop())
-            .then(() => seedForums())
-            .then(() => seedMessages())
-            // .then(() => mongoose.disconnect())
-    })
-})
+        else {
+            return new Promise((resolve, reject) => {
+                console.log( "NO MORE MESSAGES");
+                resolve()
+            })
+        }
+    } )  
+}
