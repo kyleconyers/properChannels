@@ -42,7 +42,13 @@ class SignupForm extends Component {
 				.post('/auth/signup', {
 					username: this.state.username,
 					password: this.state.password,
-					address: this.state.address
+					// address: this.state.address
+					address: {
+						street: this.state.addrStreet,
+						city: this.state.addrCity,
+						state: this.state.addrState,
+						zipCode: this.state.addrZip
+					}
 				})
 				// Wait for response to see if signup successful
 				.then(response => {
@@ -122,7 +128,7 @@ class SignupForm extends Component {
 						</Col>
 					</Row>
 
-					<Row>
+					{/* <Row>
 						<Col>
 							<FormGroup>
 								<Label htmlFor="address">Address: </Label>
@@ -135,11 +141,11 @@ class SignupForm extends Component {
 								/>
 							</FormGroup>
 						</Col>
-					</Row>
+					</Row> */}
 					
 					<Row>
 						<Col />
-						<Col xs="8">
+						<Col xs="9">
 							<FormGroup>
 								<Label htmlFor="addrStreet">Street Address</Label>
 								<Input 
@@ -157,7 +163,7 @@ class SignupForm extends Component {
 					<Row>
 						<Col />
 
-						<Col xs="3">
+						<Col xs="4">
 							<FormGroup>
 								<Label htmlFor="addrCity">City</Label>
 								<Input 
