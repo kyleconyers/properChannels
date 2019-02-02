@@ -10,14 +10,29 @@ import Senator from "../Senator";
 import SignupForm from "../SignupForm";
 import API from "../../utils/API";
 import axios from "axios";
-//const User = require('../../../db/models/user');
+import SelectUSState from 'react-select-us-states';
 
 class Districts extends Component {
+
+  constructor(props) {
+    super(props);
+ 
+    this.setNewValue = this.setNewValue.bind(this);
+  }
+ 
 
   state = {
      senators: [],
      congressmen: [],
-     user: this.props.user
+     user: this.props.user,
+     state: null
+  }
+
+  setNewValue(newValue) {
+    console.log('this is the State code:' + newValue);
+    this.setState ({
+      state: newValue
+    })
   }
 
   componentDidMount() {
@@ -25,38 +40,6 @@ class Districts extends Component {
     console.log(this.props);
   }
   
-    // Populate state with user data
-      // if (props.address) {
-      //   this.setState(
-      //     {
-      //       address: props.address
-      //     }
-      //   )        
-      // }
-
-//}
-
-
-  // getSenators = () => {
-  //   API.getSenators()
-  //     .then(res => {
-  //       console.log("RES:");
-  //       console.log(res);
-  //       this.setState({
-  //         senators: res
-  //       })}
-  //     )
-  //     .catch(() =>
-  //       this.setState({
-  //         senators: [],
-  //         message: "No Senators Found, Try a Different Query"
-  //       })
-  //     );
-  // };
-
-  // componentDidMount() {
-  //   this.getSenators();
-  // }
 
   componentWillMount() {
     axios({
@@ -92,31 +75,54 @@ class Districts extends Component {
   render() {
     console.log("senators:");
     console.log(this.state.senators);
-    const waSenators = [];
-    const waCongressmen = [];
+    var waSenators = [];
+    var waCongressmen = [];
     console.log("THIS.PROPS in render:")
     console.log(this.props);
     if (this.props.user != null) {
       console.log("THIS.PROPS.USER.ADDRESS")
       console.log(this.props.user.address);
     }
-    this.state.senators.length?(this.state.senators[0].members.map(senator => {
+
     if (this.props.user != null) {
+    this.state.senators.length?(this.state.senators[0].members.map(senator => {
+    
       if (senator.state === this.props.user.address) {
         waSenators.push(senator);
         }
-      }
+      
     })):(console.log(""));
+  }
+
+    if (this.props.user != null) {
 
     this.state.congressmen.length?(this.state.congressmen[0].members.map(congressman => {
-      if (this.props.user != null) {
         if (congressman.state === this.props.user.address) {
           waCongressmen.push(congressman);
-          }
-        }
+          }        
       })):(console.log(""));
-  
-    if (this.props.user == null) {
+    }
+
+    if (this.state.state != null) {
+      waSenators = [];
+      this.state.senators.length?(this.state.senators[0].members.map(senator => {
+          if (senator.state === this.state.state) {
+            waSenators.push(senator);
+            }          
+        })):(console.log(""));
+      }
+
+      if (this.state.state != null) {
+        waCongressmen = [];
+        this.state.congressmen.length?(this.state.congressmen[0].members.map(congressman => {
+            if (congressman.state === this.state.state) {
+              waCongressmen.push(congressman);
+              }            
+          })):(console.log(""));
+        }
+    
+      
+    if ((this.props.user == null)&&(this.state.state == null)) {
       return (
         <Container>
           <Row>
@@ -127,6 +133,11 @@ class Districts extends Component {
     } else {
     return (
       <Container>
+        <Row>
+          <p id="state_selector_text">
+             Select a state: <SelectUSState selectedValue="Washington" id="state_selector" className="myClassName" onChange={this.setNewValue}/>
+          </p>
+        </Row>
         <Row>
               {this.state.senators.length ? (
                 <List>

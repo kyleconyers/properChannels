@@ -37,6 +37,7 @@
 		"passport-local": "^1.0.0",
 		"react": "^16.7.0",
 		"react-dom": "^16.7.0",
+		"react-select-us-states": "^0.1.2",
 		"reactstrap": "^7.1.0"
 	}
 }
