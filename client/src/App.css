@@ -44,7 +44,7 @@ html {
   background-color: aquamarine;
 }
 
-.container {
+.districtContainer {
 width: 100px;
 height: 30%;
 margin-left: 22px;
@@ -146,4 +146,13 @@ padding-left: 15px;
   /* justify-content: space-around; */
   align-items: stretch;
   /* overflow: auto; */
+}
+
+#state_selector_text {
+  width: 190px;
+}
+
+
+#state_selector {
+  width: 190px;
 }

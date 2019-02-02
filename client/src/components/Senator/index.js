@@ -5,34 +5,15 @@ import { Row, Col } from "../Grid";
 import '../../App.css';
 
 function Senator({first_name, last_name, title}) {
+
+  let address="https://en.wikipedia.org/wiki/"+first_name+"_"+last_name;
+
   return (
     <ListItem>
       <Row className="flex-wrap-reverse">
         <Col size="md-12">
-          <p id="senator">{title} {first_name} {last_name}</p>
-          {/* {subtitle && <h5 className="font-italic">{subtitle}</h5>} */}
+        <a href={`https://en.wikipedia.org/wiki/${first_name}_${last_name}`} target="_blank"><p id="senator">{title} {first_name} {last_name}</p></a>
         </Col>
-        {/* <Col size="md-4">
-          <div className="btn-container">
-            <a className="btn btn-light" target="_blank" rel="noopener noreferrer" href={link}>
-              View
-            </a>
-            <Button />
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col size="md-6">
-          <p className="font-italic small">Written by {authors}</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col size="12 sm-4 md-2">
-          <img className="img-thumbnail img-fluid w-100" src={image} alt={title} />
-        </Col>
-        <Col size="12 sm-8 md-10">
-          <p>{description}</p>
-        </Col> */}
       </Row>
     </ListItem>
   );

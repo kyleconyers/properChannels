@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+import { Container, Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+
+const borderStyle = {
+    border: "1px solid black"
+}
 
 class UserProfile extends Component {
 	constructor(props) {
@@ -50,32 +55,71 @@ class UserProfile extends Component {
         // TODO: Handle connecting account to Google
     }
 
+    googleConnectSwitch = () => {
+        const {user} = this.props
+        if (user) {
+            return (!(user.google && user.google.googleId))
+            ?
+            <Col style={borderStyle}>
+                <p>Google ID: Not linked</p>
+                <a href="auth/connect/google"><Button onClick={this.handleConnectGoogle}>Connect to Google</Button></a>
+            </Col>
+            :
+            <Col style={borderStyle}>
+                <p>Google ID: {user.google.googleId}</p>
+                <a href="#"><Button color="primary" >Unlink from Google</Button></a>
+            </Col>
+        }
+    }
+
 	render() {
 		return (
 			<div className="UserProfile">
-
-                {/* Form for updating user info */}
-				<form onSubmit={this.handleSubmit}>
-                    <label htmlFor="firstName">First Name:</label>
-                    <input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleChange} />
+                <Container>
+                    <h2>Profile for {this.props.user.local.username}</h2>
                     
-                    <label htmlFor="lastName">Last Name:</label>
-                    <input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleChange} />
+                    <br/>
 
-                    <label htmlFor="address">Address:</label>
-                    <input type="text" name="address" id="address" value={this.state.address} onChange={this.handleChange} />
+                    <h3>Personal Info</h3>
+                    {/* Form for updating user info */}
+                    <Form 
+                        style={borderStyle}
+                        onSubmit={this.handleSubmit}
+                    >
+                        <Col>
+                            <FormGroup>
+                                <Label htmlFor="firstName">First Name:</Label>
+                                <Input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleChange} />
+                            </FormGroup>
+                        </Col>
+                        {/* <br/> */}
+                        <Col>
+                            <FormGroup>
+                                <Label htmlFor="lastName">Last Name:</Label>
+                                <Input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleChange} />
+                            </FormGroup>
+                        </Col>
+                        {/* <br/> */}
+                        <Col>
+                            <FormGroup>
+                                <Label htmlFor="address">Address:</Label>
+                                <Input type="text" name="address" id="address" value={this.state.address} onChange={this.handleChange} />
+                            </FormGroup>
+                        </Col>
+                        {/* <br/> */}
+                        <Col>
+                            <Button color="primary" type="submit" >Save</Button>
+                        </Col>
+                    </Form>
 
-                    <input type="submit" value="Save" />
-                </form>
+                    <br/>
 
-                {/* TODO: Replace with Google-provided image */}
-                {/* TODO: Create button to de-link account from Google */}
-                {
-                    (!this.props.user.google) ?
-                    <a href="auth/connect/google"><button onClick={this.handleConnectGoogle}>Connect to Google</button></a>
-                    :
-                    <a href="#"><button >Unlink from Google</button></a>
-                }
+                    <h3>Google Account Info</h3>
+                    {
+                        this.googleConnectSwitch()
+                    }
+                    
+                </Container>
 			</div>
 		)
 	}
