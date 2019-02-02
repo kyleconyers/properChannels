@@ -88,7 +88,8 @@ class App extends Component {
 			loggedIn: false,
 			user: null,
 			loaded: false,
-			state: usState
+			state: usState,
+			twitter: null
 		}
 		this._logout = this._logout.bind(this);
 		this._login = this._login.bind(this);
@@ -130,11 +131,11 @@ class App extends Component {
 		// this.generateResultsObject()
 	}
 
-	// callbackHandlerFunction = (clickStatus) => {
-	// 	this.setState({
-	// 		 isClicked: clickStatus
-	// 	});
-	// }
+	twitterFunction = (twitter_account) => {
+		this.setState({
+			 twitter: twitter_account
+		});
+	}
 
 
 
@@ -262,7 +263,7 @@ class App extends Component {
 							<Route exact path="/" render={() => <Home user={this.state.user} />} />
 							<Header user={this.state.user} />
 						</Profile>
-						<Districts className="districts" user={this.state.user} changeUSState={this.setNewValue} usState={this.state.state}>
+						<Districts className="districts" user={this.state.user} changeUSState={this.setNewValue} twitterFunction={this.twitterFunction} usState={this.state.state}>
 							<p>
 								Districts
 							</p>
@@ -309,7 +310,7 @@ class App extends Component {
 
 					<RightSideBar className="rightSideBar">
 
-						<Route path="/" render={() => <a className="twitter-timeline" data-width="500" href={"https://twitter.com/" + "UW" + "?ref_src=twsrc%5Etfw"}>Tweets!</a>} />
+						<Route path="/" render={() => <a className="twitter-timeline" data-width="500" href={"https://twitter.com/" + this.state.twitter_account + "?ref_src=twsrc%5Etfw"}>Tweets!</a>} />
 
 					</RightSideBar>
 

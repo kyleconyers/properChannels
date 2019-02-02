@@ -158,7 +158,8 @@ class Districts extends Component {
                       first_name={senator.first_name}
                       last_name={senator.last_name}
                       title={"Senator"}
-
+                      twitter={senator.twitter_account}
+                      twitterFunction={this.props.twitterFunction}
                     />
 
                   ))}
@@ -177,6 +178,8 @@ class Districts extends Component {
                       first_name={senator.first_name}
                       last_name={senator.last_name}
                       title={"Congressman"}
+                      twitter={senator.twitter_account}
+                      twitterFunction={this.props.twitterFunction}
                     />
                   ))}
               </List>
