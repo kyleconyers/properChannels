@@ -5,7 +5,8 @@ const messageSchema = new Schema({
     forum_id: {type: Schema.ObjectId, ref: "Forum"},
     user: {type: Schema.ObjectId, ref: "User"},
     date: Date,
-    content: String
+    content: String,
+    tag: String
 });
 
 messageSchema.pre("find", function() 
