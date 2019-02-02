@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
-import { Container, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Container, Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+
+const borderStyle = {
+    border: "1px solid black"
+}
 
 class UserProfile extends Component {
 	constructor(props) {
@@ -56,50 +60,66 @@ class UserProfile extends Component {
         if (user) {
             return (!(user.google && user.google.googleId))
             ?
-            <a href="auth/connect/google"><button onClick={this.handleConnectGoogle}>Connect to Google</button></a>
+            <Col style={borderStyle}>
+                <p>Google ID: Not linked</p>
+                <a href="auth/connect/google"><Button onClick={this.handleConnectGoogle}>Connect to Google</Button></a>
+            </Col>
             :
-            <div>
+            <Col style={borderStyle}>
                 <p>Google ID: {user.google.googleId}</p>
-                <a href="#"><button >Unlink from Google</button></a>
-                </div>
+                <a href="#"><Button color="primary" >Unlink from Google</Button></a>
+            </Col>
         }
     }
 
 	render() {
 		return (
 			<div className="UserProfile">
-
-                <h2>Profile for {this.props.user.local.username}</h2>
-
                 <Container>
-                <h3>Personal Info</h3>
-                {/* Form for updating user info */}
-				<Form onSubmit={this.handleSubmit}>
-                    <FormGroup>
-                        <Label htmlFor="firstName">First Name:</Label>
-                        <Input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleChange} />
-                    </FormGroup>
-                    {/* <br/> */}
-                    <FormGroup>
-                        <Label htmlFor="lastName">Last Name:</Label>
-                        <Input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleChange} />
-                    </FormGroup>
-                    {/* <br/> */}
-                    <FormGroup>
-                        <Label htmlFor="address">Address:</Label>
-                        <Input type="text" name="address" id="address" value={this.state.address} onChange={this.handleChange} />
-                    </FormGroup>
-                    {/* <br/> */}
-                    <Button color="primary" type="submit" >Save</Button>
-                </Form>
+                    <h2>Profile for {this.props.user.local.username}</h2>
+                    
+                    <br/>
+
+                    <h3>Personal Info</h3>
+                    {/* Form for updating user info */}
+                    <Form 
+                        style={borderStyle}
+                        onSubmit={this.handleSubmit}
+                    >
+                        <Col>
+                            <FormGroup>
+                                <Label htmlFor="firstName">First Name:</Label>
+                                <Input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleChange} />
+                            </FormGroup>
+                        </Col>
+                        {/* <br/> */}
+                        <Col>
+                            <FormGroup>
+                                <Label htmlFor="lastName">Last Name:</Label>
+                                <Input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleChange} />
+                            </FormGroup>
+                        </Col>
+                        {/* <br/> */}
+                        <Col>
+                            <FormGroup>
+                                <Label htmlFor="address">Address:</Label>
+                                <Input type="text" name="address" id="address" value={this.state.address} onChange={this.handleChange} />
+                            </FormGroup>
+                        </Col>
+                        {/* <br/> */}
+                        <Col>
+                            <Button color="primary" type="submit" >Save</Button>
+                        </Col>
+                    </Form>
+
+                    <br/>
+
+                    <h3>Google Account Info</h3>
+                    {
+                        this.googleConnectSwitch()
+                    }
+                    
                 </Container>
-
-                <br/>
-
-                <h3>Google Account Info</h3>
-                {
-                    this.googleConnectSwitch()
-                }
 			</div>
 		)
 	}
