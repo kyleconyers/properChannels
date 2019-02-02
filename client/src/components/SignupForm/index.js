@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import SelectUSState from 'react-select-us-states';
 
 class SignupForm extends Component {
 	constructor() {
@@ -11,10 +12,15 @@ class SignupForm extends Component {
 			password: '',
 			confirmPassword: '',
 			address: '',
+			addrStreet: '',
+			addrCity: '',
+			addrState: '',
+			addrZip: '',
 			redirectTo: null
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
+		this.handleUsStateSelect = this.handleUsStateSelect.bind(this);
 	}
 	
 	handleChange(event) {
@@ -57,6 +63,11 @@ class SignupForm extends Component {
 		}
 	}
 
+	handleUsStateSelect(selectedValue) {
+		console.log(selectedValue)
+		this.setState({addrState: selectedValue})
+	}
+
 	render() {
 		if (this.state.redirectTo) {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
@@ -72,6 +83,7 @@ class SignupForm extends Component {
 								<Label htmlFor="username">Username: </Label>
 								<Input
 									type="text"
+									id="username"
 									name="username"
 									value={this.state.username}
 									onChange={this.handleChange}
@@ -87,6 +99,7 @@ class SignupForm extends Component {
 								<Label htmlFor="password">Password: </Label>
 								<Input
 									type="password"
+									id="password"
 									name="password"
 									value={this.state.password}
 									onChange={this.handleChange}
@@ -100,6 +113,7 @@ class SignupForm extends Component {
 								<Label htmlFor="confirmPassword">Confirm Password: </Label>
 								<Input
 									type="password"
+									id="confirmPassword"
 									name="confirmPassword"
 									value={this.state.confirmPassword}
 									onChange={this.handleChange}
@@ -114,12 +128,69 @@ class SignupForm extends Component {
 								<Label htmlFor="address">Address: </Label>
 								<Input
 									type="text"
+									id="address"
 									name="address"
 									value={this.state.address}
 									onChange={this.handleChange}
 								/>
 							</FormGroup>
 						</Col>
+					</Row>
+					
+					<Row>
+						<Col />
+						<Col xs="8">
+							<FormGroup>
+								<Label htmlFor="addrStreet">Street Address</Label>
+								<Input 
+									type="text"
+									id="addrStreet"
+									name="addrStreet"
+									value={this.state.addrStreet}
+									onChange={this.handleChange}
+								/>
+							</FormGroup>
+						</Col>
+						<Col />
+					</Row>
+					
+					<Row>
+						<Col />
+
+						<Col xs="3">
+							<FormGroup>
+								<Label htmlFor="addrCity">City</Label>
+								<Input 
+									type="text"
+									id="addrCity"
+									name="addrCity"
+									value={this.state.addrCity}
+									onChange={this.handleChange}
+								/>
+							</FormGroup>
+						</Col>
+
+						<Col xs="3">
+							<FormGroup>
+								<Label htmlFor="addrState">State</Label>
+								<SelectUSState id="addrState" name="addrState" className="form-control" onChange={this.handleUsStateSelect} />
+							</FormGroup>
+						</Col>
+
+						<Col xs="2">
+							<FormGroup>
+								<Label htmlFor="addrZip">Zip Code</Label>
+								<Input
+									type="text"
+									id="addrZip"
+									name="addrZip"
+									value={this.state.addrZip}
+									onChange={this.handleChange}
+								/>
+							</FormGroup>
+						</Col>
+
+						<Col />
 					</Row>
 
 					<Button type="submit" color="primary" >Sign up</Button>
