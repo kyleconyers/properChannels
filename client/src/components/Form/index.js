@@ -5,7 +5,6 @@ function Form({ /*q,*/ handleInputChange, handleFormSubmit }) {
     <form>
       <div className="form-group">
         <label htmlFor="Query">
-          <strong>Book</strong>
         </label>
         <input
           className="form-control"
@@ -23,6 +22,7 @@ function Form({ /*q,*/ handleInputChange, handleFormSubmit }) {
           onClick={handleFormSubmit}
           type="submit"
           className="btn btn-md  float-right"
+          id="postButton"
         >
           Post
         </button>
