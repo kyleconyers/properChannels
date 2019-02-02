@@ -63,6 +63,13 @@ padding: 5px;
   margin: 0px;
 }
 
+.twit {
+  position: relative;
+  /* Adjust these values accordingly */
+  bottom: 15px;
+  /* left: 0px; */
+}
+
 .font-italic p {
   font-size: 10px;
 }
