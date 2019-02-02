@@ -7,29 +7,52 @@ import { Badge } from 'reactstrap';
 
 
 export default class CenterLinks extends React.Component {
+
+  state = {
+    href: null
+  }
+
+  componentDidMount() {
+    var url = window.location.href;
+    var urlSplit = url.split("/");    
+    if (urlSplit.length > 5) {
+      var to = url.lastIndexOf('/');
+      to = to == -1 ? url.length : to + 1;
+      url = url.substring(0, to-1);
+    }
+
+    this.setState (
+      {
+        href: url
+      }
+    )
+  }
+
+
   render() {
-    return (
+    return (      
       <div className="centerLinks">
-        <Badge href="#" color="primary">Appropriations</Badge>
-        <Badge href="#" color="secondary">Capital Budget</Badge>
-        <Badge href="#" color="success">Civil Rights & Judicary</Badge>
-        <Badge href="#" color="danger">College and Workforce development</Badge>
-        <Badge href="#" color="warning">Commerce & Gaming</Badge>
-        <Badge href="#" color="info">Consumer Protection and Business</Badge>
-        <Badge href="#" color="light">Education</Badge>
-        <Badge href="#" color="dark">Environment & Energy</Badge>
-        <Badge href="#" color="primary">Finance</Badge>
-        <Badge href="#" color="secondary">Health Care & Wellness</Badge>
-        <Badge href="#" color="success">Housing, Community Development & Veterans</Badge>
-        <Badge href="#" color="danger">Human Services & Early Learning</Badge>
-        <Badge href="#" color="warning">Innovation, Technololgy & Economic Development</Badge>
-        <Badge href="#" color="info">Labor & Workplace Standards</Badge>
-        <Badge href="#" color="light">Local Government</Badge>
-        <Badge href="#" color="dark">Public Safety</Badge>
-        <Badge href="#" color="primary">Rules</Badge>
-        <Badge href="#" color="secondary">Rural Development, Agriculture & Natural Resources</Badge>
-        <Badge href="#" color="success">State Government and Tribal Relations</Badge>
-        <Badge href="#" color="danger">Transportation</Badge>
+        <Badge href={this.state.href+`/all`} color="primary">All Committees</Badge>
+        <Badge href={this.state.href+`/appropriations`} color="primary">Appropriations</Badge>
+        <Badge href={this.state.href+`/capital_budget`} color="secondary">Capital Budget</Badge>
+        <Badge href={this.state.href+`/civil_rights`} color="success">Civil Rights & Judicary</Badge>
+        <Badge href={this.state.href+`/college`} color="danger">College and Workforce development</Badge>
+        <Badge href={this.state.href+`/commerce`} color="warning">Commerce & Gaming</Badge>
+        <Badge href={this.state.href+`/consumer`} color="info">Consumer Protection and Business</Badge>
+        <Badge href={this.state.href+`/education`} color="light">Education</Badge>
+        <Badge href={this.state.href+`/environment`} color="dark">Environment & Energy</Badge>
+        <Badge href={this.state.href+`/finance`} color="primary">Finance</Badge>
+        <Badge href={this.state.href+`/health`} color="secondary">Health Care & Wellness</Badge>
+        <Badge href={this.state.href+`/housing`} color="success">Housing, Community Development & Veterans</Badge>
+        <Badge href={this.state.href+`/human`} color="danger">Human Services & Early Learning</Badge>
+        <Badge href={this.state.href+`/innovation`} color="warning">Innovation, Technololgy & Economic Development</Badge>
+        <Badge href={this.state.href+`/labor`} color="info">Labor & Workplace Standards</Badge>
+        <Badge href={this.state.href+`/local_government`} color="light">Local Government</Badge>
+        <Badge href={this.state.href+`/public_safety`} color="dark">Public Safety</Badge>
+        <Badge href={this.state.href+`/rules`} color="primary">Rules</Badge>
+        <Badge href={this.state.href+`/rural_development`} color="secondary">Rural Development, Agriculture & Natural Resources</Badge>
+        <Badge href={this.state.href+`/state_government`} color="success">State Government and Tribal Relations</Badge>
+        <Badge href={this.state.href+`/transportation`} color="danger">Transportation</Badge>
      
       </div>
     );
