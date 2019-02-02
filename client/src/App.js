@@ -239,11 +239,11 @@ class App extends Component {
 								Districts
 							</p>
 						</Districts>
-						<OtherDistricts className="otherDistricts">
+						{/* <OtherDistricts className="otherDistricts">
 							<p>
 								The Other Districts
 							</p>
-						</OtherDistricts>
+						</OtherDistricts> */}
 					</LeftSideBar>
 
 					<Center className="center">
