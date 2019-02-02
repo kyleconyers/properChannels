@@ -124,10 +124,13 @@ dbConnection.once('open', () => {
             console.log("FORUMS SEEDED")
             // ASSUMES EXISTING USER LIST
             // WILL NOT SEED USERS
+
+            // Finds first user
             User.findOne().then( (resUser) => {
                 // Seeds for messages
-            
-                Forum.findOne().then( (resForum) => {
+                
+                // Finds forum WA
+                Forum.findOne({name: "WA"}).then( (resForum) => {
              
                     messageSeeds = [
                         {
