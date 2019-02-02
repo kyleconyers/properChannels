@@ -5,7 +5,7 @@
 
 import React, { Component } from "react";
 import { Col, Row, Container } from "../Grid";
-import {List} from "../List";
+import { List } from "../List";
 import Senator from "../Senator";
 import SignupForm from "../SignupForm";
 import API from "../../utils/API";
@@ -16,10 +16,22 @@ class Districts extends Component {
 
   constructor(props) {
     super(props);
- 
-    // this.setNewValue = this.setNewValue.bind(this);
+
+    //this.setNewValue = this.setNewValue.bind(this);
+
+    // this.state = {
+    //   isClicked: false
+    // }
+
   }
- 
+
+  // handleClick = () => {
+  //   this.setState({
+  //     isClicked: true
+  //   });
+  //   this.props.handleClickInParent(true);
+  // }
+
 
   state = {
      senators: [],
@@ -39,13 +51,13 @@ class Districts extends Component {
     console.log("THIS.PROPS:");
     console.log(this.props);
   }
-  
+
 
   componentWillMount() {
     axios({
       method: 'get',
       baseURL: 'https://api.propublica.org/congress/v1/116/senate/members.json',
-      headers: {'X-API-Key': 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'}
+      headers: { 'X-API-Key': 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6' }
     }).then(res => {
       // do something with data
       console.log('api response in componentDidMount: ', res.data)
@@ -53,13 +65,13 @@ class Districts extends Component {
         senators: res.data.results,
         user: this.props.user
       })
-    })    
-    .catch(err => console.log(err));
+    })
+      .catch(err => console.log(err));
 
     axios({
       method: 'get',
       baseURL: 'https://api.propublica.org/congress/v1/116/house/members.json',
-      headers: {'X-API-Key': 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6'}
+      headers: { 'X-API-Key': 'kbvtlqxgtqEP4TbguBcbVICEbNTmsBy8f9r4owm6' }
     }).then(res => {
       // do something with data
       console.log('api response in componentDidMount for congress: ', res.data)
@@ -67,10 +79,10 @@ class Districts extends Component {
         congressmen: res.data.results,
         user: this.props.user
       })
-    })    
-    .catch(err => console.log(err));
-    }
-  
+    })
+      .catch(err => console.log(err));
+  }
+
 
   render() {
     console.log("senators:");
@@ -116,7 +128,7 @@ class Districts extends Component {
       return (
         <Container className="districtContainer">
           <Row>
-            <h1>LOADING....</h1>
+            <h3>LOADING....</h3>
           </Row>
         </Container>
       )
@@ -129,10 +141,12 @@ class Districts extends Component {
           </p>
         </Row>        
         <Row>
-          {((this.props.usState.indexOf("//") == -1)||(this.props.user == null))?(
-          <p>Current State: {this.props.usState}</p>)
+          {(usStateToUse == null)?(
+          <p></p>)
           :
-          (<p>Current State: {this.props.user.address}</p>)
+          ((this.props.usState != null)?
+          (<p>Current State: {this.props.usState}</p>):
+          (<p>Current State: {this.props.user.address}</p>))
           }
         </Row>
         <Row>
@@ -141,38 +155,40 @@ class Districts extends Component {
                   {
                   waSenators.map(senator => (
                     <Senator
-                    first_name={senator.first_name}
-                    last_name={senator.last_name}
-                    title={"Senator"}
+                      first_name={senator.first_name}
+                      last_name={senator.last_name}
+                      title={"Senator"}
+
                     />
+
                   ))}
-                </List>
-              ) : (
+              </List>
+            ) : (
                 <h2 className="text-center">{this.state.message}</h2>
               )}
-        </Row>
-        <Row><p></p></Row>
-        <Row>
-              {this.state.congressmen.length ? (
-                <List>
-                  {
+          </Row>
+          <Row><p></p></Row>
+          <Row>
+            {this.state.congressmen.length ? (
+              <List>
+                {
                   waCongressmen.map(senator => (
                     <Senator
-                    first_name={senator.first_name}
-                    last_name={senator.last_name}
-                    title={"Congressman"}
+                      first_name={senator.first_name}
+                      last_name={senator.last_name}
+                      title={"Congressman"}
                     />
                   ))}
-                </List>
-              ) : (
+              </List>
+            ) : (
                 <h2 className="text-center">{this.state.message}</h2>
               )}
-        </Row>
-        {/* <Footer /> */}
-      </Container>
-    );
+          </Row>
+          {/* <Footer /> */}
+        </Container>
+      );
+    }
   }
-}
 }
 
 

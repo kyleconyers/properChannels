@@ -130,6 +130,14 @@ class App extends Component {
 		// this.generateResultsObject()
 	}
 
+	// callbackHandlerFunction = (clickStatus) => {
+	// 	this.setState({
+	// 		 isClicked: clickStatus
+	// 	});
+	// }
+
+
+
 	// generateResultsObject(){
 	// 	axios({
 	// 		method: 'get',
@@ -179,6 +187,8 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+				{/* {<Districts handleClickInParent={this.callbackHandlerFunction} /> } */}
+
 				{/* <h1>This is the main App component</h1> */}
 				{/* <Header user={this.state.user} /> */}
 				{/* LINKS to our different 'pages' */}
@@ -246,12 +256,6 @@ class App extends Component {
 
 				<Wrapper className="wrapper">
 
-					{/* <NavBar className="navBar">
-							<p>
-								navBar
-						</p>
-						</NavBar> */}
-
 
 					<LeftSideBar className="leftSideBar">
 						<Profile className="profile">
@@ -263,11 +267,11 @@ class App extends Component {
 								Districts
 							</p>
 						</Districts>
-						<OtherDistricts className="otherDistricts">
+						{/* <OtherDistricts className="otherDistricts">
 							<p>
 								The Other Districts
 							</p>
-						</OtherDistricts>
+						</OtherDistricts> */}
 					</LeftSideBar>
 
 					<Center className="center">
@@ -277,7 +281,7 @@ class App extends Component {
 						</p>
 						</CenterLinks>
 
-						<CenterBody user= {this.state.user} className="centerBody">
+						<CenterBody user={this.state.user} className="centerBody">
 
 							<Route
 								exact
@@ -290,14 +294,12 @@ class App extends Component {
 							/>
 							<Route exact path="/signup" component={SignupForm} />
 
-									
-
-							<ProtectedRoute 
-								exact path="/profile" 
-								component={UserProfile} 
+							<ProtectedRoute
+								exact path="/profile"
+								component={UserProfile}
 								auth={this.state.loggedIn}
 								loaded={this.state.loaded}
-								user={this.state.user} 
+								user={this.state.user}
 							/>
 
 
@@ -307,7 +309,7 @@ class App extends Component {
 
 					<RightSideBar className="rightSideBar">
 
-					<Route exact path="/" render={  () => <a className="twitter-timeline" data-width="500" href="https://twitter.com/UW?ref_src=twsrc%5Etfw">Tweets by realDonaldTrump</a>   } />
+						<Route exact path="/" render={() => <a className="twitter-timeline" data-width="500" href={"https://twitter.com/" + "UW" + "?ref_src=twsrc%5Etfw"}>Tweets by realDonaldTrump</a>} />
 
 					</RightSideBar>
 

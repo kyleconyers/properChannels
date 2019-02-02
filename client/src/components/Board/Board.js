@@ -25,7 +25,7 @@ import Card from "../Card";
           // throw exception because we dont understand how this url is formatted
           return;
         }
-        const forumName = path[2];
+        const forumName = path[2].toUpperCase();
         if (forumName) {
           console.log(forumName);
           API.getSavedForum(forumName)
@@ -70,7 +70,7 @@ import Card from "../Card";
         API.saveMessage({
           //this.state.currentusstate
           forum_id: this.state.currentForumId,
-          user_id: this.props.user._id,
+          user: this.props.user._id,
           content: this.state.q,
           date: new Date()
         }).then(()=>this.setState({q:""}))
