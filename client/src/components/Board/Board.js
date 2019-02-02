@@ -42,7 +42,15 @@ import Card from "../Card";
     //load data.data toooooo load this into state
     //store array of possibble US states into STATEdom
     getSavedMessage = (forum_id) => {
-        API.getSavedMessageByForum(forum_id)
+
+        var tags = window.location.href.split("/");
+        var tag = "all";
+        if (tags.length > 5) {
+          tag = tags[5];
+        }
+
+
+        API.getSavedMessageByForumAndTag(forum_id, tag)
           .then(res =>{
             console.log(res.data)
             this.setState({
@@ -65,14 +73,19 @@ import Card from "../Card";
    
     handleMessageSave = id => {
         // const message = this.state.message.find(message => message.id === id);
-      
+       
+        var tags = window.location.href.split("/");
+        var tag = tags[5];
+    
+
         console.log(this.props)
         API.saveMessage({
           //this.state.currentusstate
           forum_id: this.state.currentForumId,
           user: this.props.user._id,
           content: this.state.q,
-          date: new Date()
+          date: new Date(),
+          tag: tag
         }).then(()=>this.setState({q:""}))
         .then(() => this.getSavedMessage(this.state.currentForumId));
       };

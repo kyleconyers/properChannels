@@ -15,9 +15,8 @@ export default {
   //   return axios.get("/api/message");
   // },
 
-  getSavedMessageByForum: function(forum_id){
-    return axios.get(`/api/message?forum_id=${forum_id}`);
-    
+  getSavedMessageByForumAndTag: function(forum_id, tag){
+    return axios.get(`/api/message?forum_id=${forum_id}&tag=${tag}`);
   },
 
   // Deletes the saved message with the given id
