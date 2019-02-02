@@ -28,10 +28,16 @@ module.exports = {
       .then(dbMessage => res.json(dbMessage))
       .catch(err => res.status(422).json(err));
   },
-  findByForum: function(req,res){
+  findByForumAndTag: function(req,res){
     console.log(req.query);
-    db.Message.find({forum_id: req.query.forum_id})
+    if (req.query.tag == "all") {
+      db.Message.find({forum_id: req.query.forum_id})
+      .then(dbMessage => res.json(dbMessage))
+      .catch(err => res.status(422).json(err));
+    } else {
+    db.Message.find({forum_id: req.query.forum_id, tag: req.query.tag})
     .then(dbMessage => res.json(dbMessage))
     .catch(err => res.status(422).json(err));
   }
+}
 };

@@ -82,7 +82,7 @@ class App extends Component {
 		super()
 		var usState = null;
 		if (window.location.href.indexOf("forum")) {
-			usState = window.location.href.substring(window.location.href.indexOf("forum")+6);
+			usState = window.location.href.substring(window.location.href.indexOf("forum")+6, window.location.href.indexOf("forum")+8);
 		}
 		this.state = {
 			loggedIn: false,
