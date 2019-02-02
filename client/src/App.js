@@ -281,7 +281,7 @@ class App extends Component {
 
 					<RightSideBar className="rightSideBar">
 
-					<Route exact path="/" render={  () => <a class="twitter-timeline" data-width="500" href="https://twitter.com/UW?ref_src=twsrc%5Etfw">Tweets by realDonaldTrump</a>   } />
+					<Route exact path="/" render={  () => <a className="twitter-timeline" data-width="500" href="https://twitter.com/UW?ref_src=twsrc%5Etfw">Tweets by realDonaldTrump</a>   } />
 
 					</RightSideBar>
 

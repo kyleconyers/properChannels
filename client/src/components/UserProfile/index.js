@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Container, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
@@ -58,7 +59,7 @@ class UserProfile extends Component {
             <a href="auth/connect/google"><button onClick={this.handleConnectGoogle}>Connect to Google</button></a>
             :
             <div>
-                <p>ID: {user.google.googleId}</p>
+                <p>Google ID: {user.google.googleId}</p>
                 <a href="#"><button >Unlink from Google</button></a>
                 </div>
         }
@@ -68,22 +69,34 @@ class UserProfile extends Component {
 		return (
 			<div className="UserProfile">
 
+                <h2>Profile for {this.props.user.local.username}</h2>
+
+                <Container>
+                <h3>Personal Info</h3>
                 {/* Form for updating user info */}
-				<form onSubmit={this.handleSubmit}>
-                    <label htmlFor="firstName">First Name:</label>
-                    <input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleChange} />
-                    
-                    <label htmlFor="lastName">Last Name:</label>
-                    <input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleChange} />
+				<Form onSubmit={this.handleSubmit}>
+                    <FormGroup>
+                        <Label htmlFor="firstName">First Name:</Label>
+                        <Input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleChange} />
+                    </FormGroup>
+                    {/* <br/> */}
+                    <FormGroup>
+                        <Label htmlFor="lastName">Last Name:</Label>
+                        <Input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleChange} />
+                    </FormGroup>
+                    {/* <br/> */}
+                    <FormGroup>
+                        <Label htmlFor="address">Address:</Label>
+                        <Input type="text" name="address" id="address" value={this.state.address} onChange={this.handleChange} />
+                    </FormGroup>
+                    {/* <br/> */}
+                    <Button color="primary" type="submit" >Save</Button>
+                </Form>
+                </Container>
 
-                    <label htmlFor="address">Address:</label>
-                    <input type="text" name="address" id="address" value={this.state.address} onChange={this.handleChange} />
+                <br/>
 
-                    <input type="submit" value="Save" />
-                </form>
-
-                {/* TODO: Replace with Google-provided image */}
-                {/* TODO: Create button to de-link account from Google */}
+                <h3>Google Account Info</h3>
                 {
                     this.googleConnectSwitch()
                 }
