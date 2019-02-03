@@ -16,13 +16,7 @@ class Districts extends Component {
 
   constructor(props) {
     super(props);
-
-    //this.setNewValue = this.setNewValue.bind(this);
-
-    // this.state = {
-    //   isClicked: false
-    // }
-
+    
   }
 
   // handleClick = () => {
@@ -85,6 +79,9 @@ class Districts extends Component {
 
 
   render() {
+
+    
+
     console.log("senators:");
     console.log(this.state.senators);
     var waSenators = [];
@@ -159,7 +156,7 @@ class Districts extends Component {
                       last_name={senator.last_name}
                       title={"Senator"}
                       twitter={senator.twitter_account}
-                      twitterFunction={this.props.twitterFunction}
+                      twitterFunction={this.props.twitterFunction} 
                     />
 
                   ))}

@@ -78,7 +78,9 @@ const DisplayLinks = props => {
 }
 
 class App extends Component {
+
 	constructor() {
+		
 		super()
 		var usState = null;
 		if (window.location.href.indexOf("forum")) {
@@ -89,7 +91,7 @@ class App extends Component {
 			user: null,
 			loaded: false,
 			state: usState,
-			twitter: null
+			// twitter: null
 		}
 		this._logout = this._logout.bind(this);
 		this._login = this._login.bind(this);
@@ -132,6 +134,7 @@ class App extends Component {
 	}
 
 	twitterFunction = (twitter_account) => {
+		console.log("Twitter Account : " + twitter_account);
 		this.setState({
 			 twitter: twitter_account
 		});
