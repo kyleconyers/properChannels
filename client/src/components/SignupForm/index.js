@@ -11,7 +11,7 @@ class SignupForm extends Component {
 			username: '',
 			password: '',
 			confirmPassword: '',
-			address: '',
+			// address: '',
 			addrStreet: '',
 			addrCity: '',
 			addrState: '',
