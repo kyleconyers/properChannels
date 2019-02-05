@@ -22,7 +22,7 @@ function Form({ q, handleInputChange, handleFormSubmit }) {
         <button
           onClick={handleFormSubmit}
           type="submit"
-          className="btn btn-md  float-right"
+          className="btn btn-md  float-left"
           id="postButton"
         >
           Post
