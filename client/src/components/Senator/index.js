@@ -12,7 +12,7 @@ function Senator({first_name, last_name, title}) {
     <ListItem>
       <Row className="flex-wrap-reverse">
         <Col size="md-12">
-        <a href={`https://en.wikipedia.org/wiki/${first_name}_${last_name}`} target="_blank" ><p id="senator">{title} {first_name} {last_name}</p></a>
+        <span><a href={`https://en.wikipedia.org/wiki/${first_name}_${last_name}`} target="_blank" ><p id="senator">{title} {first_name} {last_name}</p></a> <i class="twit fab fa-twitter-square fa-pull-right"></i></span>
         </Col>
       </Row>
     </ListItem>

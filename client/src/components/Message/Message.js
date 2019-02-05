@@ -8,29 +8,26 @@ function Message(props) {
     return (
       <List>
         <Row className="flex-wrap-reverse">
-          <Col size="md-12">
+          <Col size="md-12" >
             <div className="message-group-item">
-
-              <p className="">
-                {props.message.content}
-              </p>
-
-              <br/>
-
-              <p className="">
-                Author: {props.message.user.local.username}
-              </p>
-
-              <br/>
-
-              <p className="">
-                Posted: {new Date(props.message.date).toLocaleString("en-US")}
-              </p>
               
-            </div>
+              <h6 className="author" >
+                Author: {props.message.user.local.username}
+              </h6>
+              
+              <h6 className="date">
+                Posted: {new Date(props.message.date).toLocaleString("en-US")}
+              </h6>
+
+              <p className="message">
+              {props.message.content}
+            </p>  
+            </div> 
+            
+            
             
           </Col>
-          
+
         </Row>
         
       </List>
