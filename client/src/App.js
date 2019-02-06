@@ -5,7 +5,6 @@ import './App.css'
 import ProtectedRoute from './components/ProtectedRoute'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
-import Header from './components/Header'
 import Center from './components/Center'
 import CenterBody from './components/CenterBody'
 import CenterLinks from './components/CenterLinks'
@@ -13,10 +12,6 @@ import LeftSideBar from './components/LeftSideBar'
 import NavBar from './components/NavBar'
 import Wrapper from './components/Wrapper'
 import RightSideBar from './components/RightSideBar'
-import Home from './components/Home'
-import Profile from './components/Profile'
-import Districts from './components/Districts'
-import OtherDistricts from './components/OtherDistricts'
 import UserProfile from './components/UserProfile'
 import committees from "./committees.json";
 import { SSL_OP_EPHEMERAL_RSA } from 'constants';
@@ -83,8 +78,12 @@ class App extends Component {
 		super()
 		var usState = null;
 		if (window.location.href.indexOf("forum")) {
-			usState = window.location.href.substring(window.location.href.indexOf("forum")+6, window.location.href.indexOf("forum")+8);
+			
+			// Line causing "localhost" display issue
+			// usState = window.location.href.substring(window.location.href.indexOf("forum")+6);
+			// usState = window.location.href.substring(window.location.href.indexOf("forum")+6, window.location.href.indexOf("forum")+8);
 		}
+
 		this.state = {
 			loggedIn: false,
 			user: null,
@@ -277,22 +276,13 @@ class App extends Component {
 				<Wrapper className="wrapper">
 
 
-					<LeftSideBar className="leftSideBar">
-						<Profile className="profile">
-							<Route exact path="/" render={() => <Home user={this.state.user} />} />
-							<Header user={this.state.user} />
-						</Profile>
-						<Districts className="districts" user={this.state.user} changeUSState={this.setNewValue} usState={this.state.state} changeTwitterFn={this.changeTwitterFocus}>
-							<p>
-								Districts
-							</p>
-						</Districts>
-						{/* <OtherDistricts className="otherDistricts">
-							<p>
-								The Other Districts
-							</p>
-						</OtherDistricts> */}
-					</LeftSideBar>
+					<LeftSideBar 
+						className="leftSideBar" 
+						user = {this.state.user}
+						usState = {this.state.state}
+						setNewValue = {this.setNewValue}
+						changeTwitterFn = {this.changeTwitterFocus}
+					/>
 
 					<Center className="center">
 						<CenterLinks className="centerLinks">
