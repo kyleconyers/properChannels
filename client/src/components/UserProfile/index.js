@@ -103,19 +103,27 @@ class UserProfile extends Component {
                         style={borderStyle}
                         onSubmit={this.handleSubmit}
                     >
-                        <Col>
-                            <FormGroup>
-                                <Label htmlFor="firstName">First Name:</Label>
-                                <Input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleChange} />
-                            </FormGroup>
-                        </Col>
-                        {/* <br/> */}
-                        <Col>
-                            <FormGroup>
-                                <Label htmlFor="lastName">Last Name:</Label>
-                                <Input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleChange} />
-                            </FormGroup>
-                        </Col>
+                        <Row>
+                            <Col />
+
+                            <Col xs="4" >
+                                <FormGroup>
+                                    <Label htmlFor="firstName">First Name:</Label>
+                                    <Input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleChange} />
+                                </FormGroup>
+                            </Col>
+
+                            <Col xs="1" />
+
+                            <Col xs="4" >
+                                <FormGroup>
+                                    <Label htmlFor="lastName">Last Name:</Label>
+                                    <Input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleChange} />
+                                </FormGroup>
+                            </Col>
+
+                            <Col />
+                        </Row>
 
                         {/* <br/> */}
 
