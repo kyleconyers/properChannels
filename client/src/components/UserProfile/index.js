@@ -98,11 +98,13 @@ class UserProfile extends Component {
                     <br/>
 
                     <h3>Personal Info</h3>
+                    
                     {/* Form for updating user info */}
                     <Form 
                         style={borderStyle}
                         onSubmit={this.handleSubmit}
                     >
+                        {/* Name row: first and last */}
                         <Row>
                             <Col />
 
@@ -124,17 +126,6 @@ class UserProfile extends Component {
 
                             <Col />
                         </Row>
-
-                        {/* <br/> */}
-
-                        {/* <Col>
-                            <FormGroup>
-                                <Label htmlFor="address">Address:</Label>
-                                <Input type="text" name="address" id="address" value={this.state.address} onChange={this.handleChange} />
-                            </FormGroup>
-                        </Col> */}
-
-                        {/* <br/> */}
 
                         {/* Address first row: street address */}
                         <Row>
