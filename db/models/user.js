@@ -7,6 +7,13 @@ mongoose.promise = Promise
 const userSchema = new Schema({
 	firstName: { type: String, unique: false },
 	lastName: { type: String, unique: false },
+	// address: { type: String, unique: false, required: false },
+	address: {
+		street: { type: String, unique: false },
+		city: { type: String, unique: false },
+		state: { type: String, unique: false },
+		zipCode: { type: String, unique: false }
+	},
 	local: {
 		username: { type: String, unique: false, required: false },
 		password: { type: String, unique: false, required: false }

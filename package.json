@@ -7,9 +7,9 @@
 		"start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
 		"start:prod": "node server.js",
 		"start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-		"prod": "export NODE_ENV=\"production\" && nodemon server.js",
+		"prod": "if-env OS=Windows_NT && set NODE_ENV=production&& nodemon server.js || export NODE_ENV=production&& nodemon server.js",
 		"client": "cd client && npm run start",
-		"seed": "node scripts/seedDB.js",
+		"seed": "node db/seeds.js",
 		"install": "cd client && npm install",
 		"build": "cd client && npm run build",
 		"heroku-postbuild": "npm run build"
@@ -34,6 +34,10 @@
 		"morgan": "^1.9.1",
 		"passport": "^0.4.0",
 		"passport-google-oauth": "^1.0.0",
-		"passport-local": "^1.0.0"
+		"passport-local": "^1.0.0",
+		"react": "^16.7.0",
+		"react-dom": "^16.7.0",
+		"react-select-us-states": "^0.1.2",
+		"reactstrap": "^7.1.0"
 	}
 }

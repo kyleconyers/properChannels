@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 require('dotenv').config()
 
+const routes = require('./routes')
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -44,38 +45,27 @@ app.use(passport.session()) // will call the deserializeUser
 
 // ===== testing middleware =====
 app.use(function(req, res, next) {
-	console.log('===== passport user =======')
+	console.log('===== Session =======')
 	console.log(req.session)
-	console.log(req.user)
+	// console.log(req.user)
 	console.log('===== END =======')
 	next()
 })
-// testing
-app.get(
-	'/auth/google/callback',
-	(req, res, next) => {
-		console.log(`req.user: ${req.user}`)
-		console.log('======= /auth/google/callback was called! =====')
-		next()
-	},
-	passport.authenticate('google', { failureRedirect: '/login' }),
-	(req, res) => {
-		res.redirect('/')
-	}
-)
+
+/* Express app authentication ROUTING */
+app.use('/auth', require('./auth'))
 
 // ==== if its production environment!
 if (process.env.NODE_ENV === 'production') {
 	const path = require('path')
 	console.log('YOU ARE IN THE PRODUCTION ENV')
 	app.use('/static', express.static(path.join(__dirname, './client/build/static')))
-	app.get('/', (req, res) => {
-		res.sendFile(path.join(__dirname, './client/build/'))
+	app.get('*', (req, res) => {
+		res.sendFile(path.join(__dirname, './client/build/index.html'))
 	})
 }
 
-/* Express app ROUTING */
-app.use('/auth', require('./auth'))
+
 
 // ====== Error handler ====
 app.use(function(err, req, res, next) {
@@ -84,7 +74,13 @@ app.use(function(err, req, res, next) {
 	res.status(500)
 })
 
+app.use(routes);
+// console.log("routes:");
+// console.log(routes);
+// console.log("testOne");
 // ==== Starting Server =====
 app.listen(PORT, () => {
 	console.log(`App listening on PORT: ${PORT}`)
 })
+
+

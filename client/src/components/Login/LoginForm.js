@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Container, Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Redirect } from 'react-router-dom'
 // import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
 import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png'
@@ -36,30 +37,42 @@ class LoginForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-				<div className="LoginForm">
-					<h1>Login form</h1>
-					<form>
-						<label htmlFor="username">Username: </label>
-						<input
-							type="text"
-							name="username"
-							value={this.state.username}
-							onChange={this.handleChange}
-						/>
-						<label htmlFor="password">Password: </label>
-						<input
-							type="password"
-							name="password"
-							value={this.state.password}
-							onChange={this.handleChange}
-						/>
-						<button onClick={this.handleSubmit}>Login</button>
-					</form>
+				<Container className="LoginForm">
+					<h2>Login</h2>
+					<Form onSubmit={this.handleSubmit}>
+						<Row>
+							<Col>
+								<FormGroup>
+									<Label htmlFor="username">Username: </Label>
+									<Input
+										type="text"
+										name="username"
+										value={this.state.username}
+										onChange={this.handleChange}
+									/>
+								</FormGroup>
+							</Col>
+							
+							<Col>
+								<FormGroup>
+									<Label htmlFor="password">Password: </Label>
+									<Input
+										type="password"
+										name="password"
+										value={this.state.password}
+										onChange={this.handleChange}
+									/>
+								</FormGroup>								
+							</Col>
+						</Row>
+
+						<Button type="submit" color="primary">Login</Button>
+					</Form>
 					<a href="/auth/google">
 						{/* <GoogleButton /> */}
 						<img src={googleButton} alt="sign into Google Button" />
 					</a>
-				</div>
+				</Container>
 			)
 		}
 	}
