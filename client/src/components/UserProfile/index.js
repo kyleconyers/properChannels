@@ -53,9 +53,15 @@ class UserProfile extends Component {
 	// Handle submission of form for updating user data
 	handleSubmit(event) {
         event.preventDefault()
-        
+        const {addrStreet, addrCity, addrState, addrZip } = this.state
+
         axios.put('/auth/updateprofile',  {
-            address: this.state.address
+            address: {
+                street: addrStreet,
+                city: addrCity,
+                state: addrState,
+                zipCode: addrZip
+            }
         }).then(response => {
             console.log(response);
         })
