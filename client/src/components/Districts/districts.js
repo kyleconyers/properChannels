@@ -93,7 +93,7 @@ class Districts extends Component {
     console.log(this.props);
     if (this.props.user != null) {
       console.log("THIS.PROPS.USER.ADDRESS")
-      console.log(this.props.user.address);
+      console.log(this.props.user.address.state);
     }
 
     console.log("this.props.usState:");
@@ -104,7 +104,7 @@ class Districts extends Component {
   if ((this.props.usState != null)&&(this.props.usState.indexOf("//")==-1)) {
     usStateToUse = this.props.usState;
   } else if (this.props.user != null) {
-    usStateToUse = this.props.user.address;
+    usStateToUse = this.props.user.address.state;
   }
 
   console.log("WE ARE USING THIS STATE:");
@@ -146,7 +146,7 @@ class Districts extends Component {
           :
           ((this.props.usState != null)?
           (<p>Current State: {this.props.usState}</p>):
-          (<p>Current State: {this.props.user.address}</p>))
+          (<p>Current State: {this.props.user.address.state}</p>))
           }
         </Row>
         <Row>
