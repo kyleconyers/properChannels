@@ -8,7 +8,13 @@ import OtherDistricts from '../OtherDistricts'
 const LeftSideBar = props => <div className="leftSideBar">
     <Profile className="profile" user={props.user} />
 
-    <Districts className="districts" user={props.user} changeUSState={props.setNewValue} usState={props.usState}>
+    <Districts 
+        className="districts" 
+        user={props.user} 
+        changeUSState={props.setNewValue} 
+        usState={props.usState}
+        changeTwitterFn={props.changeTwitterFn}
+    >
         <p>
             Districts
         </p>
