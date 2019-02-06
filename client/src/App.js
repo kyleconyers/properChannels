@@ -5,7 +5,6 @@ import './App.css'
 import ProtectedRoute from './components/ProtectedRoute'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
-import Header from './components/Header'
 import Center from './components/Center'
 import CenterBody from './components/CenterBody'
 import CenterLinks from './components/CenterLinks'
@@ -13,13 +12,10 @@ import LeftSideBar from './components/LeftSideBar'
 import NavBar from './components/NavBar'
 import Wrapper from './components/Wrapper'
 import RightSideBar from './components/RightSideBar'
-import Home from './components/Home'
-import Profile from './components/Profile'
-import Districts from './components/Districts'
-import OtherDistricts from './components/OtherDistricts'
 import UserProfile from './components/UserProfile'
 import committees from "./committees.json";
 import { SSL_OP_EPHEMERAL_RSA } from 'constants';
+import TwitterRoute from "./components/TwitterRoute";
 
 
 
@@ -36,17 +32,17 @@ const DisplayLinks = props => {
 				<ul className="nav">
 					<li className="nav-item">
 						<Link to="/" className="nav-link">
-							Home
+							<h5>Home</h5>
 						</Link>
 					</li>
 					<li>
 						<Link to="/profile" className="nav-link">
-							Profile
+							<h5>Profile</h5>
 						</Link>
 					</li>
 					<li>
 						<Link to="#" className="nav-link" onClick={props._logout}>
-							Logout
+							<h5>Log Out</h5>
 						</Link>
 					</li>
 				</ul>
@@ -58,17 +54,17 @@ const DisplayLinks = props => {
 				<ul className="nav">
 					<li className="nav-item">
 						<Link to="/" className="nav-link">
-							Home
+							<h5>Home</h5>
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link to="/login" className="nav-link">
-							Log In
+							<h5>Log In</h5>
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link to="/signup" className="nav-link">
-							Sign Up
+							<h5>Sign Up</h5>
 						</Link>
 					</li>
 				</ul>
@@ -82,18 +78,37 @@ class App extends Component {
 		super()
 		var usState = null;
 		if (window.location.href.indexOf("forum")) {
-			usState = window.location.href.substring(window.location.href.indexOf("forum")+6, window.location.href.indexOf("forum")+8);
+			
+			// Line causing "localhost" display issue
+			// usState = window.location.href.substring(window.location.href.indexOf("forum")+6);
+			// usState = window.location.href.substring(window.location.href.indexOf("forum")+6, window.location.href.indexOf("forum")+8);
 		}
+
 		this.state = {
 			loggedIn: false,
 			user: null,
 			loaded: false,
-			state: usState
+			state: usState,
+			current_twitter_focus: "whitehouse"
 		}
 		this._logout = this._logout.bind(this);
 		this._login = this._login.bind(this);
 		this.setNewValue = this.setNewValue.bind(this);
+		this.changeTwitterFocus = this.changeTwitterFocus.bind(this);
 	}
+
+	changeTwitterFocus(activeTwitterName) {
+		
+		console.log("before this setstate")
+		this.setState ({
+			current_twitter_focus: activeTwitterName
+		})
+		//window.document.getElementById("twitter-widget-0").location.reload(true);
+		URL = "https://twitter.com/" + this.state.current_twitter_focus + "?ref_src=twsrc%5Etfw";
+		console.log("URL: " + URL);
+		// document.getElementById('twitter-widget-0').contentWindow.location.href = URL;
+	}
+
 
 	setNewValue(newValue) {
 		console.log('this is the State code:' + newValue);
@@ -185,6 +200,10 @@ class App extends Component {
 	}
 
 	render() {
+
+		const {current_twitter_focus} = this.state
+		console.log("PASSEDINTO TWITTER", current_twitter_focus)
+
 		return (
 			<div className="App">
 				{/* {<Districts handleClickInParent={this.callbackHandlerFunction} /> } */}
@@ -257,22 +276,13 @@ class App extends Component {
 				<Wrapper className="wrapper">
 
 
-					<LeftSideBar className="leftSideBar">
-						<Profile className="profile">
-							<Route exact path="/" render={() => <Home user={this.state.user} />} />
-							<Header user={this.state.user} />
-						</Profile>
-						<Districts className="districts" user={this.state.user} changeUSState={this.setNewValue} usState={this.state.state}>
-							<p>
-								Districts
-							</p>
-						</Districts>
-						{/* <OtherDistricts className="otherDistricts">
-							<p>
-								The Other Districts
-							</p>
-						</OtherDistricts> */}
-					</LeftSideBar>
+					<LeftSideBar 
+						className="leftSideBar" 
+						user = {this.state.user}
+						usState = {this.state.state}
+						setNewValue = {this.setNewValue}
+						changeTwitterFn = {this.changeTwitterFocus}
+					/>
 
 					<Center className="center">
 						<CenterLinks className="centerLinks">
@@ -306,13 +316,25 @@ class App extends Component {
 
 						</CenterBody>
 					</Center>
-
+					
 					<RightSideBar className="rightSideBar">
-
-						<Route exact path="/" render={() => <a className="twitter-timeline" data-width="500" href={"https://twitter.com/" + "UW" + "?ref_src=twsrc%5Etfw"}>Tweets by realDonaldTrump</a>} />
-
+						{/* <a className="twitter-timeline" data-width="500" href={"https://twitter.com/" + current_twitter_focus + "?ref_src=twsrc%5Etfw"}>Tweets!</a>} */}
+						
+						{/* <Route path="/" render={() => 
+							<TwitterRout handle={current_twitter_focus} > } >
+							</ TwitterRout> 
+						/>  */}
+						
+						{/* <Route path="/" render={() =>
+						}/> */}
+							<TwitterRoute handle={this.state.current_twitter_focus}/> 
+						
+						
+						
+						
+						
 					</RightSideBar>
-
+					{/* remove component from dom, then replace again */}
 				</Wrapper>
 
 			</div>

@@ -20,6 +20,11 @@ const DisplayLinks = props => {
 							Logout
 						</Link>
 					</li>
+					<li className="nav-item">
+						
+							Proper Channels
+						
+					</li>
 				</ul>
 			</nav>
 		)
@@ -41,6 +46,12 @@ const DisplayLinks = props => {
 						<Link to="/signup" className="nav-link">
 							sign up
 						</Link>
+					</li>
+
+					<li className="nav-item">
+						
+							Proper Channels
+						
 					</li>
 				</ul>
 			</nav>
