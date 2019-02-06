@@ -72,6 +72,12 @@ class UserProfile extends Component {
         // TODO: Handle connecting account to Google
     }
 
+    // Event handler to unlink an account from Google
+    googleUnlink = () => {
+        // TODO: Call DB to remove account info
+    }
+
+    // Shows correct info depending on whether user has linked a Google account
     googleConnectSwitch = () => {
         const {user} = this.props
         if (user) {
@@ -79,12 +85,12 @@ class UserProfile extends Component {
             ?
             <Col style={borderStyle}>
                 <p>Google ID: Not linked</p>
-                <a href="auth/connect/google"><Button onClick={this.handleConnectGoogle}>Connect to Google</Button></a>
+                <a href="auth/connect/google"><Button color="primary" onClick={this.handleConnectGoogle}>Connect to Google</Button></a>
             </Col>
             :
             <Col style={borderStyle}>
                 <p>Google ID: {user.google.googleId}</p>
-                <a href="#"><Button color="primary" >Unlink from Google</Button></a>
+                <a href="#"><Button color="primary" onClick={this.googleUnlink} >Unlink from Google</Button></a>
             </Col>
         }
     }
