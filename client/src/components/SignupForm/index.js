@@ -36,7 +36,9 @@ class SignupForm extends Component {
 		// Check that password and confirmPassword are identical
 		if (this.state.password === this.state.confirmPassword) {
 			// TODO - add error notification for user if non-matching
-
+			console.log(this.state.username);
+			console.log(this.state.password);
+			console.log(this.state.address);
 			// POST signup request
 			axios
 				.post('/auth/signup', {
@@ -52,6 +54,7 @@ class SignupForm extends Component {
 				})
 				// Wait for response to see if signup successful
 				.then(response => {
+					
 					console.log(response)
 					if (!response.data.error) {
 						console.log('SUCCESSFUL LOGIN')
