@@ -20,6 +20,7 @@ import OtherDistricts from './components/OtherDistricts'
 import UserProfile from './components/UserProfile'
 import committees from "./committees.json";
 import { SSL_OP_EPHEMERAL_RSA } from 'constants';
+import TwitterRoute from "./components/TwitterRoute";
 
 
 
@@ -88,12 +89,27 @@ class App extends Component {
 			loggedIn: false,
 			user: null,
 			loaded: false,
-			state: usState
+			state: usState,
+			current_twitter_focus: "whitehouse"
 		}
 		this._logout = this._logout.bind(this);
 		this._login = this._login.bind(this);
 		this.setNewValue = this.setNewValue.bind(this);
+		this.changeTwitterFocus = this.changeTwitterFocus.bind(this);
 	}
+
+	changeTwitterFocus(activeTwitterName) {
+		
+		console.log("before this setstate")
+		this.setState ({
+			current_twitter_focus: activeTwitterName
+		})
+		//window.document.getElementById("twitter-widget-0").location.reload(true);
+		URL = "https://twitter.com/" + this.state.current_twitter_focus + "?ref_src=twsrc%5Etfw";
+		console.log("URL: " + URL);
+		// document.getElementById('twitter-widget-0').contentWindow.location.href = URL;
+	}
+
 
 	setNewValue(newValue) {
 		console.log('this is the State code:' + newValue);
@@ -185,6 +201,10 @@ class App extends Component {
 	}
 
 	render() {
+
+		const {current_twitter_focus} = this.state
+		console.log("PASSEDINTO TWITTER", current_twitter_focus)
+
 		return (
 			<div className="App">
 				{/* {<Districts handleClickInParent={this.callbackHandlerFunction} /> } */}
@@ -262,7 +282,7 @@ class App extends Component {
 							<Route exact path="/" render={() => <Home user={this.state.user} />} />
 							<Header user={this.state.user} />
 						</Profile>
-						<Districts className="districts" user={this.state.user} changeUSState={this.setNewValue} usState={this.state.state}>
+						<Districts className="districts" user={this.state.user} changeUSState={this.setNewValue} usState={this.state.state} changeTwitterFn={this.changeTwitterFocus}>
 							<p>
 								Districts
 							</p>
@@ -306,13 +326,25 @@ class App extends Component {
 
 						</CenterBody>
 					</Center>
-
+					
 					<RightSideBar className="rightSideBar">
-
-						<Route path="/" render={() => <a className="twitter-timeline" data-width="500" href={"https://twitter.com/" + "UW" + "?ref_src=twsrc%5Etfw"}>Tweets!</a>} />
-
+						{/* <a className="twitter-timeline" data-width="500" href={"https://twitter.com/" + current_twitter_focus + "?ref_src=twsrc%5Etfw"}>Tweets!</a>} */}
+						
+						{/* <Route path="/" render={() => 
+							<TwitterRout handle={current_twitter_focus} > } >
+							</ TwitterRout> 
+						/>  */}
+						
+						{/* <Route path="/" render={() =>
+						}/> */}
+							<TwitterRoute handle={this.state.current_twitter_focus}/> 
+						
+						
+						
+						
+						
 					</RightSideBar>
-
+					{/* remove component from dom, then replace again */}
 				</Wrapper>
 
 			</div>
