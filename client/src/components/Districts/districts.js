@@ -84,7 +84,7 @@ class Districts extends Component {
   }
 
 
-  render() {
+ render() {
     console.log("senators:");
     console.log(this.state.senators);
     var waSenators = [];
@@ -93,7 +93,7 @@ class Districts extends Component {
     console.log(this.props);
     if (this.props.user != null) {
       console.log("THIS.PROPS.USER.ADDRESS")
-      console.log(this.props.user.address.state);
+      console.log(this.props.user.address);
     }
 
     console.log("this.props.usState:");
@@ -104,7 +104,7 @@ class Districts extends Component {
   if ((this.props.usState != null)&&(this.props.usState.indexOf("//")==-1)) {
     usStateToUse = this.props.usState;
   } else if (this.props.user != null) {
-    usStateToUse = this.props.user.address.state;
+    usStateToUse = this.props.user.address;
   }
 
   console.log("WE ARE USING THIS STATE:");
@@ -146,7 +146,7 @@ class Districts extends Component {
           :
           ((this.props.usState != null)?
           (<p>Current State: {this.props.usState}</p>):
-          (<p>Current State: {this.props.user.address.state}</p>))
+          (<p>Current State: {this.props.user.address}</p>))
           }
         </Row>
         <Row>
@@ -158,9 +158,6 @@ class Districts extends Component {
                       first_name={senator.first_name}
                       last_name={senator.last_name}
                       title={"Senator"}
-                      profile_url={senator.url}
-                      twitter_handle={senator.twitter_account}
-                      changeTwitterFn={this.props.changeTwitterFn}
 
                     />
 
@@ -180,9 +177,6 @@ class Districts extends Component {
                       first_name={senator.first_name}
                       last_name={senator.last_name}
                       title={"Congressman"}
-                      profile_url={senator.url}
-                      twitter_handle={senator.twitter_account}
-                      changeTwitterFn={this.props.changeTwitterFn}
                     />
                   ))}
               </List>
