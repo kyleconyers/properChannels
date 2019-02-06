@@ -1,8 +1,11 @@
-// Loading evnironmental variables here
-if (process.env.NODE_ENV !== 'production') {
-	console.log('loading dev environments')
-	require('dotenv').config()
+if (process.env.NODE_ENV == 'production') {
+	console.log("STARTING PRODUCTION ENVIRONMENT")
+} else {
+	console.log("STARTING DEVELOPMENT ENVIRONMENT")
+	// require('dotenv').config()
 }
+
+// Loading environmental variables here
 require('dotenv').config()
 
 const routes = require('./routes')
@@ -55,17 +58,6 @@ app.use(function(req, res, next) {
 /* Express app authentication ROUTING */
 app.use('/auth', require('./auth'))
 
-// ==== if its production environment!
-if (process.env.NODE_ENV === 'production') {
-	const path = require('path')
-	console.log('YOU ARE IN THE PRODUCTION ENV')
-	app.use('/static', express.static(path.join(__dirname, './client/build/static')))
-	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname, './client/build/index.html'))
-	})
-}
-
-
 
 // ====== Error handler ====
 app.use(function(err, req, res, next) {
@@ -74,10 +66,10 @@ app.use(function(err, req, res, next) {
 	res.status(500)
 })
 
+// Add router for all other routes
 app.use(routes);
-// console.log("routes:");
-// console.log(routes);
-// console.log("testOne");
+
+
 // ==== Starting Server =====
 app.listen(PORT, () => {
 	console.log(`App listening on PORT: ${PORT}`)
