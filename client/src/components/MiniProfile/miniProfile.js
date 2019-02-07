@@ -42,15 +42,16 @@ const MiniProfile = props => {
             <div>
                 <p>
                     Home State: <strong>{state}</strong>
+                
+                    <Link to={`/forum/${state}`} >
+                        <Button className="miniProfile_button" >View</Button>
+                    </Link>
                 </p>
-                <Link to={`/forum/${state}`} >
-                    <Button>View</Button>
-                </Link>
             </div>
         )
     }
 	return (
-		<div className="MiniProfile">
+		<div className="miniProfile">
             {Greeting}
             
             {HomeState}
