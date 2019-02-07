@@ -9,7 +9,7 @@ console.log(profile_url);
   let address="https://en.wikipedia.org/wiki/"+first_name+"_"+last_name;
   const switchTwitter = () => {
     console.log("active twitter")
-    changeTwitterFn(twitter_handle)
+    changeTwitterFn(twitter_handle);
   
   }
   return (
