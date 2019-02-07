@@ -219,10 +219,12 @@ padding: 5px;
   padding: 5px;
   margin: 7px;
 }
-.form-control {
+
+.postform-form-control {
   width: 75%;
   margin: 16px;
 }
+
 #postButton {
   background-color: lightgreen;
   margin-left: 16px;

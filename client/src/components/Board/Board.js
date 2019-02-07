@@ -5,7 +5,7 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../Grid";
 import { List } from "../List";
 import Message from "../Message";
-import Form from "../Form";
+import PostForm from "../PostForm";
 import Card from "../Card";
 
 
@@ -83,17 +83,17 @@ import Card from "../Card";
           //this.state.currentusstate
           forum_id: this.state.currentForumId,
           user: this.props.user._id,
-          content: this.state.q,
+          content: this.state.messageText,
           date: new Date(),
           tag: tag
-        }).then(()=>this.setState({q:""}))
+        }).then(()=>this.setState({messageText:""}))
         .then(() => this.getSavedMessage(this.state.currentForumId));
       };
       // resUser._id
      
       handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.q) {
+        if (this.state.messageText) {
           this.handleMessageSave();
           // this.db.insert();
           console.log("inside sumbit")
@@ -114,10 +114,10 @@ import Card from "../Card";
             <Row>
               <Col size="md-12">
               <Card title="Post Content" icon="far fa-book">
-                  <Form
+                  <PostForm
                      handleInputChange={this.handleInputChange}
                      handleFormSubmit={this.handleFormSubmit}
-                     q={this.state.q}
+                     messageText={this.state.messageText}
                     />
               </Card>  
 
