@@ -1,4 +1,9 @@
 import React, {Component} from "react";
+
+import { Timeline } from 'react-twitter-widgets'
+
+
+
 // import "./wrapper.css"
 
 // const TwitterRout = props => <div className="TwitterRout">{props.children}</div>
@@ -46,15 +51,28 @@ class TwitterRoute extends Component {
 
     render() {
         console.log("props.handle:" +  this.props.handle);
-        let twitterUrl =  "https://twitter.com/" + this.props.handle + "?ref_src=twsrc%5Etfw";
-        console.log("twitterUrl:" + twitterUrl);
+        // let twitterUrl =  "https://twitter.com/" + this.props.handle + "?ref_src=twsrc%5Etfw";
+        // console.log("twitterUrl:" + twitterUrl);
+        // return (
+        // <a 
+        // className="twitter-timeline" 
+        // data-width="500" 
+        // href={twitterUrl}>
+        // Tweets!
+        // </a>
+        // )
         return (
-        <a 
-        className="twitter-timeline" 
-        data-width="500" 
-        href={twitterUrl}>
-        Tweets!
-        </a>
+        <Timeline
+            dataSource={{
+                sourceType: 'profile',
+                screenName: this.props.handle.toLowerCase()
+            }}
+            options={{
+                username: this.props.handle,
+                width: '500'
+            }}
+            onLoad={() => console.log('Timeline is loaded!')}
+        />
         )
     }
 

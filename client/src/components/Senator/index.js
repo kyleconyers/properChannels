@@ -20,8 +20,8 @@ console.log(profile_url);
           <a href={profile_url} target="_blank" >
             <p id="senator">{title} {first_name} {last_name}</p>
           </a>
-          <button onClick={switchTwitter}>
-            <i  class="twit fab fa-twitter-square fa-pull-right"></i>
+          <button onClick={switchTwitter} class="twit fab fa-twitter-square ">
+            
           </button>
         </span>
         {/* onClick={switchTwitter}  */}
