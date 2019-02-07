@@ -1,12 +1,12 @@
 import React from "react";
-import Profile from '../Profile'
+import MiniProfile from '../MiniProfile'
 import Districts from '../Districts'
 import OtherDistricts from '../OtherDistricts'
 
 // import "./leftSideBar.css"
 
 const LeftSideBar = props => <div className="leftSideBar">
-    <Profile className="profile" user={props.user} />
+    <MiniProfile className="profile" user={props.user} />
 
     <Districts 
         className="districts" 

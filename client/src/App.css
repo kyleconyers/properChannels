@@ -163,7 +163,7 @@ padding: 5px;
 .navBar {
   width: 100%;
   border-bottom: 1px solid black;
-  height: 10%;
+  /* height: 10%; */
   background-color: blue;
   overflow: auto;
 }
@@ -238,3 +238,16 @@ padding: 5px;
   margin-left: 2.5rem;
 }
 
+.miniProfile {
+  box-sizing: border-box;
+  height: 100px;
+
+  padding: 1rem;
+  border-bottom: 1px black solid;
+}
+
+.miniProfile_button {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.25rem;
+}
