@@ -145,8 +145,8 @@ class Districts extends Component {
           <p></p>)
           :
           ((this.props.usState != null)?
-          (<p>Current State: {this.props.usState}</p>):
-          (<p>Current State: {this.props.user.address.state}</p>))
+          (<p className="currentState">Current State: {this.props.usState}</p>):
+          (<p className="currentState">Current State: {this.props.user.address.state}</p>))
           }
         </Row>
         <Row>
