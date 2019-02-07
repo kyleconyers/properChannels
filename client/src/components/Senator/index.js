@@ -21,7 +21,7 @@ console.log(profile_url);
             <p id="senator">{title} {first_name} {last_name}</p>
           </a>
           <button onClick={switchTwitter}>
-            <i  class="twit fab fa-twitter-square fa-pull-right"></i>
+            <i  class="twit fab fa-twitter-square "></i>
           </button>
         </span>
         {/* onClick={switchTwitter}  */}
