@@ -5,7 +5,7 @@ import Home from '../Home'
 
 // import "./profile.css"
 
-const Profile = props => {
+const MiniProfile = props => {
     const {user} = props;
     return (
         <div className="profile">
@@ -16,4 +16,4 @@ const Profile = props => {
 }
 // <div className="profile">{props.children}</div>
 
-export default Profile;
+export default MiniProfile;
