@@ -163,7 +163,7 @@ padding: 5px;
 .navBar {
   width: 100%;
   border-bottom: 1px solid black;
-  height: 10%;
+  /* height: 10%; */
   background-color: blue;
   overflow: auto;
 }
