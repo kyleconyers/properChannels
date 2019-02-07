@@ -203,76 +203,19 @@ class App extends Component {
 
 		return (
 			<div className="App">
-				{/* {<Districts handleClickInParent={this.callbackHandlerFunction} /> } */}
-
-				{/* <h1>This is the main App component</h1> */}
-				{/* <Header user={this.state.user} /> */}
-				{/* LINKS to our different 'pages' */}
-				{/* <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} /> */}
-				{/*  ROUTES */}
-				{/* <Route exact path="/" component={Home} /> */}
-				{/* <Route exact path="/" render={() => <Home user={this.state.user} />} /> */}
-				{/* <Route
-					exact
-					path="/login"
-					render={() =>
-						<LoginForm
-							_login={this._login}
-							_googleSignin={this._googleSignin}
-						/>}
-				/>
-				<Route exact path="/signup" component={SignupForm} /> */}
-				{/* <LoginForm _login={this._login} /> */}
-
-
-				{/* <div className="content-layout">
-					<div className ="left-sideBar">
-					left
-					
-					</div>
-					
-					<div className="center-content">
-					center
-					</div>
-					
-					<div className="right-sideBar">
-					right
-					</div>	
-				</div> */}
-
-				{/* <Route
-					exact
-					path="/login"
-					render={() =>
-						<LoginForm
-							_login={this._login}
-							_googleSignin={this._googleSignin}
-						/>}
-				/>
-				<Route exact path="/signup" component={SignupForm} /> */}
-
+				
+				{/* NavBar at top of page */}
 				<NavBar className="navBar">
 
 					<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
 
-					{/* <Route
-						exact
-						path="/login"
-						render={() =>
-							<LoginForm
-								_login={this._login}
-								_googleSignin={this._googleSignin}
-							/>}
-					/>
-					<Route exact path="/signup" component={SignupForm} /> */}
-
 				</NavBar>
 
 
-
+				{/* Wrapper for three-column main section */}
 				<Wrapper className="wrapper">
 
-
+					{/* Left column showing current user and district representatives */}
 					<LeftSideBar 
 						className="leftSideBar" 
 						user = {this.state.user}
@@ -281,13 +224,17 @@ class App extends Component {
 						changeTwitterFn = {this.changeTwitterFocus}
 					/>
 
+					{/* Center column showing main content based on user selections */}
 					<Center className="center">
+
+						{/* Top portion of columns showing different categories */}
 						<CenterLinks className="centerLinks">
 							<p>
 								centerLinks
-						</p>
+							</p>
 						</CenterLinks>
 
+						{/* Main portion of center showing variable content */}
 						<CenterBody user={this.state.user} className="centerBody">
 
 							<Route
@@ -309,11 +256,10 @@ class App extends Component {
 								user={this.state.user}
 							/>
 
-
-
 						</CenterBody>
 					</Center>
 					
+					{/* Right column showing Twitter feed relevant to selection */}
 					<RightSideBar className="rightSideBar">
 						{/* <a className="twitter-timeline" data-width="500" href={"https://twitter.com/" + current_twitter_focus + "?ref_src=twsrc%5Etfw"}>Tweets!</a>} */}
 						
@@ -324,14 +270,9 @@ class App extends Component {
 						
 						{/* <Route path="/" render={() =>
 						}/> */}
-							<TwitterRoute handle={this.state.current_twitter_focus}/> 
-						
-						
-						
-						
+						<TwitterRoute handle={this.state.current_twitter_focus}/> 
 						
 					</RightSideBar>
-					{/* remove component from dom, then replace again */}
 				</Wrapper>
 
 			</div>
