@@ -93,7 +93,7 @@ class Districts extends Component {
     console.log(this.props);
     if (this.props.user != null) {
       console.log("THIS.PROPS.USER.ADDRESS")
-      console.log(this.props.user.address);
+      // console.log(this.props.user.address);
     }
 
     console.log("this.props.usState:");
