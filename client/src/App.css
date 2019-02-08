@@ -65,8 +65,9 @@ padding: 5px;
 
 .twit {
   position: relative;
+  margin-top: 8px;
   /* Adjust these values accordingly */
-  bottom: 15px;
+  /* bottom: 15px; */
   /* left: 0px; */
 }
 
@@ -162,8 +163,9 @@ padding: 5px;
 .navBar {
   width: 100%;
   border-bottom: 1px solid black;
-  height: 10%;
+  /* height: 10%; */
   background-color: blue;
+  overflow: auto;
 }
 
 .navBar a {
@@ -183,6 +185,7 @@ padding: 5px;
   border-bottom: 1px solid black;
   height: 20%;
   align-items: stretch;
+  overflow: auto;
 }
 
 .rightSideBar {
@@ -231,3 +234,20 @@ padding: 5px;
   margin-bottom: 10px;
 }
 
+.currentState {
+  margin-left: 2.5rem;
+}
+
+.miniProfile {
+  box-sizing: border-box;
+  height: 100px;
+
+  padding: 1rem;
+  border-bottom: 1px black solid;
+}
+
+.miniProfile_button {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.25rem;
+}
